@@ -1,0 +1,12 @@
+version: "3"
+services:
+  admin_template:
+    restart: always
+    build: .
+    stdin_open: true
+    ports:
+      - "3005:3005"
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - CI=true
