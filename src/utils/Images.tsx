@@ -1,16 +1,20 @@
 export const cdnImage = (name: string, placeholder= false,folder='/static/images',count=10) => {
+      let srcPicture: string;
     if (process.env.NODE_ENV === "production") {
         console.log("zsz", process.env.NODE_ENV);
         console.log("placeholder", placeholder);
 
       if (placeholder) {
-        return "https://cdn.statically.io/img/reactheme.io/h="+count+"/"+folder+"/"+name;
+        srcPicture =  "https://cdn.statically.io/img/reactheme.io/h="+count+"/"+folder+"/"+name;
       } else {
-        return "https://cdn.statically.io/img/reactheme.io/f=auto/"+folder+"/"+name;
+        srcPicture =  "https://cdn.statically.io/img/reactheme.io/f=auto/"+folder+"/"+name;
       }
     } else {
-      return folder+"/" + name;
+        srcPicture =  folder+"/" + name;
     }
+    console.log("srcPicture", srcPicture);
+
+    return srcPicture;
   };
   
   export const shuffle = (array: string[] | any[]) => {
