@@ -1,11 +1,12 @@
 import React   from 'react';
-import { AppBar, Avatar, Badge, Button, Grid, IconButton, InputBase, Menu, MenuItem, Paper, Toolbar, Typography } from '@material-ui/core';
+import {  Avatar, Button, Grid, Typography } from '@material-ui/core';
 import { IProps } from '@element/ProfilePicture/ProfilePictureInterface';
 import  useStyles  from '@element/ProfilePicture/ProfilePictureStyle';
- 
+import { cdnImage } from "@util/image";
+
 const ProfilePicture: React.FunctionComponent<IProps> = (props: IProps) => { 
      const classes = useStyles(props);
-   
+     const srcPicture = cdnImage(props.namePicture, false, props.srcPicture, 40)
      return (
          <Button className={classes.grow} onClick={props.onClick}>
              <Grid container spacing={3}>
@@ -14,7 +15,7 @@ const ProfilePicture: React.FunctionComponent<IProps> = (props: IProps) => {
                     <Typography className={classes.role}>{props.role}</Typography>
                  </Grid>
                 <Grid item xs={5}>
-                    <Avatar alt={props.altPic} src={props.srcPicture}  />
+                    <Avatar alt={props.altPic} src={srcPicture}  />
                 </Grid>
              </Grid>
          </Button>

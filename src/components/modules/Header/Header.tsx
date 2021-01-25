@@ -140,7 +140,8 @@ const Header: React.FunctionComponent<IProps> = (props: IProps) => {
              <ProfilePicture
                 name="Amel Fz"
                 role="Guest"
-                srcPicture="/static/images/avatar/1.jpg"
+                srcPicture="static/images/avatar"
+                namePicture="1.jpg"
                 onClick={handleProfileMenuOpen}
                 >
             </ProfilePicture>

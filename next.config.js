@@ -12,9 +12,9 @@ module.exports = withPlugins([
       strip: true,
       verbose: true,
     },
-    imagesPublicPath: 'https://cdn.statically.io/gh/lemaa/reactheme.io/gh-pages',
+    imagesPublicPath: isProd ? 'https://cdn.statically.io/gh/lemaa/reactheme.io/gh-pages/' : '',
   }],
   {
-     assetPrefix: 'https://cdn.statically.io/gh/lemaa/reactheme.io/gh-pages/',
+    assetPrefix: isProd ? 'https://cdn.statically.io/gh/lemaa/reactheme.io/gh-pages/' : '',
    },
 ]);
