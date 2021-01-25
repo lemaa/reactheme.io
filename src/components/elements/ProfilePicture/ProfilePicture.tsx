@@ -2,7 +2,7 @@ import React   from 'react';
 import {  Avatar, Button, Grid, Typography } from '@material-ui/core';
 import { IProps } from '@element/ProfilePicture/ProfilePictureInterface';
 import  useStyles  from '@element/ProfilePicture/ProfilePictureStyle';
-import { cdnImage } from "@util/image";
+import { cdnImage } from "@util/Images";
 
 const ProfilePicture: React.FunctionComponent<IProps> = (props: IProps) => { 
      const classes = useStyles(props);
