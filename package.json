@@ -5,7 +5,7 @@
   "homepage": "https://lemaa.github.io/reacttheme.io",
   "scripts": {
     "dev": "next dev -p 3005",
-    "build": "next build && next export && touch out/.nojekyll",
+    "build": "next build && next export",
     "start": "next start",
     "test": "jest",
     "predeploy": "npm run build",
