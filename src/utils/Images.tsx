@@ -1,7 +1,8 @@
 export const cdnImage = (name: string, placeholder= false,folder='/static/images',count=10) => {
-    console.log("zsz", process.env.NODE_ENV);
     if (process.env.NODE_ENV === "production") {
-       
+        console.log("zsz", process.env.NODE_ENV);
+        console.log("placeholder", placeholder);
+
       if (placeholder) {
         return "https://cdn.statically.io/img/reactheme.io/h="+count+"/"+folder+"/"+name;
       } else {
