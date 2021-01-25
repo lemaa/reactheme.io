@@ -2,7 +2,7 @@
   "name": "react-admin-template",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://lemaa.github.io/reacttheme.io",
+  "homepage": "https://lemaa.github.io/reactheme.io",
   "scripts": {
     "dev": "next dev -p 3005",
     "build": "next build && next export",

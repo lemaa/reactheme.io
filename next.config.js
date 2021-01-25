@@ -1,5 +1,5 @@
 const isProd = process.env.NODE_ENV === 'production';
- 
+
 const withPlugins = require('next-compose-plugins');
 const optimizedImages = require('next-optimized-images');
 module.exports = withPlugins([
@@ -12,11 +12,10 @@ module.exports = withPlugins([
       strip: true,
       verbose: true,
     },
-    imagesPublicPath: isProd ? 'https://cdn.statically.io/gh/lemaa/reacttheme.io/gh-pages' : '',
+    imagesPublicPath: '/reactheme.io',
   }],
   {
-     assetPrefix: isProd ? 'https://cdn.statically.io/gh/lemaa/reacttheme.io/gh-pages/' : '',
- 
+    basePath: '/reactheme.io',
+    assetPrefix: '/reactheme.io/',
    },
 ]);
- 
