@@ -15,8 +15,7 @@ module.exports = withPlugins([
     imagesPublicPath: isProd ? 'https://cdn.statically.io/gh/lemaa/reacttheme.io/gh-pages' : '',
   }],
   {
-    basePath: isProd ? 'https://cdn.statically.io/gh/lemaa/reacttheme.io/gh-pages' : '',
-    assetPrefix: isProd ? 'https://cdn.statically.io/gh/lemaa/reacttheme.io/gh-pages/' : '',
+     assetPrefix: isProd ? 'https://cdn.statically.io/gh/lemaa/reacttheme.io/gh-pages/' : '',
  
    },
 ]);
