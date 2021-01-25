@@ -6,7 +6,7 @@ import { cdnImage } from "@util/Images";
 
 const ProfilePicture: React.FunctionComponent<IProps> = (props: IProps) => { 
      const classes = useStyles(props);
-     const srcPicture = cdnImage(props.namePicture, false, props.srcPicture, 40)
+     const srcPicture = cdnImage(props.namePicture, props.srcPicture)
      return (
          <Button className={classes.grow} onClick={props.onClick}>
              <Grid container spacing={3}>
