@@ -1,4 +1,6 @@
 module.exports = {
-    distDir: 'build',
+    distDir: 'out',
+    assetPrefix: '/reacttheme.io/',
+    basePath: '/reacttheme.io',
 
 }
