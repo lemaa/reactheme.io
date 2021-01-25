@@ -1,19 +1,13 @@
-export const cdnImage = (name: string, placeholder= false,folder='/static/images',count=10) => {
+export const cdnImage = (name: string, folder='/static/images') => {
       let srcPicture: string;
     if (process.env.NODE_ENV === "production") {
-        console.log("zsz", process.env.NODE_ENV);
-        console.log("placeholder", placeholder);
-
-      if (placeholder) {
-        srcPicture =  "https://cdn.statically.io/img/reactheme.io/h="+count+"/"+folder+"/"+name;
-      } else {
-        srcPicture =  "https://cdn.statically.io/img/reactheme.io/f=auto/"+folder+"/"+name;
-      }
+  
+        srcPicture =  "https://lemaa.github.io/reactheme.io/"+folder+"/"+name;
+ 
     } else {
         srcPicture =  folder+"/" + name;
     }
-    console.log("srcPicture", srcPicture);
-
+ 
     return srcPicture;
   };
   
