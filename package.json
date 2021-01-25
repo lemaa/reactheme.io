@@ -5,11 +5,11 @@
   "homepage": "https://lemaa.github.io/reacttheme.io",
   "scripts": {
     "dev": "next dev -p 3005",
-    "build": "next build && next export",
+    "build": "next build && next export && touch build/.nojekyll",
     "start": "next start",
     "test": "jest",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d out"
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.2",
