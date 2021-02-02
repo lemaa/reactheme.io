@@ -1,6 +1,6 @@
 import React   from 'react';
 import {  Avatar, Button, Grid, Typography } from '@material-ui/core';
-import { IProps } from '@element/ProfilePicture/ProfilePictureInterface';
+import { IProps } from '@element/ProfilePicture/ProfilePictureType';
 import  useStyles  from '@element/ProfilePicture/ProfilePictureStyle';
 import { cdnImage } from "@util/Images";
 

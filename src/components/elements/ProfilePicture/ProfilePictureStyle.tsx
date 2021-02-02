@@ -1,4 +1,4 @@
-import { IProps } from '@element/ProfilePicture/ProfilePictureInterface';
+import { IProps } from '@element/ProfilePicture/ProfilePictureType';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles<Theme, IProps>((theme: Theme) => createStyles({
@@ -22,8 +22,6 @@ role: {
     fontSize: "10px",
     textTransform: "capitalize",
 },
-
-
 })
 );
 

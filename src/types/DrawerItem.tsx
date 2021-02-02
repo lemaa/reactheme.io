@@ -3,7 +3,6 @@ export type DrawerItem = {
     icon: JSX.Element;
     subtext?: Array<string>;
     notificationBadge?: number;
- 
   };
 
  

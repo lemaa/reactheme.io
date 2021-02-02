@@ -1,8 +1,9 @@
 import React   from 'react';
 import clsx from 'clsx';
-import { IProps , IState} from '@module/MainContainer/MainContainerInterface';
-import  useStyles  from '@module/MainContainer/MainContainerStyle';
+import PropTypes from 'prop-types';
 import Default from '@layout/Default/Default';
+import { IProps, IState} from '@module/MainContainer/MainContainerType';
+import  useStyles  from '@module/MainContainer/MainContainerStyle';
 
 const Main: React.FunctionComponent<IProps> = (props: IProps) => { 
      const [open, setOpen] = React.useState(true);
@@ -14,7 +15,6 @@ const Main: React.FunctionComponent<IProps> = (props: IProps) => {
     let drawerstate : IState;
     drawerstate ={
         drawerWidth: drawerWidth
-
     }
     const classes = useStyles(drawerstate);
  
@@ -32,4 +32,3 @@ const Main: React.FunctionComponent<IProps> = (props: IProps) => {
     );
 }
 export default Main;
-

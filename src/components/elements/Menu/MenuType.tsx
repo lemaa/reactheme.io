@@ -1,4 +1,4 @@
-import { MenuItem } from "types/MenuItem";
+import { MenuItem } from "@customType/MenuItem";
 
 export  interface IProps {
     anchorEl: HTMLElement;

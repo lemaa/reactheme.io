@@ -5,8 +5,7 @@ import Main from '@module/MainContainer/MainContainer';
 
 
 const Home: NextPage = (props) =>{
- 
- 
+
  return (
      <Main >
         <HomePage/>

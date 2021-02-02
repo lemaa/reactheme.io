@@ -1,16 +1,15 @@
 import { NextPage } from 'next';
 import React from 'react';
-import HomePage from '@template/HomePage';
 import Main from '@module/MainContainer/MainContainer';
+import CalendarPage from '@template/CalendarPage'; 
 
-
-const Dashboard: NextPage = (props) =>{
+const Calendar: NextPage = (props) =>{
  
  return (
      <Main >
-        <HomePage/>
+        <CalendarPage/>
     </Main>
      )
 };
  
-export default Dashboard;
+export default Calendar;

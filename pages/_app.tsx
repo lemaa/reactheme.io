@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import type { AppProps } from 'next/app'
-import CssBaseline from '@material-ui/core/CssBaseline';
+import type { AppProps } from 'next/app';
 import Head from 'next/head';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import { ThemeProvider } from '@material-ui/core/styles';
-import theme from '@styles/base/theme';
+import theme from '@style/base/theme';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
    

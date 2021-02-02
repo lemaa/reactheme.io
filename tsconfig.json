@@ -17,19 +17,21 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "baseUrl": "src",
+    "baseUrl": "./",
     "paths": {
-        "@element/*": ["components/elements/*"],
-        "@layout/*": ["components/layouts/*"],
-        "@module/*": ["components/modules/*"],
-        "@template/*": ["components/templates/*"],
-        "@constant/*": ["constants/*"],
-        "@context/*": ["context/*"],
-        "@hook/*": ["hooks/*"],
-        "@util/*": ["utils/*"],
-        "@styles/*": ["styles/*"],
-        "@types/*": ["types/*"],
-     }
+        "@element/*": ["src/components/elements/*"],
+        "@layout/*": ["src/components/layouts/*"],
+        "@module/*": ["src/components/modules/*"],
+        "@template/*": ["src/components/templates/*"],
+        "@constant/*": ["src/constants/*"],
+        "@context/*": ["src/context/*"],
+        "@hook/*": ["src/hooks/*"],
+        "@util/*": ["src/utils/*"],
+        "@style/*": ["src/styles/*"],
+        "@customType/*": ["src/types/*"],
+     },
+    "typeRoots": [ "src/types", "node_modules/@types"]
+
   },
   "include": [
     "next-env.d.ts",
@@ -37,6 +39,7 @@
     "**/*.tsx"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "src/types"
   ]
 }

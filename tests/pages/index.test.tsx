@@ -2,7 +2,7 @@
 	// Using render and screen from test-utils.js instead of
 	// @testing-library/react
 	import { render, screen } from "../test-utils";
-	import Home from "@pages/index";
+	import Home from "pages/index";
 	
 	describe("Home", () => {
 	  it("should render the heading", () => {
@@ -13,7 +13,8 @@
 	    );
 	
 	    // we can only use toBeInTheDocument because it was imported
-	    // in the jest.setup.js and configured in jest.config.js
+	    // in the jest.setup.js and configured in jest.confiimport { HomePage } from '@template/HomePage';
+g.js
 	    expect(heading).toBeInTheDocument();
 	  });
 	});

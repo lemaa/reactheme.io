@@ -1,9 +1,9 @@
 import React   from 'react';
-import { AppBar, Badge, IconButton, InputBase, Toolbar, Typography } from '@material-ui/core';
 import clsx from 'clsx';
-import { IProps } from '@module/Header/HeaderInterface';
-import  useStyles  from '@module/Header/HeaderStyle';
+import { AppBar, Badge, IconButton, InputBase, Toolbar, Typography } from '@material-ui/core';
 import {PowerSettingsNewOutlined as PowerSettingsNewOutlinedIcon, LockOutlined as LockOutlinedIcon, SettingsOutlined as SettingsOutlinedIcon, MailOutlineOutlined as MailIcon, PersonOutline as PersonOutlineIcon ,   AccountCircle as AccountCircleIcon, NotificationsNoneOutlined as NotificationsIcon, Menu as MenuIcon, More as MoreIcon, Search as SearchIcon } from '@material-ui/icons';
+import { IProps } from '@module/Header/HeaderType';
+import  useStyles  from '@module/Header/HeaderStyle';
 import ProfilePicture from '@element/ProfilePicture/ProfilePicture';
 import Menu from '@element/Menu/Menu';
  
@@ -67,102 +67,98 @@ const Header: React.FunctionComponent<IProps> = (props: IProps) => {
         }
     ];
  
-
      const renderMenu = (
-       <Menu
-       name=" Amel Fz"
-       anchorEl={anchorEl}
-       menuId={menuId}
-       isMenuOpen={isMenuOpen}
-       onClose={handleMenuClose}
-       ListMenuItems= {ListMenuItems}
-       >
+        <Menu
+            name=" Amel Fz"
+            anchorEl={anchorEl}
+            menuId={menuId}
+            isMenuOpen={isMenuOpen}
+            onClose={handleMenuClose}
+            ListMenuItems= {ListMenuItems}
+        >
        </Menu>
      );
    
      const renderMobileMenu = (
         <Menu
-        name=" Amel Fz"
-        anchorEl={mobileMoreAnchorEl}
-        menuId={mobileMenuId}
-        isMenuOpen={isMobileMenuOpen}
-        onClose={handleMobileMenuClose}
-        ListMenuItems= {ListMenuItems}
+            name=" Amel Fz"
+            anchorEl={mobileMoreAnchorEl}
+            menuId={mobileMenuId}
+            isMenuOpen={isMobileMenuOpen}
+            onClose={handleMobileMenuClose}
+            ListMenuItems= {ListMenuItems}
         >
         </Menu>
-
      );
    
      return (
-
-<div className={classes.grow}>
-      <AppBar position="fixed"  className={clsx(classes.appBar, {
-        [classes.appBarShift]: props.open,
-        })}>
-        <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="open drawer"
-            onClick={props.onClick}
-           >
-            <MenuIcon />
-          </IconButton>
-          <Typography className={classes.title} variant="h6" noWrap>
-          {props.title}
-          </Typography>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </div>
-          <div className={classes.grow} />
-          <div className={classes.sectionDesktop}>
-            <IconButton aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="error">
-                <MailIcon />
-              </Badge>
-            </IconButton>
-            <IconButton aria-label="show 17 new notifications" color="inherit">
-              <Badge badgeContent={5} color="error">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-             <ProfilePicture
-                name="Amel Fz"
-                role="Guest"
-                srcPicture="static/images/avatar"
-                namePicture="1.jpg"
-                onClick={handleProfileMenuOpen}
-                >
-            </ProfilePicture>
-          </div>
-          <div className={classes.sectionMobile}>
-            <IconButton
-              aria-label="show more"
-              aria-controls={mobileMenuId}
-              aria-haspopup="true"
-              onClick={handleMobileMenuOpen}
-              color="inherit"
-            >
-              <MoreIcon />
-            </IconButton>
-          </div>
-        </Toolbar>
-      </AppBar>
-      {renderMobileMenu}
-       {renderMenu}
-     </div>
-
+        <div className={classes.grow}>
+            <AppBar position="fixed"  className={clsx(classes.appBar, {
+                [classes.appBarShift]: props.open,
+            })}>
+                <Toolbar>
+                    <IconButton
+                        edge="start"
+                        className={classes.menuButton}
+                        color="inherit"
+                        aria-label="open drawer"
+                        onClick={props.onClick}
+                    >
+                        <MenuIcon />
+                    </IconButton>
+                    <Typography className={classes.title} variant="h6" noWrap>
+                        {props.title}
+                    </Typography>
+                    <div className={classes.search}>
+                        <div className={classes.searchIcon}>
+                            <SearchIcon />
+                        </div>
+                        <InputBase
+                            placeholder="Search…"
+                            classes={{
+                                root: classes.inputRoot,
+                                input: classes.inputInput,
+                            }}
+                            inputProps={{ 'aria-label': 'search' }}
+                        />
+                    </div>
+                    <div className={classes.grow} />
+                    <div className={classes.sectionDesktop}>
+                        <IconButton aria-label="show 4 new mails" color="inherit">
+                            <Badge badgeContent={4} color="error">
+                                <MailIcon />
+                            </Badge>
+                        </IconButton>
+                        <IconButton aria-label="show 17 new notifications" color="inherit">
+                            <Badge badgeContent={5} color="error">
+                                <NotificationsIcon />
+                            </Badge>
+                        </IconButton>
+                        <ProfilePicture
+                            name="Amel Fz"
+                            role="Guest"
+                            srcPicture="static/images/avatar"
+                            namePicture="1.jpg"
+                            onClick={handleProfileMenuOpen}
+                        >
+                            </ProfilePicture>
+                    </div>
+                    <div className={classes.sectionMobile}>
+                        <IconButton
+                            aria-label="show more"
+                            aria-controls={mobileMenuId}
+                            aria-haspopup="true"
+                            onClick={handleMobileMenuOpen}
+                            color="inherit"
+                        >
+                            <MoreIcon />
+                        </IconButton>
+                    </div>
+                 </Toolbar>
+            </AppBar>
+            {renderMobileMenu}
+            {renderMenu}
+        </div>
     );
 }
 export default Header;

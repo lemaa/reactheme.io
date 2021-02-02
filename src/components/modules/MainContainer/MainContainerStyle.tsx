@@ -1,5 +1,5 @@
-import { IState } from '@module/MainContainer/MainContainerInterface';
-import { fade, makeStyles, Theme } from '@material-ui/core/styles';
+import { IState } from '@module/MainContainer/MainContainerType';
+import { makeStyles, Theme } from '@material-ui/core/styles';
   
 const useStyles = makeStyles<Theme, IState>((theme) => ({
 

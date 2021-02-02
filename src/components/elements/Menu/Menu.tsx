@@ -1,14 +1,14 @@
 import React   from 'react';
-import { Divider, IconButton,  Menu as MMenu , MenuItem as MMenuItem} from '@material-ui/core';
-import { IProps } from '@element/Menu/MenuInterface';
+import { Divider, IconButton,  Menu as MuiMenu , MenuItem as MuiMenuItem} from '@material-ui/core';
+import { IProps } from '@element/Menu/MenuType';
 import  useStyles  from '@element/Menu/MenuStyle';
-import { MenuItem } from 'types/MenuItem';
+import { MenuItem } from '@customType/MenuItem';
 
 const Menu: React.FunctionComponent<IProps> = (props: IProps) => { 
     const classes = useStyles(props);
 
      return (
-        <MMenu
+        <MuiMenu
          anchorEl={props.anchorEl}
          anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
          id={props.menuId}
@@ -17,13 +17,13 @@ const Menu: React.FunctionComponent<IProps> = (props: IProps) => {
          open={props.isMenuOpen}
          onClose={props.onClose}
         >
-            <MMenuItem>
+            <MuiMenuItem>
                 <p className={classes.header}> Welcome, {props.name}</p>
-            </MMenuItem> 
+            </MuiMenuItem> 
             <Divider />
-        {props.ListMenuItems.map((_item: MenuItem, index: number) => {
+            {props.ListMenuItems.map((_item: MenuItem, index: number) => {
             return (
-                <MMenuItem onClick={_item.onClick} key={index} className={classes.item}>
+                <MuiMenuItem onClick={_item.onClick} key={index} className={classes.item}>
                     <IconButton 
                         aria-label={_item.label} 
                         color="inherit"
@@ -32,9 +32,9 @@ const Menu: React.FunctionComponent<IProps> = (props: IProps) => {
                         {_item.icon}
                     </IconButton>
                     <p>{_item.text}</p>
-                </MMenuItem>);
+                </MuiMenuItem>);
             })}
-       </MMenu>
+       </MuiMenu>
 
     );
 }

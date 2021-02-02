@@ -1,5 +1,5 @@
-import { IProps } from '@module/Header/HeaderInterface';
 import { fade, makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+import { IProps } from '@module/Header/HeaderType';
 
 const useStyles = makeStyles<Theme, IProps>((theme: Theme) => createStyles({
 appBar: {
