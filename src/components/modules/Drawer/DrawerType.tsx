@@ -1,4 +1,4 @@
-export  interface IProps {
+export interface IProps {
     open: boolean;
     drawerWidth: number;
     drawerClassName?: string;
@@ -7,4 +7,4 @@ export  interface IProps {
     handleDrawerToggle: () => void;
     ListDrawerItems: Array<any>;
     headerTitle?: string;
-  };
+}

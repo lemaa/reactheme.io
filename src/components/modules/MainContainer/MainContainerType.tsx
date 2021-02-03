@@ -1,7 +1,7 @@
-export  interface IProps {
+export interface IProps {
     children: React.ReactNode;
- };
+}
 
- export type IState = {
+export type IState = {
     drawerWidth: number;
- };
+};

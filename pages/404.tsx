@@ -1,5 +1,5 @@
-import React from 'react';
-import { NextPage } from 'next';
+import React from "react";
+import { NextPage } from "next";
 
 const Custom404: NextPage = () => <div>404 Page not Found</div>;
 

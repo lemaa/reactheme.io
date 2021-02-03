@@ -1,17 +1,14 @@
-import { NextPage } from 'next';
-import React from 'react';
-import HomePage from '@template/HomePage';
-import Main from '@module/MainContainer/MainContainer';
+import { NextPage } from "next";
+import React from "react";
+import HomePage from "@Template/HomePage";
+import Main from "@Module/MainContainer/MainContainer";
 
-
-const Home: NextPage = (props) =>{
-
- return (
-     <Main >
-        <HomePage/>
-    </Main>
-     )
+const Home: NextPage = () => {
+    return (
+        <Main>
+            <HomePage />
+        </Main>
+    );
 };
- 
-export default Home;
 
+export default Home;

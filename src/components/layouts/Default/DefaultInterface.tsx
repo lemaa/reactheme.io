@@ -3,8 +3,8 @@ export type IProps = {
     onClick: () => void;
     open: boolean;
     drawerwidth: number;
-   };
+};
 
-   export type IState = {
+export type IState = {
     drawerwidth: number;
- };
+};

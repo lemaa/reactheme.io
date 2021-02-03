@@ -1,8 +1,8 @@
-export  interface IProps {
+export interface IProps {
     name: string;
-    role: string;
+    userRole: string;
     srcPicture: string;
     namePicture: string;
     altPic?: string;
     onClick: (event: any) => void;
- };
+}

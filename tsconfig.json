@@ -8,7 +8,7 @@
     ],
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": false,
+    "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
@@ -19,18 +19,19 @@
     "jsx": "preserve",
     "baseUrl": "./",
     "paths": {
-        "@element/*": ["src/components/elements/*"],
-        "@layout/*": ["src/components/layouts/*"],
-        "@module/*": ["src/components/modules/*"],
-        "@template/*": ["src/components/templates/*"],
-        "@constant/*": ["src/constants/*"],
-        "@context/*": ["src/context/*"],
-        "@hook/*": ["src/hooks/*"],
-        "@util/*": ["src/utils/*"],
-        "@style/*": ["src/styles/*"],
-        "@customType/*": ["src/types/*"],
+        "@Element/*": ["src/components/elements/*"],
+        "@Layout/*": ["src/components/layouts/*"],
+        "@Module/*": ["src/components/modules/*"],
+        "@Template/*": ["src/components/templates/*"],
+        "@Constant/*": ["src/constants/*"],
+        "@Context/*": ["src/context/*"],
+        "@Hook/*": ["src/hooks/*"],
+        "@Util/*": ["src/utils/*"],
+        "@Style/*": ["src/styles/*"],
+        "@CustomType/*": ["src/types/*"],
+        "@Pages/*": ["pages/*"],
      },
-    "typeRoots": [ "src/types", "node_modules/@types"]
+    "typeRoots": [ "src/types/customTypes", "node_modules/@types"]
 
   },
   "include": [
@@ -40,6 +41,11 @@
   ],
   "exclude": [
     "node_modules",
-    "src/types"
+    "src/types/customTypes",
+    "dist",
+    ".next",
+    "out",
+    "next.config.js",
+    ".babelrc"
   ]
 }

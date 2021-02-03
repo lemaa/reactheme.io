@@ -1,5 +1,5 @@
-import { CalendarItem } from "@customType/CalendarItem";
+import { CalendarItem } from "@CustomType/CalendarItem";
 
-export  type IProps = {
-     events: Array<CalendarItem>;
- };
+export type IProps = {
+    events: Array<CalendarItem>;
+};

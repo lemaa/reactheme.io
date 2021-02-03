@@ -1,5 +1,8 @@
+const withPlugins = require("next-compose-plugins"); 
 const isProd = process.env.NODE_ENV === 'production';
- 
-module.exports = {
-    assetPrefix: isProd ? 'https://cdn.statically.io/gh/lemaa/reactheme.io/gh-pages/' : '',
-   };
+
+module.exports = withPlugins([
+    {
+        assetPrefix: isProd ? 'https://cdn.statically.io/gh/lemaa/reactheme.io/gh-pages/' : '',
+    }
+]);

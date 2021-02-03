@@ -1,67 +1,66 @@
-import * as React from 'react';
-import clsx from 'clsx';
-import Grid from '@material-ui/core/Grid';
-import {ViewDayOutlined, ViewAgendaOutlined, ViewWeekOutlined, ViewComfyOutlined , TodayOutlined, NavigateNextOutlined, NavigateBeforeOutlined} from '@material-ui/icons';
-import {ICustomTooolbarProps , navigateConstants, messages} from '@module/CalendarToolbar/CalendarToolbarType';
-import  useStyles  from '@module/CalendarToolbar/CalendarToolbarStyle';
-import {IconButton } from '@material-ui/core';
+import * as React from "react";
+import clsx from "clsx";
+import Grid from "@material-ui/core/Grid";
+import { ViewDayOutlined, ViewAgendaOutlined, ViewWeekOutlined, ViewComfyOutlined, TodayOutlined, NavigateNextOutlined, NavigateBeforeOutlined } from "@material-ui/icons";
+import { IconButton } from "@material-ui/core";
+import { ICustomTooolbarProps, navigateConstants, messages } from "@Module/CalendarToolbar/CalendarToolbarType";
+import useStyles from "@Module/CalendarToolbar/CalendarToolbarStyle";
 
-const CustomToolbar: React.FC<ICustomTooolbarProps> = (props) => {
-
+const CustomToolbar: React.FC<ICustomTooolbarProps> = ({ views, view, label, onNavigate, onView }) => {
     const classes = useStyles();
 
-    function navigate(action: any) {
-        props.onNavigate(action);
-    }
+    const navigate = (action: any) => {
+        onNavigate(action);
+    };
 
-    function viewItem(view: any) {
-        props.onView(view);
-    }
+    const viewItem = (viewType: any) => {
+        onView(viewType);
+    };
 
-    function viewNamesGroup(messages: Object ) {
-         const viewNames = props.views;
-        const view = props.view;
-         if (viewNames.length > 1) {
-              return(
+    const viewNamesGroup = (messagesType: any) => {
+        const viewNames = views;
+        const viewState = view;
+        if (viewNames.length > 1) {
+            return (
                 <>
-                <IconButton className={classes.IconButton} aria-label={navigateConstants.TODAY} onClick={navigate.bind(null, navigateConstants.TODAY)}>
-                    <TodayOutlined />
-                </IconButton>
-                {viewNames.map((name) => (
-                    <IconButton 
-                        key={name}
-                        className={clsx(classes.IconButton, { 'rbc-active': view === name })}
-                        aria-label={messages[name]}  
-                        onClick={viewItem.bind(null, name)}>
-                            {messages[name] === "Month" && <ViewComfyOutlined/>}
-                            {messages[name] === "Week" && <ViewWeekOutlined/>}
-                            {messages[name] === "Day" && <ViewDayOutlined/>}
-                            {messages[name] === "Agenda" && <ViewAgendaOutlined/>}
-                                
+                    <IconButton className={classes.IconButton} aria-label={navigateConstants.TODAY} onClick={() => navigate(navigateConstants.TODAY)}>
+                        <TodayOutlined />
                     </IconButton>
- 
-                ))}
-
-                </> 
-            )
+                    {viewNames.map(name => (
+                        <IconButton
+                            key={name}
+                            className={clsx(classes.IconButton, {
+                                "rbc-active": viewState === name,
+                            })}
+                            aria-label={messagesType[name]}
+                            onClick={() => viewItem(name)}
+                        >
+                            {messagesType[name] === "Month" && <ViewComfyOutlined />}
+                            {messagesType[name] === "Week" && <ViewWeekOutlined />}
+                            {messagesType[name] === "Day" && <ViewDayOutlined />}
+                            {messagesType[name] === "Agenda" && <ViewAgendaOutlined />}
+                        </IconButton>
+                    ))}
+                </>
+            );
         }
-  
-    }
-     return (
-        <Grid className="rbc-toolbar" container spacing={2} >
-            <Grid className={clsx( classes.viewNameToolbar, 'rbc-btn-group' )}    item xs={12} >{viewNamesGroup(messages)}</Grid>
-            <Grid className={clsx( classes.viewNavigateToolbar, 'rbc-btn-group' )} item xs={12} >
-                <IconButton className={classes.IconButton} aria-label={navigateConstants.PREVIOUS} onClick={navigate.bind(null, navigateConstants.PREVIOUS)} >
+        return false;
+    };
+    return (
+        <Grid className="rbc-toolbar" container spacing={2}>
+            <Grid className={clsx(classes.viewNameToolbar, "rbc-btn-group")} item xs={12}>
+                {viewNamesGroup(messages)}
+            </Grid>
+            <Grid className={clsx(classes.viewNavigateToolbar, "rbc-btn-group")} item xs={12}>
+                <IconButton className={classes.IconButton} aria-label={navigateConstants.PREVIOUS} onClick={() => navigate(navigateConstants.PREVIOUS)}>
                     <NavigateBeforeOutlined fontSize="large" />
                 </IconButton>
-                <span className={clsx("rbc-toolbar-label", classes.viewNavigateToolbarLabel)}>{props.label}</span>
-                <IconButton className={classes.IconButton} aria-label={navigateConstants.NEXT} onClick={navigate.bind(null, navigateConstants.NEXT)} >
+                <span className={clsx("rbc-toolbar-label", classes.viewNavigateToolbarLabel)}>{label}</span>
+                <IconButton className={classes.IconButton} aria-label={navigateConstants.NEXT} onClick={() => navigate(navigateConstants.NEXT)}>
                     <NavigateNextOutlined fontSize="large" />
                 </IconButton>
-
             </Grid>
-         </Grid>
- 
+        </Grid>
     );
 };
 
