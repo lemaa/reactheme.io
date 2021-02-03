@@ -3,7 +3,7 @@ import Header from '@module/Header/Header';
 import Drawer from '@module/Drawer/Drawer';
 import { Hidden, Paper } from '@material-ui/core';
 import  useStyles  from '@layout/Default/DefaultStyle';
-import theme from '@styles/base/theme';
+import theme from '@style/base/theme';
 import { IProps, IState  } from '@layout/Default/DefaultInterface';
 import { 
     DashboardOutlined as DashboardOutlinedIcon,

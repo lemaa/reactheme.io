@@ -3,7 +3,7 @@ import React   from 'react';
 import moment from 'moment';
 import { IProps} from '@module/Calendar/CalendarType';
 import  useStyles  from '@module/Calendar/CalendarStyle';
-import { BigCalendar, Views, momentLocalizer } from 'react-big-calendar';
+import { Calendar as BigCalendar, Views, momentLocalizer } from 'react-big-calendar';
  import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop';
 import { CalendarItem } from '@customType/CalendarItem';
 import { Button, Dialog,  DialogContent,  DialogTitle, FormControlLabel, Grid, Switch, TextField } from '@material-ui/core';
