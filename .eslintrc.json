@@ -1,6 +1,11 @@
 {   "parserOptions": {
         "sourceType": "module",
-        "project": ["./tsconfig.json"]
+        "project": ["./tsconfig.json"],
+        "ecmaVersion": 2018,
+        "ecmaFeatures": {
+            "jsx": true
+          }
+
     },
     "extends": [
         "react-app",
@@ -14,7 +19,9 @@
         "react/jsx-indent-props": [2, 4],
         "import/prefer-default-export": "off",
         "import/no-cycle": "off",
-        "no-multi-assign": "off"
+        "no-multi-assign": "off",
+        "react/jsx-props-no-spreading": "off"
+
     },
     "settings": {
         "import/parsers": {

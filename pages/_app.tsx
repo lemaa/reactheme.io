@@ -11,7 +11,9 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         // Remove the server-side injected CSS.
         const jssStyles = document.querySelector("#jss-server-side");
         if (jssStyles) {
-            jssStyles.parentElement.removeChild(jssStyles);
+            if (jssStyles.parentElement !== null) {
+                jssStyles.parentElement.removeChild(jssStyles);
+            }
         }
     }, []);
 
@@ -19,10 +21,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         <>
             <Head>
                 <title>My page</title>
-                <meta
-                    name="viewport"
-                    content="minimum-scale=1, initial-scale=1, width=device-width"
-                />
+                <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
             </Head>
             <ThemeProvider theme={theme}>
                 {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
@@ -35,5 +34,5 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 
 MyApp.propTypes = {
     Component: PropTypes.elementType.isRequired,
-    pageProps: PropTypes.object.isRequired,
+    pageProps: PropTypes.instanceOf(Object).isRequired,
 };

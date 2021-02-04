@@ -57,3 +57,17 @@ templates
 In the templates directory, you should place all your page templates which are then called from your Next.js specific pages. You can find an example of this pattern in the Repository.
 
 Layouts are used to wrap your Templates and provide them with the components which will be displayed by default in a specific layout. For example, you would include the Footer and the Header in a default layout.
+
+
+branche name exp
+
+feature/add-users-controller
+ 
+hotfix/profile-page-error/621
+ 
+experiment/try-api-key
+ 
+chore/remove-deprecated-method/924
+
+
+https://www.codeheroes.fr/2020/06/29/git-comment-nommer-ses-branches-et-ses-commits/

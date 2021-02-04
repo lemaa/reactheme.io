@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es6",
     "lib": [
       "dom",
       "dom.iterable",
@@ -46,6 +46,7 @@
     ".next",
     "out",
     "next.config.js",
+    "commitlint.config.js",
     ".babelrc"
   ]
 }
