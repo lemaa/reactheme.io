@@ -13,9 +13,12 @@
     "format": "npm run lint -- --fix",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d out",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
+    "test:unit": "jest",
+    "test:unit:watch": "jest --watch",
+    "test:unit:coverage": "jest --coverage",
+    "test:e2e": "cypress run",
+    "test:e2e:ui": "cypress open",
+    "test": "npm run test:unit && npm run test:e2e"
   },
   "lint-staged": {
     "{src,pages}/**/*.{ts,tsx}": "npm run format"
@@ -65,6 +68,7 @@
     "babel-loader": "^8.2.2",
     "babel-preset-react-app": "^10.0.0",
     "css-loader": "^5.0.1",
+    "cypress": "^6.4.0",
     "eslint": "^7.19.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-airbnb-base": "^14.2.1",
