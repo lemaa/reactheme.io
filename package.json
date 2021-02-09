@@ -30,8 +30,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-push": "validate-branch-name && npm run test"
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "dependencies": {
