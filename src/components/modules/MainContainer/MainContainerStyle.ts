@@ -1,4 +1,4 @@
-import { IState } from "@Module/MainContainer/MainContainerType";
+import { IState } from "@Module/MainContainer/MainContainer";
 import { makeStyles, Theme } from "@material-ui/core/styles";
 
 const useStyles = makeStyles<Theme, IState>(theme => ({

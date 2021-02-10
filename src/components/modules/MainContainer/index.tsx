@@ -1,7 +1,7 @@
 import React from "react";
 import clsx from "clsx";
-import Default from "@Layout/Default/Default";
-import { IProps, IState } from "@Module/MainContainer/MainContainerType";
+import { Default } from "@Layout/index";
+import { IProps, IState } from "@Module/MainContainer/MainContainer";
 import useStyles from "@Module/MainContainer/MainContainerStyle";
 
 const Main: React.FunctionComponent<IProps> = ({ children }: IProps) => {
@@ -29,4 +29,4 @@ const Main: React.FunctionComponent<IProps> = ({ children }: IProps) => {
         </Default>
     );
 };
-export default Main;
+export { Main };

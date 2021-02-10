@@ -1,5 +1,5 @@
 import { fade, makeStyles, Theme, createStyles } from "@material-ui/core/styles";
-import { IProps } from "@Module/Header/HeaderType";
+import { IProps } from "@Module/Header/Header";
 
 const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
     createStyles({

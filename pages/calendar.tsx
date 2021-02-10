@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import React from "react";
-import Main from "@Module/MainContainer/MainContainer";
-import CalendarPage from "@Template/CalendarPage";
+import { Main } from "@Module/index";
+import { CalendarPage } from "@Template/index";
 
 const Calendar: NextPage = () => {
     return (

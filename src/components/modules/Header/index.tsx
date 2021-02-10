@@ -12,10 +12,9 @@ import {
     More as MoreIcon,
     Search as SearchIcon,
 } from "@material-ui/icons";
-import { IProps } from "@Module/Header/HeaderType";
+import { IProps } from "@Module/Header/Header";
 import useStyles from "@Module/Header/HeaderStyle";
-import ProfilePicture from "@Element/ProfilePicture/ProfilePicture";
-import Menu from "@Element/Menu/Menu";
+import { ProfilePicture, Menu } from "@Element/index";
 
 const Header: React.FunctionComponent<IProps> = ({ open, onClick, title, color, drawerWidth }: IProps) => {
     const classes = useStyles({
@@ -143,4 +142,4 @@ const Header: React.FunctionComponent<IProps> = ({ open, onClick, title, color, 
         </div>
     );
 };
-export default Header;
+export { Header };

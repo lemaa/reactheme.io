@@ -3,7 +3,7 @@ import React from "react";
 import clsx from "clsx";
 import { Collapse, Divider, Drawer as MuiDrawer, List, ListItem, ListItemIcon, ListItemText, ListSubheader } from "@material-ui/core";
 import { ExpandLess as ExpandLessIcon, ExpandMore as ExpandMoreIcon } from "@material-ui/icons";
-import { IProps } from "@Module/Drawer/DrawerType";
+import { IProps } from "@Module/Drawer/Drawer";
 import useStyles from "@Module/Drawer/DrawerStyle";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import "react-perfect-scrollbar/dist/css/styles.css";
@@ -104,4 +104,4 @@ const Drawer: React.FunctionComponent<IProps> = ({ ListDrawerItems, drawerVarian
         </MuiDrawer>
     );
 };
-export default Drawer;
+export { Drawer };

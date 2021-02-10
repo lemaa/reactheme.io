@@ -1,8 +1,8 @@
 import React from "react";
 import { Divider, IconButton, Menu as MuiMenu, MenuItem as MuiMenuItem } from "@material-ui/core";
-import { IProps } from "@Element/Menu/MenuType";
+import { IProps } from "@Element/Menu/Menu";
 import useStyles from "@Element/Menu/MenuStyle";
-import { MenuItem } from "@CustomType/MenuItem";
+import { MenuItem } from "@CustomType/index";
 
 const Menu: React.FunctionComponent<IProps> = ({ anchorEl, menuId, isMenuOpen, onClose, name, ListMenuItems }: IProps) => {
     const classes = useStyles();
@@ -37,4 +37,4 @@ const Menu: React.FunctionComponent<IProps> = ({ anchorEl, menuId, isMenuOpen, o
         </MuiMenu>
     );
 };
-export default Menu;
+export { Menu };

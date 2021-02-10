@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import React from "react";
-import HomePage from "@Template/HomePage";
-import Main from "@Module/MainContainer/MainContainer";
+import { HomePage } from "@Template/index";
+import { Main } from "@Module/index";
 
 const Home: NextPage = () => {
     return (

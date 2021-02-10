@@ -1,9 +1,8 @@
 import React from "react";
-import Header from "@Module/Header/Header";
-import Drawer from "@Module/Drawer/Drawer";
+import { Header, Drawer } from "@Module/index";
 import { Hidden } from "@material-ui/core";
 import useStyles from "@Layout/Default/DefaultStyle";
-import { IProps, IState } from "@Layout/Default/DefaultInterface";
+import { IProps, IState } from "@Layout/Default/Default";
 import theme from "@Style/base/theme";
 import {
     DashboardOutlined as DashboardOutlinedIcon,
@@ -227,4 +226,4 @@ const Default: React.FC<IProps> = ({ children, onClick, open, drawerwidth }) => 
     );
 };
 
-export default Default;
+export { Default };

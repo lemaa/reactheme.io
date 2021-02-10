@@ -1,4 +1,4 @@
-import { IProps } from "@Module/Drawer/DrawerType";
+import { IProps } from "@Module/Drawer/Drawer";
 import { makeStyles, Theme } from "@material-ui/core/styles";
 
 const useStyles = makeStyles<Theme, IProps>(theme => ({

@@ -1,8 +1,8 @@
 import React from "react";
 import { Avatar, Button, Grid, Typography } from "@material-ui/core";
-import { IProps } from "@Element/ProfilePicture/ProfilePictureType";
+import { IProps } from "@Element/ProfilePicture/ProfilePicture";
 import useStyles from "@Element/ProfilePicture/ProfilePictureStyle";
-import { cdnImage } from "@Util/Images";
+import { cdnImage } from "@Util/index";
 
 const ProfilePicture: React.FunctionComponent<IProps> = ({ namePicture, srcPicture, name, userRole, altPic, onClick }: IProps) => {
     const classes = useStyles();
@@ -21,4 +21,4 @@ const ProfilePicture: React.FunctionComponent<IProps> = ({ namePicture, srcPictu
         </Button>
     );
 };
-export default ProfilePicture;
+export { ProfilePicture };

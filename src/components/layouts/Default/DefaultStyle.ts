@@ -1,5 +1,5 @@
 import { makeStyles, Theme } from "@material-ui/core/styles";
-import { IState } from "@Layout/Default/DefaultInterface";
+import { IState } from "@Layout/Default/Default";
 
 const useStyles = makeStyles<Theme, IState>(theme => ({
     drawer: {

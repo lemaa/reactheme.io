@@ -1,5 +1,5 @@
 import React from "react";
-import Calendar from "@Module/Calendar/Calendar";
+import { Calendar } from "@Module/index";
 
 const now = new Date();
 const listCalendarItems = [
@@ -193,4 +193,4 @@ const CalendarPage: React.FC = () => (
     </div>
 );
 
-export default CalendarPage;
+export { CalendarPage };
