@@ -49,6 +49,7 @@
     "commitlint.config.js",
     "jest.setup.js",
     "jest.config.js",
-    ".babelrc"
+    ".babelrc",
+    ".storybook"
   ]
 }
