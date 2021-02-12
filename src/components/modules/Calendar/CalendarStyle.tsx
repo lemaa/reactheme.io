@@ -1,4 +1,4 @@
-import { IProps } from "@Module/Calendar/CalendarType";
+import { IProps } from "@Module/Calendar/Calendar";
 import { makeStyles, Theme } from "@material-ui/core/styles";
 
 const useStyles = makeStyles<Theme, IProps>(theme => ({

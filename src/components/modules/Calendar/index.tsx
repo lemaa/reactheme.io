@@ -1,7 +1,7 @@
 import "date-fns";
 import React from "react";
 import moment from "moment";
-import { IProps } from "@Module/Calendar/CalendarType";
+import { IProps } from "@Module/Calendar/Calendar";
 import useStyles from "@Module/Calendar/CalendarStyle";
 import { Calendar as BigCalendar, Views, momentLocalizer } from "react-big-calendar";
 import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";

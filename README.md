@@ -71,3 +71,8 @@ chore/remove-deprecated-method/924
 
 
 https://www.codeheroes.fr/2020/06/29/git-comment-nommer-ses-branches-et-ses-commits/
+
+
+stories ==> component/elements 
+        ==> component /modules 
+

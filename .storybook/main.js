@@ -1,7 +1,12 @@
-const path = require("path");
-
+const path = require('path');
 module.exports = {
-  stories: ["../src/**/*.stories.tsx"],
-  // Add nextjs preset
-  presets: [path.resolve(__dirname, "./next-preset.js")],
-};
+  "stories": [
+    "../src/**/*.stories.tsx",
+    
+  ],
+  "addons": [
+    "@storybook/addon-links",
+    "@storybook/addon-essentials"
+  ],
+  "presets": [path.resolve(__dirname, "./next-preset.js")],
+}

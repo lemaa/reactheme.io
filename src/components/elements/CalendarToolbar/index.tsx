@@ -5,7 +5,7 @@ import { ViewDayOutlined, ViewAgendaOutlined, ViewWeekOutlined, ViewComfyOutline
 import { IconButton } from "@material-ui/core";
 import { CalendarConsts } from "@Constant/index";
 import { ICustomTooolbarProps } from "@Element/CalendarToolbar/CalendarToolbar";
-import useStyles from "@Element/CalendarToolbar/CalendarToolbarStyle";
+import { useStyles } from "@Element/CalendarToolbar/CalendarToolbarStyle";
 
 const CustomToolbar: React.FC<ICustomTooolbarProps> = ({ views, view, label, onNavigate, onView }) => {
     const classes = useStyles();
