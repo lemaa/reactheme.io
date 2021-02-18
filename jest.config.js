@@ -1,18 +1,18 @@
 module.exports = {
-    moduleFileExtensions: ["js", "jsx", "ts", "tsx"],
+    moduleFileExtensions: [ "js", "jsx", "ts", "tsx" ],
     globals: {
         "ts-jest": {
-            tsConfig: "tsconfig.jest.json",
+            tsconfig: "tsconfig.jest.json",
             babelConfig: true,
             diagnostics: false,
         },
     },
-    setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
-    testPathIgnorePatterns: ['<rootDir>/.next/', '<rootDir>/node_modules/'],
-    coverageReporters: ["json", "lcov", "text", "text-summary"],
+    setupFilesAfterEnv: [ '<rootDir>/jest.setup.ts' ],
+    testPathIgnorePatterns: [ '<rootDir>/.next/', '<rootDir>/node_modules/', '<rootDir>/cypress/' ],
+    coverageReporters: [ "json", "lcov", "text", "text-summary" ],
     moduleNameMapper: {
         "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
-        "<rootDir>/test/mocks.ts",
+            "<rootDir>/test/mocks.ts",
         "\\.(css|less|sass|scss)$": 'identity-obj-proxy',
         "^@Element(.*)$": "<rootDir>/src/components/elements$1",
         "^@Layout(.*)$": "<rootDir>/src/components/layouts$1",
@@ -24,7 +24,8 @@ module.exports = {
         "^@Util(.*)$": "<rootDir>/src/utils$1",
         "^@Style(.*)$": "<rootDir>/src/styles$1",
         "^@CustomType(.*)$": "<rootDir>/src/types$1",
+        "^@Mock(.*)$": "<rootDir>/src/mocks$1",
         "^@Pages(.*)$": "<rootDir>/pages$1",
-      },
-      preset: "ts-jest",
+    },
+    preset: "ts-jest",
 };

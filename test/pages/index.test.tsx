@@ -1,13 +1,9 @@
 import React from "react";
 import Home from "@Pages/index";
-import { render, screen } from "../utils";
+import { render } from "../utils";
 
 describe("Home", () => {
-    it("should render the heading", () => {
+    it("should render Home", () => {
         render(<Home />);
-
-        const heading = screen.getByText(/Testing Next.js With Jest and React Testing Library/i);
-
-        expect(heading).toBeInTheDocument();
     });
 });

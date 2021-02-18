@@ -29,6 +29,7 @@
         "@Util/*": ["src/utils/*"],
         "@Style/*": ["src/styles/*"],
         "@CustomType/*": ["src/types/*"],
+        "@Mock/*": ["src/mocks/*"],
         "@Pages/*": ["pages/*"],
      },
     "typeRoots": [ "src/types/customTypes", "node_modules/@types"]
@@ -47,7 +48,7 @@
     "out",
     "next.config.js",
     "commitlint.config.js",
-    "jest.setup.js",
+    "jest.setup.ts",
     "jest.config.js",
     ".babelrc",
     ".storybook"
