@@ -40,48 +40,59 @@ const ListDrawerItems = [
             dashboard: {
                 text: "dashboard",
                 icon: <DashboardOutlinedIcon fontSize="small" />,
-                subtext: ["Analytics", "project"],
+                subtext: ["analytics", "project"],
+                hrefLink: "/",
             },
             Calendar: {
                 text: "Calendar",
                 icon: <TodayOutlinedIcon fontSize="small" />,
+                hrefLink: "/calendar",
             },
             "E-Commerce": {
                 text: "E-Commerce",
                 icon: <StoreOutlinedIcon fontSize="small" />,
-                subtext: ["Products", "Product Detail", "New product", "Orders", "Order Detail"],
+                subtext: ["products", "product detail", "new product", "orders", "order detail"],
+                hrefLink: "/e-Commerce",
             },
             Academy: {
                 text: "Academy",
                 icon: <SchoolOutlinedIcon fontSize="small" />,
+                hrefLink: "/academy",
             },
             Mail: {
                 text: "Mail",
                 icon: <MailOutlinedIcon fontSize="small" />,
+                hrefLink: "/mail",
             },
             "To-do": {
                 text: "To-do",
                 icon: <ListAltOutlinedIcon fontSize="small" />,
+                hrefLink: "/to-do",
             },
             "File Manager": {
                 text: "File Manager",
                 icon: <FileCopyOutlinedIcon fontSize="small" />,
+                hrefLink: "/file-manager",
             },
             Contacts: {
                 text: "Contacts",
                 icon: <RecentActorsOutlinedIcon fontSize="small" />,
+                hrefLink: "/contacts",
             },
             Chat: {
                 text: "Chat",
                 icon: <ChatBubbleOutlineOutlinedIcon fontSize="small" />,
+                hrefLink: "/chat",
             },
             Scrumboard: {
                 text: "Scrumboard",
                 icon: <PollOutlinedIcon fontSize="small" />,
+                hrefLink: "/scrumboard",
             },
             Notes: {
                 text: "Notes",
                 icon: <NoteOutlinedIcon fontSize="small" />,
+                hrefLink: "/notes",
             },
         },
         pages: {
@@ -102,85 +113,103 @@ const ListDrawerItems = [
                     "Lock Screen",
                     "Mail Confirmation",
                 ],
+                hrefLink: "/authentication",
             },
             "Coming Soon": {
                 text: "Coming Soon",
                 icon: <AlarmOutlinedIcon fontSize="small" />,
+                hrefLink: "/coming-soon",
             },
             Errors: {
                 text: "Errors",
                 icon: <ErrorOutlineOutlinedIcon fontSize="small" />,
                 subtext: ["404", "500"],
+                hrefLink: "/errors",
             },
             Invoice: {
                 text: "Invoice",
                 icon: <InsertDriveFileOutlinedIcon fontSize="small" />,
                 subtext: ["Modern", "Compact"],
+                hrefLink: "/invoice",
             },
             Maintenance: {
                 text: "Maintenance",
                 icon: <SettingsOutlinedIcon fontSize="small" />,
+                hrefLink: "/maintenance",
             },
             Pricing: {
                 text: "Pricing",
                 icon: <MonetizationOnOutlinedIcon fontSize="small" />,
                 subtext: ["Pricing", "Pricing V2", "Pricing V3"],
+                hrefLink: "/pricing",
             },
             Profile: {
                 text: "Profile",
                 icon: <AccountCircleOutlinedIcon fontSize="small" />,
+                hrefLink: "/profile",
             },
             Search: {
                 text: "Search",
                 icon: <SearchOutlinedIcon fontSize="small" />,
                 subtext: ["Classic", "Modern"],
+                hrefLink: "/search",
             },
             FAQ: {
                 text: "FAQ",
                 icon: <LiveHelpOutlinedIcon fontSize="small" />,
+                hrefLink: "/faq",
             },
         },
         "user interface": {
             Icons: {
                 text: "Icons",
                 icon: <CropOriginalOutlinedIcon fontSize="small" />,
+                hrefLink: "/icons",
             },
             Typography: {
                 text: "Typography",
                 icon: <TextFieldsOutlinedIcon fontSize="small" />,
+                hrefLink: "/typography",
             },
             "Helper Classes": {
                 text: "Search",
                 icon: <HelpOutlineOutlinedIcon fontSize="small" />,
+                hrefLink: "/helper-classes",
             },
             "Page Layouts": {
                 text: "FAQ",
                 icon: <FileCopyOutlinedIcon fontSize="small" />,
                 subtext: ["Cadred", "Simple", "Blank"],
+                hrefLink: "/page-layouts",
             },
         },
         configuration: {
             Theming: {
                 text: "Theming",
                 icon: <WbSunnyOutlinedIcon fontSize="small" />,
+                hrefLink: "/theming",
             },
             "Material Ui Components": {
                 text: "Material Ui Components",
                 icon: <AccountTreeOutlinedIcon fontSize="small" />,
+                hrefLink: "/material-ui-components",
             },
             "3rd Party Components": {
                 text: "3rd Party Components",
                 icon: <AccountTreeOutlinedIcon fontSize="small" />,
+                hrefLink: "/3rd-party-components",
             },
         },
         auth: {
             Login: {
                 text: "Login",
                 icon: <LockOpenOutlinedIcon fontSize="small" />,
+                hrefLink: "/login",
             },
             Register: {
                 text: "Register",
                 icon: <PersonAddOutlinedIcon fontSize="small" />,
+                hrefLink: "/register",
             },
         },
     },

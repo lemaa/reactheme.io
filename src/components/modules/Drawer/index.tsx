@@ -7,6 +7,7 @@ import { IProps } from "@Module/Drawer/Drawer";
 import useStyles from "@Module/Drawer/DrawerStyle";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import "react-perfect-scrollbar/dist/css/styles.css";
+import Link from "next/link";
 
 const Drawer: React.FunctionComponent<IProps> = ({ ListDrawerItems, drawerVariant, drawerAnchor, open, handleDrawerToggle, drawerClassName, headerTitle, drawerWidth }: IProps) => {
     const classes = useStyles({
@@ -62,10 +63,12 @@ const Drawer: React.FunctionComponent<IProps> = ({ ListDrawerItems, drawerVarian
                                     const subDrawerItems = ListItems[item][subItem].subtext;
                                     if (typeof subDrawerItems === "undefined")
                                         return (
-                                            <ListItem key={subIndex.toString()} className={classes.ListItemContainer} button>
-                                                <ListItemIcon className={classes.listMenuIcon}>{ListItems[item][subItem].icon}</ListItemIcon>
-                                                <ListItemText className={classes.listMenuText} disableTypography primary={ListItems[item][subItem].text} />
-                                            </ListItem>
+                                            <Link href={ListItems[item][subItem].hrefLink} key={subIndex.toString()}>
+                                                <ListItem className={classes.ListItemContainer} button>
+                                                    <ListItemIcon className={classes.listMenuIcon}>{ListItems[item][subItem].icon}</ListItemIcon>
+                                                    <ListItemText className={classes.listMenuText} disableTypography primary={ListItems[item][subItem].text} />
+                                                </ListItem>
+                                            </Link>
                                         );
                                     if (typeof subDrawerItems !== "undefined" && subDrawerItems.length > 0)
                                         return (
@@ -83,12 +86,19 @@ const Drawer: React.FunctionComponent<IProps> = ({ ListDrawerItems, drawerVarian
                                                 </ListItem>
                                                 <Collapse in={ListItems[item][subItem].text === selectedIndex} timeout="auto" unmountOnExit>
                                                     {subDrawerItems.map((subsubItem: string, subsubIndex: number) => {
+                                                        let subsubItemText: string = subsubItem;
+                                                        if (subsubItem.split(" ").length > 1) {
+                                                            subsubItemText = subsubItem.replaceAll(" ", "-");
+                                                        }
+                                                        const hrefLink: string = `${ListItems[item][subItem].text.toLowerCase()}/${subsubItemText.toLowerCase()}`;
                                                         return (
-                                                            <List component="div" key={subsubIndex.toString()} className={classes.subItem} disablePadding>
-                                                                <ListItem button className={clsx(classes.nested, classes.ListItemContainer)}>
-                                                                    <ListItemText className={classes.listMenuText} disableTypography primary={subsubItem} />
-                                                                </ListItem>
-                                                            </List>
+                                                            <Link href={hrefLink} key={subsubIndex.toString()}>
+                                                                <List component="div" className={classes.subItem} disablePadding>
+                                                                    <ListItem button className={clsx(classes.nested, classes.ListItemContainer)}>
+                                                                        <ListItemText className={classes.listMenuText} disableTypography primary={subsubItem} />
+                                                                    </ListItem>
+                                                                </List>
+                                                            </Link>
                                                         );
                                                     })}
                                                 </Collapse>
