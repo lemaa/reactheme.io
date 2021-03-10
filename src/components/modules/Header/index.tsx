@@ -16,13 +16,14 @@ import { IProps } from "@Module/Header/Header";
 import useStyles from "@Module/Header/HeaderStyle";
 import { ProfilePicture, Menu } from "@Element/index";
 
-const Header: React.FunctionComponent<IProps> = ({ open, onClick, title, color, drawerWidth }: IProps) => {
+const Header: React.FunctionComponent<IProps> = ({ open, onClick, title, color, drawerWidth, quickBarWidth }: IProps) => {
     const classes = useStyles({
         open,
         onClick,
         title,
         color,
         drawerWidth,
+        quickBarWidth,
     });
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState<null | HTMLElement>(null);

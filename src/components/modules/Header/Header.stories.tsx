@@ -16,4 +16,5 @@ Default.args = {
     drawerWidth: 0,
     color: "#050517",
     onClick: () => {},
+    quickBarWidth: 0,
 };

@@ -7,6 +7,7 @@ import useStyles from "@Module/MainContainer/MainContainerStyle";
 const Main: React.FunctionComponent<IProps> = ({ children }: IProps) => {
     const [open, setOpen] = React.useState(true);
     const drawerWidth = 240;
+    const quickBarWidth = 60;
 
     const handleDrawerOpen = () => {
         setOpen(!open);
@@ -17,7 +18,7 @@ const Main: React.FunctionComponent<IProps> = ({ children }: IProps) => {
     const classes = useStyles(drawerstate);
 
     return (
-        <Default onClick={handleDrawerOpen} open={open} drawerwidth={drawerWidth}>
+        <Default onClick={handleDrawerOpen} open={open} drawerwidth={drawerWidth} quickBarWidth={quickBarWidth}>
             <main
                 className={clsx(classes.content, {
                     [classes.contentShift]: open,

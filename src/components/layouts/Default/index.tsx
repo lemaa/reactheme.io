@@ -32,6 +32,8 @@ import {
     LockOpenOutlined as LockOpenOutlinedIcon,
     PersonAddOutlined as PersonAddOutlinedIcon,
     StoreOutlined as StoreOutlinedIcon,
+    ListOutlined as ListOutlinedIcon,
+    CreateOutlined as CreateOutlinedIcon,
 } from "@material-ui/icons";
 
 const ListDrawerItems = [
@@ -215,15 +217,33 @@ const ListDrawerItems = [
     },
 ];
 
-const Default: React.FC<IProps> = ({ children, onClick, open, drawerwidth }) => {
+const ListQuickBarItems = [
+    {
+        quickbar: {
+            todolist: {
+                title: "To-do list",
+                icon: <ListOutlinedIcon fontSize="small" style={{ color: "rgb(153 153 153)" }} />,
+            },
+            notes: {
+                title: "Notes",
+                icon: <CreateOutlinedIcon fontSize="small" style={{ color: "rgb(153 153 153)" }} />,
+            },
+            setting: {
+                title: "Setting",
+                icon: <SettingsOutlinedIcon fontSize="small" style={{ color: "rgb(153 153 153)" }} />,
+            },
+        },
+    },
+];
+const Default: React.FC<IProps> = ({ children, onClick, open, drawerwidth, quickBarWidth }) => {
     const drawerstate: IState = {
         drawerwidth,
+        quickBarWidth,
     };
     const classes = useStyles(drawerstate);
-
     return (
         <div>
-            <Header onClick={onClick} drawerWidth={drawerwidth} color="#050517" open={open} />
+            <Header onClick={onClick} drawerWidth={drawerwidth} color="#050517" open={open} quickBarWidth={quickBarWidth} />
             <nav className={classes.drawer} aria-label="mailbox folders">
                 <Hidden smUp>
                     <Drawer
@@ -233,7 +253,7 @@ const Default: React.FC<IProps> = ({ children, onClick, open, drawerwidth }) => 
                         drawerAnchor={theme.direction === "rtl" ? "right" : "left"}
                         handleDrawerToggle={onClick}
                         ListDrawerItems={ListDrawerItems}
-                        headerTitle="Test"
+                        headerTitle="Mobile"
                     />
                 </Hidden>
                 <Hidden xsDown>
@@ -246,6 +266,15 @@ const Default: React.FC<IProps> = ({ children, onClick, open, drawerwidth }) => 
                         drawerClassName={classes.drawer}
                         ListDrawerItems={ListDrawerItems}
                         headerTitle="Test"
+                    />
+                    <Drawer
+                        open
+                        drawerWidth={quickBarWidth}
+                        drawerVariant="permanent"
+                        drawerAnchor="right"
+                        drawerClassName={classes.QuickBar}
+                        ListDrawerItems={ListQuickBarItems}
+                        subheaderenabled={false}
                     />
                 </Hidden>
             </nav>

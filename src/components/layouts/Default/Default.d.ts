@@ -3,8 +3,10 @@ export type IProps = {
     onClick: () => void;
     open: boolean;
     drawerwidth: number;
+    quickBarWidth: number;
 };
 
 export type IState = {
     drawerwidth: number;
+    quickBarWidth: number;
 };

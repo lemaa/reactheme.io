@@ -14,12 +14,13 @@ const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
         },
         appBarShift: {
             [theme.breakpoints.up("sm")]: {
-                width: props => `calc(100% - ${props.drawerWidth}px)`,
+                width: props => `calc(100% - ${props.drawerWidth + props.quickBarWidth}px)`,
                 transition: theme.transitions.create(["margin", "width"], {
                     easing: theme.transitions.easing.easeOut,
                     duration: theme.transitions.duration.enteringScreen,
                 }),
                 marginLeft: props => props.drawerWidth,
+                marginRight: props => props.quickBarWidth,
             },
         },
 
