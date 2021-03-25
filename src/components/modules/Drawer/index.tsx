@@ -1,6 +1,6 @@
 import React from "react";
 import clsx from "clsx";
-import { Tooltip, Collapse, Divider, Drawer as MuiDrawer, List, ListItem, ListItemIcon, ListItemText, ListSubheader, withStyles } from "@material-ui/core";
+import { Collapse, Divider, Drawer as MuiDrawer, List, ListItem, ListItemIcon, ListItemText, ListSubheader } from "@material-ui/core";
 import { ExpandLess as ExpandLessIcon, ExpandMore as ExpandMoreIcon } from "@material-ui/icons";
 import { IProps } from "@Module/Drawer/Drawer";
 import useStyles from "@Module/Drawer/DrawerStyle";
@@ -18,7 +18,6 @@ const Drawer: React.FunctionComponent<IProps> = ({
     drawerClassName,
     headerTitle,
     drawerWidth,
-    subheaderenabled,
 }: IProps) => {
     const classes = useStyles({
         ListDrawerItems,
@@ -30,7 +29,6 @@ const Drawer: React.FunctionComponent<IProps> = ({
         headerTitle,
         drawerWidth,
         prefetch,
-        subheaderenabled,
     });
     const ListItems = ListDrawerItems[0];
     const [selectedIndex, setSelectedIndex] = React.useState("");
@@ -43,62 +41,36 @@ const Drawer: React.FunctionComponent<IProps> = ({
         }
     };
 
-    const listSubheader = (item: any, Subheader: boolean): JSX.Element | boolean => {
-        if (Subheader === true)
-            return (
-                <ListSubheader className={classes.listSubHeader} component="div" disableSticky id={`${item}-subheader`}>
-                    {item}
-                </ListSubheader>
-            );
-        return false;
+    const listSubheader = (item: any) => {
+        return (
+            <ListSubheader className={classes.listSubHeader} component="div" disableSticky id={`${item}-subheader`}>
+                {item}
+            </ListSubheader>
+        );
     };
-    const CustomToolTip = withStyles(() => ({
-        tooltip: {
-            boxShadow: "0px 1px 5px 0px rgba(0, 0, 0, 0.1)",
-            border: "rgba(0, 0, 0, 0.12) solid 1px",
-            backgroundColor: "#eeeff7",
-            opacity: 1,
-            fontSize: "14px",
-            color: "#555b62",
-        },
-    }))(Tooltip);
+
     return (
         <MuiDrawer
             variant={drawerVariant}
             anchor={drawerAnchor}
             open={open}
             onClose={handleDrawerToggle}
-            className={drawerClassName}
             classes={{
-                paper: classes.drawerPaper,
+                paper: `${classes.drawerPaper} ${drawerClassName}`,
             }}
             ModalProps={{
                 keepMounted: true,
             }}
         >
             <div className={classes.drawerContainer}>
+                {headerTitle && <div className={classes.toolbar}>{headerTitle}</div>}
+                <Divider />
                 <PerfectScrollbar>
-                    {headerTitle && <div className={classes.toolbar}>{headerTitle}</div>}
-                    <Divider />
                     {Object.keys(ListItems).map((item: string, index: number) => {
                         return (
-                            <List
-                                className={classes.root}
-                                component="nav"
-                                aria-labelledby={`${item}-subheader`}
-                                key={index.toString()}
-                                subheader={listSubheader(item, subheaderenabled)}
-                            >
+                            <List className={classes.root} component="nav" aria-labelledby={`${item}-subheader`} key={index.toString()} subheader={listSubheader(item)}>
                                 {Object.keys(ListItems[item]).map((subItem: string, subIndex: number) => {
                                     const subDrawerItems = ListItems[item][subItem].subtext;
-                                    if (ListItems[item][subItem].title !== undefined)
-                                        return (
-                                            <ListItem className={classes.ListItemContainer} key={subIndex.toString()} button>
-                                                <CustomToolTip className={classes.ToolTipDrawer} title={ListItems[item][subItem].title} placement="left">
-                                                    <ListItemIcon className={classes.listMenuIcon}>{ListItems[item][subItem].icon}</ListItemIcon>
-                                                </CustomToolTip>
-                                            </ListItem>
-                                        );
                                     if (typeof subDrawerItems === "undefined")
                                         return (
                                             <Link href={ListItems[item][subItem].hrefLink} key={subIndex.toString()} prefetch={prefetch}>

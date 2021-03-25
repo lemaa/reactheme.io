@@ -10,6 +10,7 @@ const useStyles = makeStyles<Theme, IState>(theme => ({
                 easing: theme.transitions.easing.sharp,
                 duration: theme.transitions.duration.leavingScreen,
             }),
+            marginRight: props => `${props.quickBarWidth}px`,
         },
     },
     contentShift: {
@@ -19,6 +20,7 @@ const useStyles = makeStyles<Theme, IState>(theme => ({
                 duration: theme.transitions.duration.enteringScreen,
             }),
             marginLeft: props => `${props.drawerWidth}px`,
+            marginRight: props => `${props.quickBarWidth}px`,
         },
     },
     drawerHeader: {

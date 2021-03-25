@@ -1,5 +1,6 @@
 import React from "react";
 import { Header, Drawer } from "@Module/index";
+import { QuickBar } from "@Element/index";
 import { Hidden } from "@material-ui/core";
 import useStyles from "@Layout/Default/DefaultStyle";
 import { IProps, IState } from "@Layout/Default/Default";
@@ -34,6 +35,7 @@ import {
     StoreOutlined as StoreOutlinedIcon,
     ListOutlined as ListOutlinedIcon,
     CreateOutlined as CreateOutlinedIcon,
+    ColorLensOutlined as ColorLensOutlinedIcon,
 } from "@material-ui/icons";
 
 const ListDrawerItems = [
@@ -228,6 +230,10 @@ const ListQuickBarItems = [
                 title: "Notes",
                 icon: <CreateOutlinedIcon fontSize="small" style={{ color: "rgb(153 153 153)" }} />,
             },
+            theme: {
+                title: "Theme color",
+                icon: <ColorLensOutlinedIcon fontSize="small" style={{ color: "rgb(153 153 153)" }} />,
+            },
             setting: {
                 title: "Setting",
                 icon: <SettingsOutlinedIcon fontSize="small" style={{ color: "rgb(153 153 153)" }} />,
@@ -267,15 +273,7 @@ const Default: React.FC<IProps> = ({ children, onClick, open, drawerwidth, quick
                         ListDrawerItems={ListDrawerItems}
                         headerTitle="Test"
                     />
-                    <Drawer
-                        open
-                        drawerWidth={quickBarWidth}
-                        drawerVariant="permanent"
-                        drawerAnchor="right"
-                        drawerClassName={classes.QuickBar}
-                        ListDrawerItems={ListQuickBarItems}
-                        subheaderenabled={false}
-                    />
+                    <QuickBar qbWidth={quickBarWidth} qbClassName={classes.quickbar} qbAnchor="right" ListQbItems={ListQuickBarItems} />
                 </Hidden>
             </nav>
 

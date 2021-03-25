@@ -14,6 +14,7 @@ const Main: React.FunctionComponent<IProps> = ({ children }: IProps) => {
     };
     const drawerstate: IState = {
         drawerWidth,
+        quickBarWidth,
     };
     const classes = useStyles(drawerstate);
 

@@ -28,25 +28,6 @@ const ListAppBarItems = [
     },
 ];
 
-const ListQuickBarItems = [
-    {
-        quickbar: {
-            todolist: {
-                title: "To-do list",
-                icon: <DashboardOutlined fontSize="small" style={{ color: "rgb(153 153 153)" }} />,
-            },
-            notes: {
-                title: "Notes",
-                icon: <TodayOutlined fontSize="small" style={{ color: "rgb(153 153 153)" }} />,
-            },
-            setting: {
-                title: "Setting",
-                icon: <StoreOutlined fontSize="small" style={{ color: "rgb(153 153 153)" }} />,
-            },
-        },
-    },
-];
-
 export default {
     component: Drawer,
     title: "Modules / Drawer",
@@ -64,19 +45,5 @@ appBar.args = {
     handleDrawerToggle: () => {},
     ListDrawerItems: ListAppBarItems,
     headerTitle: "Jon Doe",
-    subheaderenabled: true,
-    prefetch: false,
-};
-
-export const QuickBar = Template.bind({});
-QuickBar.args = {
-    open: true,
-    drawerWidth: 60,
-    drawerClassName: "drawer-component",
-    drawerVariant: "permanent",
-    drawerAnchor: "right",
-    handleDrawerToggle: () => {},
-    ListDrawerItems: ListQuickBarItems,
-    subheaderenabled: false,
     prefetch: false,
 };

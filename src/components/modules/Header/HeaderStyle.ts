@@ -6,6 +6,8 @@ const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
         appBar: {
             backgroundColor: props => props.color,
             [theme.breakpoints.up("sm")]: {
+                width: props => `calc(100% - ${props.quickBarWidth}px)`,
+                marginRight: props => props.quickBarWidth,
                 transition: theme.transitions.create(["margin", "width"], {
                     easing: theme.transitions.easing.sharp,
                     duration: theme.transitions.duration.leavingScreen,

@@ -1,4 +1,4 @@
-import { IProps } from "@Module/Drawer/Drawer";
+import { IProps } from "@Element/QuickBar/QuickBar";
 import { makeStyles, Theme } from "@material-ui/core/styles";
 
 const useStyles = makeStyles<Theme, IProps>(theme => ({
@@ -14,13 +14,11 @@ const useStyles = makeStyles<Theme, IProps>(theme => ({
         ...theme.mixins.toolbar,
     },
     drawerContainer: {
-        height: "85%",
+        height: "100%",
     },
     drawerPaper: {
-        width: props => `${props.drawerWidth}px`,
-        border: "none",
+        width: props => `${props.qbWidth}px`,
         overflow: "hidden",
-        boxShadow: "0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12)",
     },
     listSubHeader: {
         textTransform: "uppercase",

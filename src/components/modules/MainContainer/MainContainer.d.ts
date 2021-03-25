@@ -4,4 +4,5 @@ export interface IProps {
 
 export type IState = {
     drawerWidth: number;
+    quickBarWidth: number;
 };

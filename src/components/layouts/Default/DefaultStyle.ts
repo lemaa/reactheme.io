@@ -12,8 +12,14 @@ const useStyles = makeStyles<Theme, IState>(theme => ({
         flex: "1 0 auto",
         margin: theme.spacing(1),
     },
-    QuickBar: {
-        flexShrink: 0,
+    quickbar: {
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        "& nav div": {
+            paddingTop: "15px",
+            paddingBottom: "15px",
+        },
     },
 }));
 
