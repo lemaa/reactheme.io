@@ -16,15 +16,18 @@ test("<Drawer />", () => {
                     text: "dashboard",
                     icon: <DashboardOutlined fontSize="small" />,
                     subtext: ["Analytics", "project"],
+                    hrefLink: "/",
                 },
                 Calendar: {
                     text: "Calendar",
                     icon: <TodayOutlined fontSize="small" />,
+                    hrefLink: "/calendar",
                 },
                 "E-Commerce": {
                     text: "E-Commerce",
                     icon: <StoreOutlined fontSize="small" />,
                     subtext: ["Products", "Product Detail", "New product", "Orders", "Order Detail"],
+                    hrefLink: "/e-commerce",
                 },
             },
         },
