@@ -98,7 +98,7 @@ const Drawer: React.FunctionComponent<IProps> = ({
                                                     {subDrawerItems.map((subsubItem: string, subsubIndex: number) => {
                                                         let subsubItemText: string = subsubItem;
                                                         if (subsubItem.split(" ").length > 1) {
-                                                            subsubItemText = subsubItem.replaceAll(" ", "-");
+                                                            subsubItemText = subsubItem.split(" ").join("-");
                                                         }
                                                         const hrefLink: string = `${ListItems[item][subItem].text.toLowerCase()}/${subsubItemText.toLowerCase()}`;
                                                         return (
