@@ -8,5 +8,5 @@ jest.useFakeTimers();
 
 test("<Header />", () => {
     const handleClickMock = jest.fn();
-    render(<Header open drawerWidth={250} color="#050517" onClick={handleClickMock} />);
+    render(<Header open drawerWidth={250} color="#050517" onClick={handleClickMock} quickBarWidth={250} />);
 });

@@ -10,7 +10,7 @@ test("<CustomToolbar />", () => {
     const handleClickMock = jest.fn();
 
     render(
-        <Default open drawerwidth={240} onClick={handleClickMock}>
+        <Default open drawerwidth={240} onClick={handleClickMock} quickBarWidth={240}>
             <span>testinng children</span>
         </Default>
     );
