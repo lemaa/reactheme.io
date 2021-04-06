@@ -5,6 +5,7 @@ import Head from "next/head";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "@Style/base/theme";
+import "@Style/global.scss";
 
 export default function MyApp({ Component, pageProps }: AppProps) {
     React.useEffect(() => {

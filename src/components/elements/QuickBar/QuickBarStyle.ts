@@ -45,6 +45,31 @@ const useStyles = makeStyles<Theme, IProps>(theme => ({
             backgroundColor: "#fff",
         },
     },
+    quickbarDetails: {
+        position: "absolute",
+        right: "59px",
+        top: 0,
+        background: "#fff",
+        height: "100%",
+        width: "400px",
+        transform: "translateX(120%)",
+        transition: "0.3s",
+        zIndex: 9999,
+    },
+    quickbarDetailsOpen: {
+        transform: "translateX(-1px)",
+        boxShadow: "-3px 2px 5px 0 rgba(0, 0, 0, .16)",
+    },
+    quickbarDetailsTitle: {
+        padding: "15px",
+    },
+    closeButton: {
+        position: "absolute",
+        right: 0,
+    },
+    quickbarDetailsContent: {
+        padding: "15px",
+    },
 }));
 
 export default useStyles;

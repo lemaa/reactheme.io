@@ -225,18 +225,38 @@ const ListQuickBarItems = [
             todolist: {
                 title: "To-do list",
                 icon: <ListOutlinedIcon fontSize="small" style={{ color: "rgb(153 153 153)" }} />,
+                component: (
+                    <>
+                        <div>To-do list</div>
+                    </>
+                ),
             },
             notes: {
                 title: "Notes",
                 icon: <CreateOutlinedIcon fontSize="small" style={{ color: "rgb(153 153 153)" }} />,
+                component: (
+                    <>
+                        <div>Notes</div>
+                    </>
+                ),
             },
             theme: {
                 title: "Theme color",
                 icon: <ColorLensOutlinedIcon fontSize="small" style={{ color: "rgb(153 153 153)" }} />,
+                component: (
+                    <>
+                        <div>Theme color</div>
+                    </>
+                ),
             },
             setting: {
                 title: "Setting",
                 icon: <SettingsOutlinedIcon fontSize="small" style={{ color: "rgb(153 153 153)" }} />,
+                setting: (
+                    <>
+                        <div>Setting</div>
+                    </>
+                ),
             },
         },
     },
