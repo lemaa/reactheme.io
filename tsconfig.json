@@ -50,6 +50,8 @@
     "commitlint.config.js",
     "jest.setup.ts",
     "jest.config.js",
+    "next-i18next.config.js",
+    "i18n.js",
     ".babelrc",
     ".storybook"
   ]

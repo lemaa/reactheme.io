@@ -22,6 +22,7 @@ module.exports = {
         // PATH ALIAS
         newConfig.resolve.alias = {
             ...baseConfig.resolve.alias,
+            'next-i18next': 'react-i18next',
             "@Element": path.resolve(__dirname, "../src/components/elements"),
             "@Layout": path.resolve(__dirname, "../src/components/layouts"),
             "@Module": path.resolve(__dirname, "../src/components/modules"),

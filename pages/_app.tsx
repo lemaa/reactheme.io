@@ -1,13 +1,14 @@
 import React from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import type { AppProps } from "next/app";
 import Head from "next/head";
+import { appWithTranslation } from "next-i18next";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "@Style/base/theme";
 import "@Style/global.scss";
 
-export default function MyApp({ Component, pageProps }: AppProps) {
+const MyApp = ({ Component, pageProps }: AppProps) => {
     React.useEffect(() => {
         // Remove the server-side injected CSS.
         const jssStyles = document.querySelector("#jss-server-side");
@@ -31,9 +32,11 @@ export default function MyApp({ Component, pageProps }: AppProps) {
             </ThemeProvider>
         </>
     );
-}
-
-MyApp.propTypes = {
-    Component: PropTypes.elementType.isRequired,
-    pageProps: PropTypes.instanceOf(Object).isRequired,
 };
+
+// MyApp.propTypes = {
+//     Component: PropTypes.elementType.isRequired,
+//     pageProps: PropTypes.instanceOf(Object).isRequired,
+// };
+
+export default appWithTranslation(MyApp);

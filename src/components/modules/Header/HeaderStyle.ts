@@ -83,6 +83,19 @@ const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
                 display: "flex",
             },
         },
+        LanguageButton: {
+            display: "flex",
+            color: "#ffffff",
+            width: "3.4rem",
+            padding: "5px",
+        },
+        languageFlag: {
+            width: "20px",
+            margin: "0 5px",
+        },
+        languageName: {
+            margin: "0 5px",
+        },
         sectionMobile: {
             display: "flex",
             [theme.breakpoints.up("md")]: {

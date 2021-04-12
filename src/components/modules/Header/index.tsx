@@ -15,6 +15,7 @@ import {
 import { IProps } from "@Module/Header/Header";
 import useStyles from "@Module/Header/HeaderStyle";
 import { ProfilePicture, Menu } from "@Element/index";
+import { LanguageSwitch } from "@Element/LanguageSwitch";
 
 const Header: React.FunctionComponent<IProps> = ({ open, onClick, title, color, drawerWidth, quickBarWidth }: IProps) => {
     const classes = useStyles({
@@ -27,7 +28,6 @@ const Header: React.FunctionComponent<IProps> = ({ open, onClick, title, color, 
     });
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState<null | HTMLElement>(null);
-
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
@@ -47,6 +47,18 @@ const Header: React.FunctionComponent<IProps> = ({ open, onClick, title, color, 
     const handleMobileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
         setMobileMoreAnchorEl(event.currentTarget);
     };
+    const ListLanguageItems = [
+        {
+            language: "english",
+            languageAbbr: "en",
+            nameFlag: "etats-unis.svg",
+        },
+        {
+            language: "french",
+            languageAbbr: "fr",
+            nameFlag: "france.svg",
+        },
+    ];
 
     const menuId = "primary-search-account-menu";
     const mobileMenuId = "primary-search-account-menu-mobile";
@@ -119,6 +131,7 @@ const Header: React.FunctionComponent<IProps> = ({ open, onClick, title, color, 
                     </div>
                     <div className={classes.grow} />
                     <div className={classes.sectionDesktop}>
+                        <LanguageSwitch ListLanguageItems={ListLanguageItems} srcFlags="static/images/flags" />
                         <IconButton aria-label="show 4 new mails" color="inherit">
                             <Badge badgeContent={4} color="error">
                                 <MailIcon />

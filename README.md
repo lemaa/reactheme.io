@@ -74,5 +74,22 @@ https://www.codeheroes.fr/2020/06/29/git-comment-nommer-ses-branches-et-ses-comm
 
 
 stories ==> component/elements 
-        ==> component /modules 
+        ==> component /modules
+
+const withPlugins = require('next-compose-plugins');
+const withSass = require('@zeit/next-sass');
+const withCSS = require('@zeit/next-css');
+
+module.exports = withPlugins(
+  [
+    [withSass, { /* plugin config here ... */ }],
+    [withCSS,  { /* plugin config here ... */ }],
+  ],
+  {
+    /* global config here ... */
+  },
+);
+
+
+    
 

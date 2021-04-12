@@ -252,7 +252,7 @@ const ListQuickBarItems = [
             setting: {
                 title: "Setting",
                 icon: <SettingsOutlinedIcon fontSize="small" style={{ color: "rgb(153 153 153)" }} />,
-                setting: (
+                component: (
                     <>
                         <div>Setting</div>
                     </>

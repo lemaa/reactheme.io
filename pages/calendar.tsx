@@ -10,5 +10,4 @@ const Calendar: NextPage = () => {
         </Main>
     );
 };
-
 export default Calendar;
