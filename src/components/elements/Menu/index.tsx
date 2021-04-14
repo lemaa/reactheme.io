@@ -3,10 +3,12 @@ import { Divider, IconButton, Menu as MuiMenu, MenuItem as MuiMenuItem } from "@
 import { IProps } from "@Element/Menu/Menu";
 import useStyles from "@Element/Menu/MenuStyle";
 import { MenuItem } from "@CustomType/index";
+import { useTranslation } from "next-i18next";
 
 const Menu: React.FunctionComponent<IProps> = ({ anchorEl, menuId, isMenuOpen, onClose, name, ListMenuItems }: IProps) => {
     const classes = useStyles();
-
+    const { t } = useTranslation();
+    const welcomeText = `${t("welcome")}, ${name}`;
     return (
         <MuiMenu
             anchorEl={anchorEl}
@@ -18,10 +20,7 @@ const Menu: React.FunctionComponent<IProps> = ({ anchorEl, menuId, isMenuOpen, o
             onClose={onClose}
         >
             <MuiMenuItem>
-                <p className={classes.header}>
-                    Welcome,
-                    {name}
-                </p>
+                <p className={classes.header}>{welcomeText}</p>
             </MuiMenuItem>
             <Divider />
             {ListMenuItems.map((_item: MenuItem, index: number) => {

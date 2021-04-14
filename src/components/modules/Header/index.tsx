@@ -14,8 +14,8 @@ import {
 } from "@material-ui/icons";
 import { IProps } from "@Module/Header/Header";
 import useStyles from "@Module/Header/HeaderStyle";
-import { ProfilePicture, Menu } from "@Element/index";
-import { LanguageSwitch } from "@Element/LanguageSwitch";
+import { ProfilePicture, Menu, LanguageSwitch } from "@Element/index";
+import { useTranslation } from "next-i18next";
 
 const Header: React.FunctionComponent<IProps> = ({ open, onClick, title, color, drawerWidth, quickBarWidth }: IProps) => {
     const classes = useStyles({
@@ -30,6 +30,7 @@ const Header: React.FunctionComponent<IProps> = ({ open, onClick, title, color, 
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState<null | HTMLElement>(null);
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+    const { t } = useTranslation();
 
     const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorEl(event.currentTarget);
@@ -49,12 +50,12 @@ const Header: React.FunctionComponent<IProps> = ({ open, onClick, title, color, 
     };
     const ListLanguageItems = [
         {
-            language: "english",
+            language: t("languageName.english"),
             languageAbbr: "en",
             nameFlag: "etats-unis.svg",
         },
         {
-            language: "french",
+            language: t("languageName.french"),
             languageAbbr: "fr",
             nameFlag: "france.svg",
         },
@@ -67,31 +68,31 @@ const Header: React.FunctionComponent<IProps> = ({ open, onClick, title, color, 
             onClick: handleMenuClose,
             label: "Profile current user",
             icon: <PersonOutlineIcon fontSize="small" />,
-            text: "Profile",
+            text: t("headerMenu.menuItems.profile"),
         },
         {
             onClick: handleMenuClose,
             label: "Inbox user",
             icon: <MailIcon fontSize="small" />,
-            text: "Inbox",
+            text: t("headerMenu.menuItems.inbox"),
         },
         {
             onClick: handleMenuClose,
             label: "Account settings user",
             icon: <SettingsOutlinedIcon fontSize="small" />,
-            text: "Account settings",
+            text: t("headerMenu.menuItems.accountSettings"),
         },
         {
             onClick: handleMenuClose,
             label: "Lock user",
             icon: <LockOutlinedIcon fontSize="small" />,
-            text: "Lock",
+            text: t("headerMenu.menuItems.lock"),
         },
         {
             onClick: handleMenuClose,
             label: "Logout user",
             icon: <PowerSettingsNewOutlinedIcon fontSize="small" />,
-            text: "Logout",
+            text: t("headerMenu.menuItems.logout"),
         },
     ];
 
@@ -121,7 +122,7 @@ const Header: React.FunctionComponent<IProps> = ({ open, onClick, title, color, 
                             <SearchIcon />
                         </div>
                         <InputBase
-                            placeholder="Search…"
+                            placeholder={`${t("headerMenu.search")}…`}
                             classes={{
                                 root: classes.inputRoot,
                                 input: classes.inputInput,
@@ -142,7 +143,7 @@ const Header: React.FunctionComponent<IProps> = ({ open, onClick, title, color, 
                                 <NotificationsIcon />
                             </Badge>
                         </IconButton>
-                        <ProfilePicture name="Amel Fz" userRole="guest" srcPicture="static/images/avatar" namePicture="1.jpg" onClick={handleProfileMenuOpen} />
+                        <ProfilePicture name="Amel Fz" userRole={t("user.role.guest")} srcPicture="static/images/avatar" namePicture="1.jpg" onClick={handleProfileMenuOpen} />
                     </div>
                     <div className={classes.sectionMobile}>
                         <IconButton aria-label="show more" aria-controls={mobileMenuId} aria-haspopup="true" onClick={handleMobileMenuOpen} color="inherit">

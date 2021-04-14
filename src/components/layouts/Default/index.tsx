@@ -37,236 +37,353 @@ import {
     CreateOutlined as CreateOutlinedIcon,
     ColorLensOutlined as ColorLensOutlinedIcon,
 } from "@material-ui/icons";
+import { useTranslation } from "next-i18next";
 
-const ListDrawerItems = [
-    {
-        applications: {
-            dashboard: {
-                text: "dashboard",
-                icon: <DashboardOutlinedIcon fontSize="small" />,
-                subtext: ["analytics", "project"],
-                hrefLink: "/",
-            },
-            Calendar: {
-                text: "Calendar",
-                icon: <TodayOutlinedIcon fontSize="small" />,
-                hrefLink: "/calendar",
-            },
-            "E-Commerce": {
-                text: "E-Commerce",
-                icon: <StoreOutlinedIcon fontSize="small" />,
-                subtext: ["products", "product detail", "new product", "orders", "order detail"],
-                hrefLink: "/e-Commerce",
-            },
-            Academy: {
-                text: "Academy",
-                icon: <SchoolOutlinedIcon fontSize="small" />,
-                hrefLink: "/academy",
-            },
-            Mail: {
-                text: "Mail",
-                icon: <MailOutlinedIcon fontSize="small" />,
-                hrefLink: "/mail",
-            },
-            "To-do": {
-                text: "To-do",
-                icon: <ListAltOutlinedIcon fontSize="small" />,
-                hrefLink: "/to-do",
-            },
-            "File Manager": {
-                text: "File Manager",
-                icon: <FileCopyOutlinedIcon fontSize="small" />,
-                hrefLink: "/file-manager",
-            },
-            Contacts: {
-                text: "Contacts",
-                icon: <RecentActorsOutlinedIcon fontSize="small" />,
-                hrefLink: "/contacts",
-            },
-            Chat: {
-                text: "Chat",
-                icon: <ChatBubbleOutlineOutlinedIcon fontSize="small" />,
-                hrefLink: "/chat",
-            },
-            Scrumboard: {
-                text: "Scrumboard",
-                icon: <PollOutlinedIcon fontSize="small" />,
-                hrefLink: "/scrumboard",
-            },
-            Notes: {
-                text: "Notes",
-                icon: <NoteOutlinedIcon fontSize="small" />,
-                hrefLink: "/notes",
-            },
-        },
-        pages: {
-            Authentication: {
-                text: "Authentication",
-                icon: <LockOutlinedIcon fontSize="small" />,
-                subtext: [
-                    "Login",
-                    "Login V2",
-                    "Login V3",
-                    "Register",
-                    "Register V2",
-                    "Register V3",
-                    "Forgot Password",
-                    "Forgot Password V2",
-                    "Reset Password ",
-                    "Reset Password V2",
-                    "Lock Screen",
-                    "Mail Confirmation",
-                ],
-                hrefLink: "/authentication",
-            },
-            "Coming Soon": {
-                text: "Coming Soon",
-                icon: <AlarmOutlinedIcon fontSize="small" />,
-                hrefLink: "/coming-soon",
-            },
-            Errors: {
-                text: "Errors",
-                icon: <ErrorOutlineOutlinedIcon fontSize="small" />,
-                subtext: ["404", "500"],
-                hrefLink: "/errors",
-            },
-            Invoice: {
-                text: "Invoice",
-                icon: <InsertDriveFileOutlinedIcon fontSize="small" />,
-                subtext: ["Modern", "Compact"],
-                hrefLink: "/invoice",
-            },
-            Maintenance: {
-                text: "Maintenance",
-                icon: <SettingsOutlinedIcon fontSize="small" />,
-                hrefLink: "/maintenance",
-            },
-            Pricing: {
-                text: "Pricing",
-                icon: <MonetizationOnOutlinedIcon fontSize="small" />,
-                subtext: ["Pricing", "Pricing V2", "Pricing V3"],
-                hrefLink: "/pricing",
-            },
-            Profile: {
-                text: "Profile",
-                icon: <AccountCircleOutlinedIcon fontSize="small" />,
-                hrefLink: "/profile",
-            },
-            Search: {
-                text: "Search",
-                icon: <SearchOutlinedIcon fontSize="small" />,
-                subtext: ["Classic", "Modern"],
-                hrefLink: "/search",
-            },
-            FAQ: {
-                text: "FAQ",
-                icon: <LiveHelpOutlinedIcon fontSize="small" />,
-                hrefLink: "/faq",
-            },
-        },
-        "user interface": {
-            Icons: {
-                text: "Icons",
-                icon: <CropOriginalOutlinedIcon fontSize="small" />,
-                hrefLink: "/icons",
-            },
-            Typography: {
-                text: "Typography",
-                icon: <TextFieldsOutlinedIcon fontSize="small" />,
-                hrefLink: "/typography",
-            },
-            "Helper Classes": {
-                text: "Search",
-                icon: <HelpOutlineOutlinedIcon fontSize="small" />,
-                hrefLink: "/helper-classes",
-            },
-            "Page Layouts": {
-                text: "FAQ",
-                icon: <FileCopyOutlinedIcon fontSize="small" />,
-                subtext: ["Cadred", "Simple", "Blank"],
-                hrefLink: "/page-layouts",
-            },
-        },
-        configuration: {
-            Theming: {
-                text: "Theming",
-                icon: <WbSunnyOutlinedIcon fontSize="small" />,
-                hrefLink: "/theming",
-            },
-            "Material Ui Components": {
-                text: "Material Ui Components",
-                icon: <AccountTreeOutlinedIcon fontSize="small" />,
-                hrefLink: "/material-ui-components",
-            },
-            "3rd Party Components": {
-                text: "3rd Party Components",
-                icon: <AccountTreeOutlinedIcon fontSize="small" />,
-                hrefLink: "/3rd-party-components",
-            },
-        },
-        auth: {
-            Login: {
-                text: "Login",
-                icon: <LockOpenOutlinedIcon fontSize="small" />,
-                hrefLink: "/login",
-            },
-            Register: {
-                text: "Register",
-                icon: <PersonAddOutlinedIcon fontSize="small" />,
-                hrefLink: "/register",
-            },
-        },
-    },
-];
-
-const ListQuickBarItems = [
-    {
-        quickbar: {
-            todolist: {
-                title: "To-do list",
-                icon: <ListOutlinedIcon fontSize="small" style={{ color: "rgb(153 153 153)" }} />,
-                component: (
-                    <>
-                        <div>To-do list</div>
-                    </>
-                ),
-            },
-            notes: {
-                title: "Notes",
-                icon: <CreateOutlinedIcon fontSize="small" style={{ color: "rgb(153 153 153)" }} />,
-                component: (
-                    <>
-                        <div>Notes</div>
-                    </>
-                ),
-            },
-            theme: {
-                title: "Theme color",
-                icon: <ColorLensOutlinedIcon fontSize="small" style={{ color: "rgb(153 153 153)" }} />,
-                component: (
-                    <>
-                        <div>Theme color</div>
-                    </>
-                ),
-            },
-            setting: {
-                title: "Setting",
-                icon: <SettingsOutlinedIcon fontSize="small" style={{ color: "rgb(153 153 153)" }} />,
-                component: (
-                    <>
-                        <div>Setting</div>
-                    </>
-                ),
-            },
-        },
-    },
-];
 const Default: React.FC<IProps> = ({ children, onClick, open, drawerwidth, quickBarWidth }) => {
     const drawerstate: IState = {
         drawerwidth,
         quickBarWidth,
     };
     const classes = useStyles(drawerstate);
+    const { t } = useTranslation();
+    const ListDrawerItems = [
+        {
+            applications: {
+                titleGroup: t("drawer.groupTitle.applications"),
+                items: {
+                    dashboard: {
+                        text: t("drawer.itemNames.dashboard"),
+                        icon: <DashboardOutlinedIcon fontSize="small" />,
+                        subItem: [
+                            {
+                                text: t("drawer.subItemNames.analytics"),
+                                hrefLink: "/analytics",
+                            },
+                            {
+                                text: t("drawer.subItemNames.project"),
+                                hrefLink: "/project",
+                            },
+                        ],
+                        hrefLink: "/",
+                    },
+                    Calendar: {
+                        text: t("drawer.itemNames.calendar"),
+                        icon: <TodayOutlinedIcon fontSize="small" />,
+                        hrefLink: "/calendar",
+                    },
+                    "E-Commerce": {
+                        text: t("drawer.itemNames.eCommerce"),
+                        icon: <StoreOutlinedIcon fontSize="small" />,
+                        subItem: [
+                            {
+                                text: t("drawer.subItemNames.products"),
+                                hrefLink: "/products",
+                            },
+                            {
+                                text: t("drawer.subItemNames.productDetail"),
+                                hrefLink: "/product-detail",
+                            },
+                            {
+                                text: t("drawer.subItemNames.newProduct"),
+                                hrefLink: "/new-product",
+                            },
+                            {
+                                text: t("drawer.subItemNames.orders"),
+                                hrefLink: "/orders",
+                            },
+                            {
+                                text: t("drawer.subItemNames.orderDetail"),
+                                hrefLink: "/order-detail",
+                            },
+                        ],
+                        hrefLink: "/e-Commerce",
+                    },
+                    Academy: {
+                        text: t("drawer.itemNames.academy"),
+                        icon: <SchoolOutlinedIcon fontSize="small" />,
+                        hrefLink: "/academy",
+                    },
+                    Mail: {
+                        text: t("drawer.itemNames.mail"),
+                        icon: <MailOutlinedIcon fontSize="small" />,
+                        hrefLink: "/mail",
+                    },
+                    "To-do": {
+                        text: t("drawer.itemNames.toDo"),
+                        icon: <ListAltOutlinedIcon fontSize="small" />,
+                        hrefLink: "/to-do",
+                    },
+                    "File Manager": {
+                        text: t("drawer.itemNames.fileManager"),
+                        icon: <FileCopyOutlinedIcon fontSize="small" />,
+                        hrefLink: "/file-manager",
+                    },
+                    Contacts: {
+                        text: t("drawer.itemNames.contacts"),
+                        icon: <RecentActorsOutlinedIcon fontSize="small" />,
+                        hrefLink: "/contacts",
+                    },
+                    Chat: {
+                        text: t("drawer.itemNames.chat"),
+                        icon: <ChatBubbleOutlineOutlinedIcon fontSize="small" />,
+                        hrefLink: "/chat",
+                    },
+                    Scrumboard: {
+                        text: t("drawer.itemNames.scrumboard"),
+                        icon: <PollOutlinedIcon fontSize="small" />,
+                        hrefLink: "/scrumboard",
+                    },
+                    Notes: {
+                        text: t("drawer.itemNames.notes"),
+                        icon: <NoteOutlinedIcon fontSize="small" />,
+                        hrefLink: "/notes",
+                    },
+                },
+            },
+            pages: {
+                titleGroup: t("drawer.groupTitle.pages"),
+                items: {
+                    Authentication: {
+                        text: t("drawer.itemNames.authentication"),
+                        icon: <LockOutlinedIcon fontSize="small" />,
+                        subItem: [
+                            {
+                                text: t("drawer.subItemNames.login"),
+                                hrefLink: "/login",
+                            },
+                            {
+                                text: t("drawer.subItemNames.loginV2"),
+                                hrefLink: "/login-v2",
+                            },
+                            {
+                                text: t("drawer.subItemNames.register"),
+                                hrefLink: "/register",
+                            },
+                            {
+                                text: t("drawer.subItemNames.registerV2"),
+                                hrefLink: "/register-v2",
+                            },
+                            {
+                                text: t("drawer.subItemNames.forgotPassword"),
+                                hrefLink: "/forgot-password",
+                            },
+                            {
+                                text: t("drawer.subItemNames.resetPassword"),
+                                hrefLink: "/reset-password",
+                            },
+                            {
+                                text: t("drawer.subItemNames.lockScreen"),
+                                hrefLink: "/lock-screen",
+                            },
+                            {
+                                text: t("drawer.subItemNames.mailConfirmation"),
+                                hrefLink: "/mail-confirmation",
+                            },
+                        ],
+                        hrefLink: "/authentication",
+                    },
+                    "Coming Soon": {
+                        text: t("drawer.itemNames.comingSoon"),
+                        icon: <AlarmOutlinedIcon fontSize="small" />,
+                        hrefLink: "/coming-soon",
+                    },
+                    Errors: {
+                        text: t("drawer.itemNames.errors"),
+                        icon: <ErrorOutlineOutlinedIcon fontSize="small" />,
+                        subItem: [
+                            {
+                                text: "404",
+                                hrefLink: "/404",
+                            },
+                            {
+                                text: "500",
+                                hrefLink: "/500",
+                            },
+                        ],
+                        hrefLink: "/errors",
+                    },
+                    Invoice: {
+                        text: t("drawer.itemNames.invoice"),
+                        icon: <InsertDriveFileOutlinedIcon fontSize="small" />,
+                        subItem: [
+                            {
+                                text: t("drawer.subItemNames.modern"),
+                                hrefLink: "/modern",
+                            },
+                            {
+                                text: t("drawer.subItemNames.compact"),
+                                hrefLink: "/compact",
+                            },
+                        ],
+                        hrefLink: "/invoice",
+                    },
+                    Maintenance: {
+                        text: t("drawer.itemNames.maintenance"),
+                        icon: <SettingsOutlinedIcon fontSize="small" />,
+                        hrefLink: "/maintenance",
+                    },
+                    Pricing: {
+                        text: t("pricing"),
+                        icon: <MonetizationOnOutlinedIcon fontSize="small" />,
+                        subItem: [
+                            {
+                                text: t("drawer.subItemNames.pricing"),
+                                hrefLink: "/pricing",
+                            },
+                            {
+                                text: t("drawer.subItemNames.pricingV2"),
+                                hrefLink: "/pricing-v2",
+                            },
+                        ],
+                        hrefLink: "/pricing",
+                    },
+                    Profile: {
+                        text: t("drawer.itemNames.profile"),
+                        icon: <AccountCircleOutlinedIcon fontSize="small" />,
+                        hrefLink: "/profile",
+                    },
+                    Search: {
+                        text: t("drawer.itemNames.search"),
+                        icon: <SearchOutlinedIcon fontSize="small" />,
+                        subItem: [
+                            {
+                                text: t("drawer.subItemNames.classic"),
+                                hrefLink: "/classic",
+                            },
+                            {
+                                text: t("drawer.subItemNames.modern"),
+                                hrefLink: "/modern",
+                            },
+                        ],
+                        hrefLink: "/search",
+                    },
+                    FAQ: {
+                        text: t("drawer.itemNames.faq"),
+                        icon: <LiveHelpOutlinedIcon fontSize="small" />,
+                        hrefLink: "/faq",
+                    },
+                },
+            },
+            "user interface": {
+                titleGroup: t("drawer.groupTitle.userInterface"),
+                items: {
+                    Icons: {
+                        text: t("drawer.itemNames.icons"),
+                        icon: <CropOriginalOutlinedIcon fontSize="small" />,
+                        hrefLink: "/icons",
+                    },
+                    Typography: {
+                        text: t("drawer.itemNames.typography"),
+                        icon: <TextFieldsOutlinedIcon fontSize="small" />,
+                        hrefLink: "/typography",
+                    },
+                    "Helper Classes": {
+                        text: t("drawer.itemNames.helperClasses"),
+                        icon: <HelpOutlineOutlinedIcon fontSize="small" />,
+                        hrefLink: "/helper-classes",
+                    },
+                    "Page Layouts": {
+                        text: t("drawer.itemNames.PageLayouts"),
+                        icon: <FileCopyOutlinedIcon fontSize="small" />,
+                        subItem: [
+                            {
+                                text: t("drawer.subItemNames.cadred"),
+                                hrefLink: "/cadred",
+                            },
+                            {
+                                text: t("drawer.subItemNames.simple"),
+                                hrefLink: "/simple",
+                            },
+                            {
+                                text: t("drawer.subItemNames.blank"),
+                                hrefLink: "/blank",
+                            },
+                        ],
+                        hrefLink: "/page-layouts",
+                    },
+                },
+            },
+            configuration: {
+                titleGroup: t("drawer.groupTitle.configuration"),
+                items: {
+                    Theming: {
+                        text: t("drawer.itemNames.theming"),
+                        icon: <WbSunnyOutlinedIcon fontSize="small" />,
+                        hrefLink: "/theming",
+                    },
+                    "Material Ui Components": {
+                        text: t("drawer.itemNames.materialUiComponents"),
+                        icon: <AccountTreeOutlinedIcon fontSize="small" />,
+                        hrefLink: "/material-ui-components",
+                    },
+                    "3rd Party Components": {
+                        text: t("drawer.itemNames.3rdPartyComponents"),
+                        icon: <AccountTreeOutlinedIcon fontSize="small" />,
+                        hrefLink: "/3rd-party-components",
+                    },
+                },
+            },
+            auth: {
+                titleGroup: t("drawer.groupTitle.auth"),
+                items: {
+                    Login: {
+                        text: t("drawer.itemNames.login"),
+                        icon: <LockOpenOutlinedIcon fontSize="small" />,
+                        hrefLink: "/login",
+                    },
+                    Register: {
+                        text: t("drawer.itemNames.register"),
+                        icon: <PersonAddOutlinedIcon fontSize="small" />,
+                        hrefLink: "/register",
+                    },
+                },
+            },
+        },
+    ];
+
+    const ListQuickBarItems = [
+        {
+            quickbar: {
+                todolist: {
+                    title: t("quickBar.itemTitles.toDoList"),
+                    icon: <ListOutlinedIcon fontSize="small" style={{ color: "rgb(153 153 153)" }} />,
+                    component: (
+                        <>
+                            <div>To-do list</div>
+                        </>
+                    ),
+                },
+                notes: {
+                    title: t("quickBar.itemTitles.notes"),
+                    icon: <CreateOutlinedIcon fontSize="small" style={{ color: "rgb(153 153 153)" }} />,
+                    component: (
+                        <>
+                            <div>Notes</div>
+                        </>
+                    ),
+                },
+                theme: {
+                    title: t("quickBar.itemTitles.themeColor"),
+                    icon: <ColorLensOutlinedIcon fontSize="small" style={{ color: "rgb(153 153 153)" }} />,
+                    component: (
+                        <>
+                            <div>Theme color</div>
+                        </>
+                    ),
+                },
+                setting: {
+                    title: t("quickBar.itemTitles.settings"),
+                    icon: <SettingsOutlinedIcon fontSize="small" style={{ color: "rgb(153 153 153)" }} />,
+                    component: (
+                        <>
+                            <div>Setting</div>
+                        </>
+                    ),
+                },
+            },
+        },
+    ];
+
     return (
         <div>
             <Header onClick={onClick} drawerWidth={drawerwidth} color="#050517" open={open} quickBarWidth={quickBarWidth} />
@@ -291,7 +408,7 @@ const Default: React.FC<IProps> = ({ children, onClick, open, drawerwidth, quick
                         handleDrawerToggle={onClick}
                         drawerClassName={classes.drawer}
                         ListDrawerItems={ListDrawerItems}
-                        headerTitle="Test"
+                        headerTitle={t("title")}
                     />
                     <QuickBar qbWidth={quickBarWidth} qbClassName={classes.quickbar} qbAnchor="right" ListQbItems={ListQuickBarItems} />
                 </Hidden>

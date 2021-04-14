@@ -1,3 +1,103 @@
-{
-   "hello": "Hi! fr translation."
+{       
+    "title": "Titre Français",
+    "welcome": "Bienvenue",
+    "drawer": {
+       "groupTitle": {
+            "applications": "Applications",
+            "pages": "Pages",
+            "userInterface": "User Interface",
+            "configuration": "Configuration",
+            "auth": "Auth"
+       },
+       "itemNames":{
+            "dashboard": "Dashboard",
+            "calendar": "Calendar",
+            "eCommerce": "E-Commerce",
+            "academy": "Academy",
+            "mail": "Mail",
+            "toDo": "To-do",
+            "fileManager": "File Manager",
+            "contacts": "Contacts",
+            "chat": "Chat",
+            "scrumboard": "Scrumboard",
+            "notes": "Notes",
+            "authentication": "Authentication",
+            "comingSoon": "Coming Soon",
+            "errors": "Errors",
+            "invoice": "Invoice",
+            "maintenance": "Maintenance",
+            "pricing": "Pricing",
+            "profile": "Profile",
+            "search": "Search",
+            "faq": "FAQ",
+            "icons": "Icons",
+            "typography": "Typography",
+            "helperClasses": "Helper Classes",
+            "PageLayouts": "Page Layouts",
+            "theming" : "Theming",
+            "materialUiComponents": "Material Ui Components",
+            "3rdPartyComponents": "3rd Party Components",
+            "login": "Login",
+            "register": "Register"
+       },
+       "subItemNames": {
+            "cadred": "Cadred",
+            "simple": "Simple",
+            "blank": "Blank", 
+            "classic": "Classic",
+            "modern": "Modern",
+            "pricing": "Pricing",
+            "pricingV2": "Pricing V2",
+            "pricingV3": "Pricing V3",
+            "compact": "Compact", 
+            "login": "Login",
+            "loginV2": "Login V2",
+            "loginV3": "Login V3",
+            "register": "Register",
+            "registerV2": "Register V2",
+            "registerV3": "Register V3",
+            "forgotPassword": "Forgot Password",
+            "forgotPasswordV2": "Forgot Password V2",
+            "resetPassword": "Reset Password",
+            "resetPasswordV2": "Reset Password V2",
+            "lockScreen": "Lock Screen",
+            "mailConfirmation": "Mail Confirmation",
+            "products": "Products",
+            "productDetail": "Product Detail",
+            "newProduct": "New Product",
+            "orders": "Orders",
+            "orderDetail": "OrderDetail",
+            "analytics": "Analytics",
+            "project": "Project"
+       }
+    },
+    "quickBar": {
+       "itemTitles": {
+            "toDoList": "To-do list",
+            "notes": "Notes",
+            "themeColor": "Theme color",
+            "settings": "Settings"
+       }
+    },
+    "languageName": {
+        "english": "Anglais",
+        "french" : "Français"
+    },
+    "headerMenu": {
+        "menuItems": {
+            "profile": "Profile",
+            "inbox": "Inbox",
+            "accountSettings": "Account settings",
+            "lock": "Lock",
+            "logout": "Logout"
+        },
+        "search": "Rechercher"
+    },
+    "user": {
+        "role": {
+            "admin": "Admin",
+            "guest": "Guest"
+        }
+    }
+
 }

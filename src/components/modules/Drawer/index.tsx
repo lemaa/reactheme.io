@@ -32,7 +32,6 @@ const Drawer: React.FunctionComponent<IProps> = ({
     });
     const ListItems = ListDrawerItems[0];
     const [selectedIndex, setSelectedIndex] = React.useState("");
-
     const handleClick = (index: React.SetStateAction<string>) => {
         if (selectedIndex === index) {
             setSelectedIndex("");
@@ -66,17 +65,25 @@ const Drawer: React.FunctionComponent<IProps> = ({
                 {headerTitle && <div className={classes.toolbar}>{headerTitle}</div>}
                 <Divider />
                 <PerfectScrollbar>
-                    {Object.keys(ListItems).map((item: string, index: number) => {
+                    {Object.keys(ListItems).map((groupTitle: string, index: number) => {
                         return (
-                            <List className={classes.root} component="nav" aria-labelledby={`${item}-subheader`} key={index.toString()} subheader={listSubheader(item)}>
-                                {Object.keys(ListItems[item]).map((subItem: string, subIndex: number) => {
-                                    const subDrawerItems = ListItems[item][subItem].subtext;
+                            <List
+                                className={classes.root}
+                                component="nav"
+                                aria-labelledby={`${groupTitle}-subheader`}
+                                key={index.toString()}
+                                subheader={listSubheader(ListItems[groupTitle].titleGroup)}
+                            >
+                                {Object.keys(ListItems[groupTitle].items).map((item: string, subIndex: number) => {
+                                    const DrawerItems = ListItems[groupTitle].items;
+                                    const subDrawerItems = DrawerItems[item].subItem;
+
                                     if (typeof subDrawerItems === "undefined")
                                         return (
-                                            <Link href={ListItems[item][subItem].hrefLink} key={subIndex.toString()} prefetch={prefetch}>
+                                            <Link href={DrawerItems[item].hrefLink} key={subIndex.toString()} prefetch={prefetch}>
                                                 <ListItem className={classes.ListItemContainer} button>
-                                                    <ListItemIcon className={classes.listMenuIcon}>{ListItems[item][subItem].icon}</ListItemIcon>
-                                                    <ListItemText className={classes.listMenuText} disableTypography primary={ListItems[item][subItem].text} />
+                                                    <ListItemIcon className={classes.listMenuIcon}>{DrawerItems[item].icon}</ListItemIcon>
+                                                    <ListItemText className={classes.listMenuText} disableTypography primary={DrawerItems[item].text} />
                                                 </ListItem>
                                             </Link>
                                         );
@@ -85,27 +92,23 @@ const Drawer: React.FunctionComponent<IProps> = ({
                                             <React.Fragment key={subIndex.toString()}>
                                                 <ListItem
                                                     onClick={() => {
-                                                        handleClick(ListItems[item][subItem].text);
+                                                        handleClick(DrawerItems[item].text);
                                                     }}
                                                     className={classes.ListItemContainer}
                                                     button
                                                 >
-                                                    <ListItemIcon className={classes.listMenuIcon}>{ListItems[item][subItem].icon}</ListItemIcon>
-                                                    <ListItemText className={classes.listMenuText} disableTypography primary={ListItems[item][subItem].text} />
-                                                    {ListItems[item][subItem].text === selectedIndex ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+                                                    <ListItemIcon className={classes.listMenuIcon}>{DrawerItems[item].icon}</ListItemIcon>
+                                                    <ListItemText className={classes.listMenuText} disableTypography primary={DrawerItems[item].text} />
+                                                    {DrawerItems[item].text === selectedIndex ? <ExpandLessIcon /> : <ExpandMoreIcon />}
                                                 </ListItem>
-                                                <Collapse in={ListItems[item][subItem].text === selectedIndex} timeout="auto" unmountOnExit>
-                                                    {subDrawerItems.map((subsubItem: string, subsubIndex: number) => {
-                                                        let subsubItemText: string = subsubItem;
-                                                        if (subsubItem.split(" ").length > 1) {
-                                                            subsubItemText = subsubItem.split(" ").join("-");
-                                                        }
-                                                        const hrefLink: string = `${ListItems[item][subItem].text.toLowerCase()}/${subsubItemText.toLowerCase()}`;
+                                                <Collapse in={DrawerItems[item].text === selectedIndex} timeout="auto" unmountOnExit>
+                                                    {subDrawerItems.map((subGroup: { text: string; hrefLink: string }, subGroupIndex: number) => {
+                                                        const hrefLink: string = `${DrawerItems[item].hrefLink}${subGroup.hrefLink}`;
                                                         return (
-                                                            <Link href={hrefLink} key={subsubIndex.toString()} prefetch={prefetch}>
+                                                            <Link href={hrefLink} key={subGroupIndex.toString()} prefetch={prefetch}>
                                                                 <List component="div" className={classes.subItem} disablePadding>
                                                                     <ListItem button className={clsx(classes.nested, classes.ListItemContainer)}>
-                                                                        <ListItemText className={classes.listMenuText} disableTypography primary={subsubItem} />
+                                                                        <ListItemText className={classes.listMenuText} disableTypography primary={subGroup.text} />
                                                                     </ListItem>
                                                                 </List>
                                                             </Link>
