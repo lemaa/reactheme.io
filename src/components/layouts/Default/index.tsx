@@ -28,8 +28,6 @@ import {
     CropOriginalOutlined as CropOriginalOutlinedIcon,
     TextFieldsOutlined as TextFieldsOutlinedIcon,
     HelpOutlineOutlined as HelpOutlineOutlinedIcon,
-    WbSunnyOutlined as WbSunnyOutlinedIcon,
-    AccountTreeOutlined as AccountTreeOutlinedIcon,
     LockOpenOutlined as LockOpenOutlinedIcon,
     PersonAddOutlined as PersonAddOutlinedIcon,
     StoreOutlined as StoreOutlinedIcon,
@@ -38,6 +36,7 @@ import {
     ColorLensOutlined as ColorLensOutlinedIcon,
 } from "@material-ui/icons";
 import { useTranslation } from "next-i18next";
+import clsx from "clsx";
 
 const Default: React.FC<IProps> = ({ children, onClick, open, drawerwidth, quickBarWidth }) => {
     const drawerstate: IState = {
@@ -303,26 +302,6 @@ const Default: React.FC<IProps> = ({ children, onClick, open, drawerwidth, quick
                     },
                 },
             },
-            configuration: {
-                titleGroup: t("drawer.groupTitle.configuration"),
-                items: {
-                    Theming: {
-                        text: t("drawer.itemNames.theming"),
-                        icon: <WbSunnyOutlinedIcon fontSize="small" />,
-                        hrefLink: "/theming",
-                    },
-                    "Material Ui Components": {
-                        text: t("drawer.itemNames.materialUiComponents"),
-                        icon: <AccountTreeOutlinedIcon fontSize="small" />,
-                        hrefLink: "/material-ui-components",
-                    },
-                    "3rd Party Components": {
-                        text: t("drawer.itemNames.3rdPartyComponents"),
-                        icon: <AccountTreeOutlinedIcon fontSize="small" />,
-                        hrefLink: "/3rd-party-components",
-                    },
-                },
-            },
             auth: {
                 titleGroup: t("drawer.groupTitle.auth"),
                 items: {
@@ -414,7 +393,16 @@ const Default: React.FC<IProps> = ({ children, onClick, open, drawerwidth, quick
                 </Hidden>
             </nav>
 
-            <div>{children}</div>
+            <div>
+                <main
+                    className={clsx(classes.content, {
+                        [classes.contentShift]: open,
+                    })}
+                >
+                    <div className={classes.drawerHeader} />
+                    <div className={classes.container}>{children}</div>
+                </main>
+            </div>
         </div>
     );
 };

@@ -1,14 +1,21 @@
 import { NextPage } from "next";
 import React from "react";
 import { HomePage } from "@Template/index";
-import { Main } from "@Module/index";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { Default } from "@Layout/index";
 
 const Home: NextPage = () => {
+    const [open, setOpen] = React.useState(true);
+    const drawerWidth = 240;
+    const quickBarWidth = 60;
+
+    const handleDrawerOpen = () => {
+        setOpen(!open);
+    };
     return (
-        <Main>
+        <Default onClick={handleDrawerOpen} open={open} drawerwidth={drawerWidth} quickBarWidth={quickBarWidth}>
             <HomePage />
-        </Main>
+        </Default>
     );
 };
 
