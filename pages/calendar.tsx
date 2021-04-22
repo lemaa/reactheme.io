@@ -1,6 +1,7 @@
 import { NextPage } from "next";
 import React from "react";
 import { CalendarPage } from "@Template/index";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { Default } from "@Layout/index";
 
 const Calendar: NextPage = () => {
@@ -17,4 +18,11 @@ const Calendar: NextPage = () => {
         </Default>
     );
 };
+
+export const getStaticProps = async ({ locale }: any) => ({
+    props: {
+        ...(await serverSideTranslations(locale, ["common"])),
+    },
+});
+
 export default Calendar;
