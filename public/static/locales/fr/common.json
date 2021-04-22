@@ -98,6 +98,24 @@
             "admin": "Admin",
             "guest": "Guest"
         }
-    }
+    },
+    "setting": {
+        "layoutTitle": "Layout",
+        "themeTitle": "Theme",
+        "display": "Display",
+        "style": "Style",
+        "static": "Static",
+        "fixed": "Fixed",
+        "header": "Header",
+        "navbar": "Navbar",
+        "toolbar": "Toolbar",
+        "default": "Default",
+        "footer": "Footer",
+        "left": "Left",
+        "right": "Right",
+        "position": "Position",
+        "main": "Main",
+        "background": "Background"
 
+    }
 }
