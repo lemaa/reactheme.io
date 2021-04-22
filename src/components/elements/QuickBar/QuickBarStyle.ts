@@ -1,60 +1,36 @@
-import { IProps } from "@Element/QuickBar/QuickBar";
 import { makeStyles, Theme } from "@material-ui/core/styles";
+import { ThemesConsts } from "@Constant/index";
 
-const useStyles = makeStyles<Theme, IProps>(theme => ({
-    toolbar: {
-        color: "#fff",
-        padding: "5px",
-        minHeight: "56px",
-        textAlign: "center",
-        backgroundColor: "#050517",
-        fontSize: "2rem",
-        fontStyle: "italic",
-        fontWeight: 500,
-        ...theme.mixins.toolbar,
-    },
+const useStyles = makeStyles<Theme, { qbWidth: number; toolbarTheme: string }>(() => ({
     drawerContainer: {
         height: "100%",
+        backgroundColor: props => ThemesConsts[props.toolbarTheme].palette.background.default,
     },
     drawerPaper: {
         width: props => `${props.qbWidth}px`,
         overflow: "hidden",
     },
-    listSubHeader: {
-        textTransform: "uppercase",
-    },
     listMenuIcon: {
-        color: "#050517",
+        color: props => ThemesConsts[props.toolbarTheme].palette.text.primary,
         minWidth: "35px",
-    },
-
-    listMenuText: {
-        fontSize: "13px",
-        textTransform: "capitalize",
-    },
-    nested: {
-        paddingLeft: theme.spacing(7),
-    },
-    subItem: {
-        backgroundColor: "#f5f5f5",
     },
     ListItemContainer: {
         "&:hover, &:hover $listMenuIcon": {
-            color: theme.palette.primary.main,
+            color: props => ThemesConsts[props.toolbarTheme].palette.text.primary,
             fontWeight: "500",
-            backgroundColor: "#fff",
+            backgroundColor: props => ThemesConsts[props.toolbarTheme].palette.background.default,
         },
     },
     quickbarDetails: {
-        position: "absolute",
-        right: "59px",
+        position: "fixed",
+        right: 0,
         top: 0,
-        background: "#fff",
+        background: props => ThemesConsts[props.toolbarTheme].palette.background.default,
         height: "100%",
         width: "400px",
         transform: "translateX(120%)",
         transition: "0.3s",
-        zIndex: 9999,
+        zIndex: 1200,
     },
     quickbarDetailsOpen: {
         transform: "translateX(-1px)",
@@ -62,13 +38,26 @@ const useStyles = makeStyles<Theme, IProps>(theme => ({
     },
     quickbarDetailsTitle: {
         padding: "15px",
+        color: props => ThemesConsts[props.toolbarTheme].palette.text.primary,
     },
     closeButton: {
         position: "absolute",
         right: 0,
+        color: props => ThemesConsts[props.toolbarTheme].palette.text.primary,
     },
     quickbarDetailsContent: {
         padding: "15px",
+    },
+    divider: {
+        backgroundColor: props => ThemesConsts[props.toolbarTheme].palette.primary.light,
+    },
+    ToolTipDrawer: {
+        boxShadow: "0px 1px 5px 0px rgba(0, 0, 0, 0.1)",
+        border: "rgba(0, 0, 0, 0.12) solid 1px",
+        backgroundColor: props => ThemesConsts[props.toolbarTheme].palette.background.default,
+        opacity: 1,
+        fontSize: "14px",
+        color: props => ThemesConsts[props.toolbarTheme].palette.text.primary,
     },
 }));
 

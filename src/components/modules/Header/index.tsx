@@ -16,15 +16,14 @@ import { IProps } from "@Module/Header/Header";
 import useStyles from "@Module/Header/HeaderStyle";
 import { ProfilePicture, Menu, LanguageSwitch } from "@Element/index";
 import { useTranslation } from "next-i18next";
+import { useAppSettings } from "@Context/index";
 
-const Header: React.FunctionComponent<IProps> = ({ open, onClick, title, color, drawerWidth, quickBarWidth }: IProps) => {
+const Header: React.FunctionComponent<IProps> = ({ open, onClick, title, drawerWidth, quickBarWidth }: IProps) => {
+    const { state } = useAppSettings();
     const classes = useStyles({
-        open,
-        onClick,
-        title,
-        color,
         drawerWidth,
         quickBarWidth,
+        headerTheme: state.theme.header,
     });
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -105,15 +104,17 @@ const Header: React.FunctionComponent<IProps> = ({ open, onClick, title, color, 
     return (
         <div className={classes.grow}>
             <AppBar
-                position="fixed"
+                position={state.layout.config.header.style}
                 className={clsx(classes.appBar, {
-                    [classes.appBarShift]: open,
+                    [classes.appBarShift]: open && state.layout.config.navbar.display,
                 })}
             >
                 <Toolbar>
-                    <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="open drawer" onClick={onClick}>
-                        <MenuIcon />
-                    </IconButton>
+                    {state.layout.config.navbar.display && (
+                        <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="open drawer" onClick={onClick}>
+                            <MenuIcon />
+                        </IconButton>
+                    )}
                     <Typography className={classes.title} variant="h6" noWrap>
                         {title}
                     </Typography>

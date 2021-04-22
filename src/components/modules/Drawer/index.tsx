@@ -7,6 +7,7 @@ import useStyles from "@Module/Drawer/DrawerStyle";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import "react-perfect-scrollbar/dist/css/styles.css";
 import Link from "next/link";
+import { useAppSettings } from "@Context/index";
 
 const Drawer: React.FunctionComponent<IProps> = ({
     prefetch,
@@ -19,16 +20,11 @@ const Drawer: React.FunctionComponent<IProps> = ({
     headerTitle,
     drawerWidth,
 }: IProps) => {
+    const { state } = useAppSettings();
+
     const classes = useStyles({
-        ListDrawerItems,
-        drawerVariant,
-        drawerAnchor,
-        open,
-        handleDrawerToggle,
-        drawerClassName,
-        headerTitle,
         drawerWidth,
-        prefetch,
+        navbarTheme: state.theme.navbar,
     });
     const ListItems = ListDrawerItems[0];
     const [selectedIndex, setSelectedIndex] = React.useState("");

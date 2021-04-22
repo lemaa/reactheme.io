@@ -1,10 +1,10 @@
 import { fade, makeStyles, Theme, createStyles } from "@material-ui/core/styles";
-import { IProps } from "@Module/Header/Header";
+import { ThemesConsts } from "@Constant/index";
 
-const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
+const useStyles = makeStyles<Theme, { drawerWidth: number; quickBarWidth: number; headerTheme: string }>((theme: Theme) =>
     createStyles({
         appBar: {
-            backgroundColor: props => props.color,
+            backgroundColor: props => ThemesConsts[props.headerTheme].palette.primary.dark,
             [theme.breakpoints.up("sm")]: {
                 width: props => `calc(100% - ${props.quickBarWidth}px)`,
                 marginRight: props => props.quickBarWidth,
@@ -69,7 +69,6 @@ const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
         },
         inputInput: {
             padding: theme.spacing(1, 1, 1, 0),
-            // vertical padding + font size from searchIcon
             paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
             transition: theme.transitions.create("width"),
             width: "100%",

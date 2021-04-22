@@ -14,7 +14,6 @@ export const Default = Template.bind({});
 Default.args = {
     open: true,
     drawerWidth: 0,
-    color: "#050517",
     onClick: () => {},
     quickBarWidth: 0,
 };

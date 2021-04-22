@@ -1,9 +1,13 @@
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
+import { ThemesConsts } from "@Constant/index";
 
-const useStyles = makeStyles<Theme>(() =>
+const useStyles = makeStyles<Theme, { headerTheme: string }>(() =>
     createStyles({
+        menuContainer: {
+            backgroundColor: props => ThemesConsts[props.headerTheme].palette.primary.dark,
+        },
         header: {
-            color: "#878793",
+            color: props => ThemesConsts[props.headerTheme].palette.text.disabled,
             margin: 0,
             fontSize: "12px",
         },
@@ -11,6 +15,7 @@ const useStyles = makeStyles<Theme>(() =>
             paddingTop: 0,
             paddingBottom: 0,
             fontSize: "12px",
+            color: props => ThemesConsts[props.headerTheme].palette.common.white,
         },
         menuIcon: {
             paddingLeft: "4px",

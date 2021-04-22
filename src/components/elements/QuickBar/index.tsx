@@ -1,16 +1,18 @@
 import React from "react";
-import { Tooltip, Drawer as MuiDrawer, List, ListItem, ListItemIcon, withStyles, Divider, Button, Typography } from "@material-ui/core";
+import { Tooltip, Drawer as MuiDrawer, List, ListItem, ListItemIcon, Divider, Button, Typography } from "@material-ui/core";
 import { IProps } from "@Element/QuickBar/QuickBar";
 import useStyles from "@Element/QuickBar/QuickBarStyle";
 import { CloseOutlined } from "@material-ui/icons";
 import clsx from "clsx";
+import PerfectScrollbar from "react-perfect-scrollbar";
+import "react-perfect-scrollbar/dist/css/styles.css";
+import { useAppSettings } from "@Context/index";
 
 const QuickBar: React.FunctionComponent<IProps> = ({ qbWidth, qbClassName, qbAnchor, ListQbItems }: IProps) => {
+    const { state } = useAppSettings();
     const classes = useStyles({
         qbWidth,
-        qbClassName,
-        qbAnchor,
-        ListQbItems,
+        toolbarTheme: state.theme.toolbar,
     });
     const ListItems = ListQbItems[0];
     const [dialogOpen, setDialogOpen] = React.useState<false | boolean>(false);
@@ -28,16 +30,7 @@ const QuickBar: React.FunctionComponent<IProps> = ({ qbWidth, qbClassName, qbAnc
         setDialogOpen(true);
         setDialogSettings({ headerText: title, component });
     };
-    const CustomToolTip = withStyles(() => ({
-        tooltip: {
-            boxShadow: "0px 1px 5px 0px rgba(0, 0, 0, 0.1)",
-            border: "rgba(0, 0, 0, 0.12) solid 1px",
-            backgroundColor: "#eeeff7",
-            opacity: 1,
-            fontSize: "14px",
-            color: "#555b62",
-        },
-    }))(Tooltip);
+
     return (
         <>
             <MuiDrawer
@@ -64,9 +57,9 @@ const QuickBar: React.FunctionComponent<IProps> = ({ qbWidth, qbClassName, qbAnc
                                                 onClick={() => handleOpenEvent(ListItems[item][subItem].title, ListItems[item][subItem].component)}
                                                 button
                                             >
-                                                <CustomToolTip className={classes.ToolTipDrawer} title={ListItems[item][subItem].title} placement="left">
+                                                <Tooltip classes={{ tooltip: classes.ToolTipDrawer }} title={ListItems[item][subItem].title} placement="left">
                                                     <ListItemIcon className={classes.listMenuIcon}>{ListItems[item][subItem].icon}</ListItemIcon>
-                                                </CustomToolTip>
+                                                </Tooltip>
                                             </ListItem>
                                         );
                                     }
@@ -77,21 +70,24 @@ const QuickBar: React.FunctionComponent<IProps> = ({ qbWidth, qbClassName, qbAnc
                     })}
                 </div>
             </MuiDrawer>
+
             <div
                 className={clsx(classes.quickbarDetails, {
                     [classes.quickbarDetailsOpen]: dialogOpen,
                 })}
             >
-                <div className={classes.quickbarDetailsTitle}>
-                    <Button className={classes.closeButton} onClick={handleDialogClose}>
-                        <CloseOutlined fontSize="small" style={{ color: "rgb(153 153 153)" }} />
-                    </Button>
-                    <Typography variant="h5" gutterBottom>
-                        {dialogSettings.headerText}
-                    </Typography>
-                </div>
-                <Divider />
-                <div className={classes.quickbarDetailsContent}>{dialogSettings.component}</div>
+                <PerfectScrollbar>
+                    <div className={classes.quickbarDetailsTitle}>
+                        <Button className={classes.closeButton} onClick={handleDialogClose} style={{ backgroundColor: "transparent" }}>
+                            <CloseOutlined fontSize="small" style={{ color: "rgb(153 153 153)" }} />
+                        </Button>
+                        <Typography variant="h6" gutterBottom>
+                            {dialogSettings.headerText}
+                        </Typography>
+                    </div>
+                    <Divider className={classes.divider} />
+                    <div className={classes.quickbarDetailsContent}>{dialogSettings.component}</div>
+                </PerfectScrollbar>
             </div>
         </>
     );

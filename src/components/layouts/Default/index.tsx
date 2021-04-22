@@ -1,20 +1,16 @@
 import React from "react";
-import { Header, Drawer } from "@Module/index";
+import { Header, Drawer, Settings } from "@Module/index";
 import { QuickBar } from "@Element/index";
 import { Hidden } from "@material-ui/core";
 import useStyles from "@Layout/Default/DefaultStyle";
 import { IProps, IState } from "@Layout/Default/Default";
-import theme from "@Style/base/theme";
+import { useAppSettings } from "@Context/index";
 import {
     DashboardOutlined as DashboardOutlinedIcon,
     TodayOutlined as TodayOutlinedIcon,
-    SchoolOutlined as SchoolOutlinedIcon,
-    MailOutlined as MailOutlinedIcon,
     ListAltOutlined as ListAltOutlinedIcon,
     FileCopyOutlined as FileCopyOutlinedIcon,
     RecentActorsOutlined as RecentActorsOutlinedIcon,
-    ChatBubbleOutlineOutlined as ChatBubbleOutlineOutlinedIcon,
-    PollOutlined as PollOutlinedIcon,
     NoteOutlined as NoteOutlinedIcon,
     LockOutlined as LockOutlinedIcon,
     AlarmOutlined as AlarmOutlinedIcon,
@@ -23,11 +19,9 @@ import {
     SettingsOutlined as SettingsOutlinedIcon,
     MonetizationOnOutlined as MonetizationOnOutlinedIcon,
     AccountCircleOutlined as AccountCircleOutlinedIcon,
-    SearchOutlined as SearchOutlinedIcon,
     LiveHelpOutlined as LiveHelpOutlinedIcon,
     CropOriginalOutlined as CropOriginalOutlinedIcon,
     TextFieldsOutlined as TextFieldsOutlinedIcon,
-    HelpOutlineOutlined as HelpOutlineOutlinedIcon,
     LockOpenOutlined as LockOpenOutlinedIcon,
     PersonAddOutlined as PersonAddOutlinedIcon,
     StoreOutlined as StoreOutlinedIcon,
@@ -37,11 +31,16 @@ import {
 } from "@material-ui/icons";
 import { useTranslation } from "next-i18next";
 import clsx from "clsx";
+import theme from "@Style/base/theme";
+import { ThemesConsts } from "@Constant/index";
 
 const Default: React.FC<IProps> = ({ children, onClick, open, drawerwidth, quickBarWidth }) => {
+    const { state } = useAppSettings();
+    const mainTheme = state.theme.main;
     const drawerstate: IState = {
         drawerwidth,
-        quickBarWidth,
+        quickBarWidth: state.layout.config.toolbar.display ? quickBarWidth : 0,
+        mainTheme,
     };
     const classes = useStyles(drawerstate);
     const { t } = useTranslation();
@@ -97,16 +96,6 @@ const Default: React.FC<IProps> = ({ children, onClick, open, drawerwidth, quick
                         ],
                         hrefLink: "/e-Commerce",
                     },
-                    Academy: {
-                        text: t("drawer.itemNames.academy"),
-                        icon: <SchoolOutlinedIcon fontSize="small" />,
-                        hrefLink: "/academy",
-                    },
-                    Mail: {
-                        text: t("drawer.itemNames.mail"),
-                        icon: <MailOutlinedIcon fontSize="small" />,
-                        hrefLink: "/mail",
-                    },
                     "To-do": {
                         text: t("drawer.itemNames.toDo"),
                         icon: <ListAltOutlinedIcon fontSize="small" />,
@@ -121,16 +110,6 @@ const Default: React.FC<IProps> = ({ children, onClick, open, drawerwidth, quick
                         text: t("drawer.itemNames.contacts"),
                         icon: <RecentActorsOutlinedIcon fontSize="small" />,
                         hrefLink: "/contacts",
-                    },
-                    Chat: {
-                        text: t("drawer.itemNames.chat"),
-                        icon: <ChatBubbleOutlineOutlinedIcon fontSize="small" />,
-                        hrefLink: "/chat",
-                    },
-                    Scrumboard: {
-                        text: t("drawer.itemNames.scrumboard"),
-                        icon: <PollOutlinedIcon fontSize="small" />,
-                        hrefLink: "/scrumboard",
                     },
                     Notes: {
                         text: t("drawer.itemNames.notes"),
@@ -241,21 +220,6 @@ const Default: React.FC<IProps> = ({ children, onClick, open, drawerwidth, quick
                         icon: <AccountCircleOutlinedIcon fontSize="small" />,
                         hrefLink: "/profile",
                     },
-                    Search: {
-                        text: t("drawer.itemNames.search"),
-                        icon: <SearchOutlinedIcon fontSize="small" />,
-                        subItem: [
-                            {
-                                text: t("drawer.subItemNames.classic"),
-                                hrefLink: "/classic",
-                            },
-                            {
-                                text: t("drawer.subItemNames.modern"),
-                                hrefLink: "/modern",
-                            },
-                        ],
-                        hrefLink: "/search",
-                    },
                     FAQ: {
                         text: t("drawer.itemNames.faq"),
                         icon: <LiveHelpOutlinedIcon fontSize="small" />,
@@ -275,30 +239,6 @@ const Default: React.FC<IProps> = ({ children, onClick, open, drawerwidth, quick
                         text: t("drawer.itemNames.typography"),
                         icon: <TextFieldsOutlinedIcon fontSize="small" />,
                         hrefLink: "/typography",
-                    },
-                    "Helper Classes": {
-                        text: t("drawer.itemNames.helperClasses"),
-                        icon: <HelpOutlineOutlinedIcon fontSize="small" />,
-                        hrefLink: "/helper-classes",
-                    },
-                    "Page Layouts": {
-                        text: t("drawer.itemNames.PageLayouts"),
-                        icon: <FileCopyOutlinedIcon fontSize="small" />,
-                        subItem: [
-                            {
-                                text: t("drawer.subItemNames.cadred"),
-                                hrefLink: "/cadred",
-                            },
-                            {
-                                text: t("drawer.subItemNames.simple"),
-                                hrefLink: "/simple",
-                            },
-                            {
-                                text: t("drawer.subItemNames.blank"),
-                                hrefLink: "/blank",
-                            },
-                        ],
-                        hrefLink: "/page-layouts",
                     },
                 },
             },
@@ -353,53 +293,56 @@ const Default: React.FC<IProps> = ({ children, onClick, open, drawerwidth, quick
                 setting: {
                     title: t("quickBar.itemTitles.settings"),
                     icon: <SettingsOutlinedIcon fontSize="small" style={{ color: "rgb(153 153 153)" }} />,
-                    component: (
-                        <>
-                            <div>Setting</div>
-                        </>
-                    ),
+                    component: <Settings />,
                 },
             },
         },
     ];
-
+    theme.palette.background.default = ThemesConsts[mainTheme].palette.background.default;
     return (
         <div>
-            <Header onClick={onClick} drawerWidth={drawerwidth} color="#050517" open={open} quickBarWidth={quickBarWidth} />
+            {state.layout.config.header.display && (
+                <Header onClick={onClick} drawerWidth={drawerwidth} open={open} quickBarWidth={state.layout.config.toolbar.display ? quickBarWidth : 0} />
+            )}
+
             <nav className={classes.drawer} aria-label="mailbox folders">
                 <Hidden smUp>
-                    <Drawer
-                        open={open}
-                        drawerWidth={drawerwidth}
-                        drawerVariant="temporary"
-                        drawerAnchor={theme.direction === "rtl" ? "right" : "left"}
-                        handleDrawerToggle={onClick}
-                        ListDrawerItems={ListDrawerItems}
-                        headerTitle="Mobile"
-                    />
+                    {state.layout.config.navbar.display && (
+                        <Drawer
+                            open={open}
+                            drawerWidth={drawerwidth}
+                            drawerVariant="temporary"
+                            drawerAnchor="left"
+                            handleDrawerToggle={onClick}
+                            ListDrawerItems={ListDrawerItems}
+                            headerTitle="Mobile"
+                        />
+                    )}
                 </Hidden>
                 <Hidden xsDown>
-                    <Drawer
-                        open={open}
-                        drawerWidth={drawerwidth}
-                        drawerVariant="persistent"
-                        drawerAnchor="left"
-                        handleDrawerToggle={onClick}
-                        drawerClassName={classes.drawer}
-                        ListDrawerItems={ListDrawerItems}
-                        headerTitle={t("title")}
-                    />
-                    <QuickBar qbWidth={quickBarWidth} qbClassName={classes.quickbar} qbAnchor="right" ListQbItems={ListQuickBarItems} />
+                    {state.layout.config.navbar.display && (
+                        <Drawer
+                            open={open}
+                            drawerWidth={drawerwidth}
+                            drawerVariant="persistent"
+                            drawerAnchor="left"
+                            handleDrawerToggle={onClick}
+                            drawerClassName={classes.drawer}
+                            ListDrawerItems={ListDrawerItems}
+                            headerTitle={t("title")}
+                        />
+                    )}
+                    {state.layout.config.toolbar.display && <QuickBar qbWidth={quickBarWidth} qbClassName={classes.quickbar} qbAnchor="right" ListQbItems={ListQuickBarItems} />}
                 </Hidden>
             </nav>
 
             <div>
                 <main
                     className={clsx(classes.content, {
-                        [classes.contentShift]: open,
+                        [classes.contentShift]: open && state.layout.config.navbar.display,
                     })}
                 >
-                    <div className={classes.drawerHeader} />
+                    {state.layout.config.header.display && <div className={classes.drawerHeader} />}
                     <div className={classes.container}>{children}</div>
                 </main>
             </div>

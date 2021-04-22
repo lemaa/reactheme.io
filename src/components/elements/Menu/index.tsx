@@ -4,9 +4,11 @@ import { IProps } from "@Element/Menu/Menu";
 import useStyles from "@Element/Menu/MenuStyle";
 import { MenuItem } from "@CustomType/index";
 import { useTranslation } from "next-i18next";
+import { useAppSettings } from "@Context/index";
 
 const Menu: React.FunctionComponent<IProps> = ({ anchorEl, menuId, isMenuOpen, onClose, name, ListMenuItems }: IProps) => {
-    const classes = useStyles();
+    const { state } = useAppSettings();
+    const classes = useStyles({ headerTheme: state.theme.header });
     const { t } = useTranslation();
     const welcomeText = `${t("welcome")}, ${name}`;
     return (
@@ -18,6 +20,7 @@ const Menu: React.FunctionComponent<IProps> = ({ anchorEl, menuId, isMenuOpen, o
             transformOrigin={{ vertical: "top", horizontal: "right" }}
             open={isMenuOpen}
             onClose={onClose}
+            classes={{ paper: classes.menuContainer }}
         >
             <MuiMenuItem>
                 <p className={classes.header}>{welcomeText}</p>

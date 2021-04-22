@@ -1,5 +1,6 @@
 import { makeStyles, Theme } from "@material-ui/core/styles";
 import { IState } from "@Layout/Default/Default";
+import { ThemesConsts } from "@Constant/index";
 
 const useStyles = makeStyles<Theme, IState>(theme => ({
     drawer: {
@@ -31,6 +32,7 @@ const useStyles = makeStyles<Theme, IState>(theme => ({
             }),
             marginRight: props => `${props.quickBarWidth}px`,
         },
+        backgroundColor: props => ThemesConsts[props.mainTheme].palette.background.default,
     },
     contentShift: {
         [theme.breakpoints.up("sm")]: {
@@ -41,6 +43,7 @@ const useStyles = makeStyles<Theme, IState>(theme => ({
             marginLeft: props => `${props.drawerwidth}px`,
             marginRight: props => `${props.quickBarWidth}px`,
         },
+        backgroundColor: props => ThemesConsts[props.mainTheme].palette.background.default,
     },
     drawerHeader: {
         display: "flex",

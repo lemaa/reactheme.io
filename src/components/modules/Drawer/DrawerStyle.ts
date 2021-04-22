@@ -1,13 +1,13 @@
-import { IProps } from "@Module/Drawer/Drawer";
 import { makeStyles, Theme } from "@material-ui/core/styles";
+import { ThemesConsts } from "@Constant/index";
 
-const useStyles = makeStyles<Theme, IProps>(theme => ({
+const useStyles = makeStyles<Theme, { drawerWidth: number; navbarTheme: string }>(theme => ({
     toolbar: {
-        color: "#fff",
+        color: props => ThemesConsts[props.navbarTheme].palette.common.white,
         padding: "5px",
         minHeight: "56px",
         textAlign: "center",
-        backgroundColor: "#050517",
+        backgroundColor: props => ThemesConsts[props.navbarTheme].palette.primary.main,
         fontSize: "2rem",
         fontStyle: "italic",
         fontWeight: 500,
@@ -21,30 +21,33 @@ const useStyles = makeStyles<Theme, IProps>(theme => ({
         border: "none",
         overflow: "hidden",
         boxShadow: "0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12)",
+        backgroundColor: props => ThemesConsts[props.navbarTheme].palette.background.default,
     },
     listSubHeader: {
         textTransform: "uppercase",
+        color: props => ThemesConsts[props.navbarTheme].palette.text.disabled,
     },
     listMenuIcon: {
-        color: "#050517",
+        color: props => ThemesConsts[props.navbarTheme].palette.text.primary,
         minWidth: "35px",
     },
 
     listMenuText: {
         fontSize: "13px",
         textTransform: "capitalize",
+        color: props => ThemesConsts[props.navbarTheme].palette.text.primary,
     },
     nested: {
         paddingLeft: theme.spacing(7),
     },
     subItem: {
-        backgroundColor: "#f5f5f5",
+        backgroundColor: props => ThemesConsts[props.navbarTheme].palette.background.default,
     },
     ListItemContainer: {
-        "&:hover, &:hover $listMenuIcon": {
-            color: theme.palette.primary.main,
+        "&:hover, &:hover $listMenuIcon, &:hover $listMenuText": {
+            color: props => ThemesConsts[props.navbarTheme].palette.secondary.main,
             fontWeight: "500",
-            backgroundColor: "#fff",
+            backgroundColor: props => ThemesConsts[props.navbarTheme].palette.background.default,
         },
     },
 }));

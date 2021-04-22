@@ -5,8 +5,10 @@ import Head from "next/head";
 import { appWithTranslation } from "next-i18next";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { ThemeProvider } from "@material-ui/core/styles";
+import { AppSettingsProvider, useAppSettings } from "@Context/index";
 import theme from "@Style/base/theme";
 import "@Style/global.scss";
+import { ThemesConsts } from "@Constant/index";
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
     React.useEffect(() => {
@@ -18,18 +20,27 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
             }
         }
     }, []);
-
-    return (
-        <>
-            <Head>
-                <title>My page</title>
-                <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
-            </Head>
+    const Main = () => {
+        const { state } = useAppSettings();
+        const mainTheme = state.theme.main;
+        theme.palette.background.default = ThemesConsts[mainTheme].palette.background.default;
+        return (
             <ThemeProvider theme={theme}>
                 {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
                 <CssBaseline />
                 <Component {...pageProps} />
             </ThemeProvider>
+        );
+    };
+    return (
+        <>
+            <Head>
+                <title>React Theme</title>
+                <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
+            </Head>
+            <AppSettingsProvider>
+                <Main />
+            </AppSettingsProvider>
         </>
     );
 };

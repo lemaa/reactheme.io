@@ -9,4 +9,5 @@ export type IProps = {
 export type IState = {
     drawerwidth: number;
     quickBarWidth: number;
+    mainTheme: string;
 };

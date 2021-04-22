@@ -3,6 +3,5 @@ export interface IProps {
     open: boolean;
     drawerWidth: number;
     quickBarWidth: number;
-    color: string;
     onClick: () => void;
 }
