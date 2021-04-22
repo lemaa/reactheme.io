@@ -26,6 +26,7 @@ module.exports = {
         "^@CustomType(.*)$": "<rootDir>/src/types$1",
         "^@Mock(.*)$": "<rootDir>/src/mocks$1",
         "^@Pages(.*)$": "<rootDir>/pages$1",
+        "^@Test(.*)$": "<rootDir>/test$1",
     },
     preset: "ts-jest",
 };

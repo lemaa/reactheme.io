@@ -34,7 +34,8 @@ module.exports = {
             "@Style": path.resolve(__dirname, "../src/styles"),
             "@CustomType": path.resolve(__dirname, "../src/types"),
             "@Mock": path.resolve(__dirname, "../src/mocks"),
-            "@Pages": path.resolve(__dirname, "../pages")
+            "@Pages": path.resolve(__dirname, "../pages"),
+            "@Test": path.resolve(__dirname, "../test")
         };
         // If you are using CSS Modules, check out the setup from Justin (justincy)
         // Many thanks to Justin for the inspiration

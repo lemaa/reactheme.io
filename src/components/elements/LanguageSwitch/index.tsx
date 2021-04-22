@@ -11,7 +11,9 @@ const LanguageSwitch: React.FC<IProps> = ({ ListLanguageItems, srcFlags }) => {
     const classes = useStyles();
     const router = useRouter();
     const [dialogOpen, setDialogOpen] = React.useState<false | boolean>(false);
-    const defaultLanguage = ListLanguageItems.find((languageItem: { language: string; languageAbbr: string; nameFlag: string }) => languageItem.languageAbbr === router.locale);
+    let localeLanguage: string = "en";
+    if (router !== null && router.locale !== undefined) localeLanguage = router.locale;
+    const defaultLanguage = ListLanguageItems.find((languageItem: { language: string; languageAbbr: string; nameFlag: string }) => languageItem.languageAbbr === localeLanguage);
     const [selectedValue] = React.useState<{ language: string; languageAbbr: string; nameFlag: string }>(defaultLanguage);
 
     const handleClickOpen = () => {

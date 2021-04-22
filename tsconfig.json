@@ -31,6 +31,7 @@
         "@CustomType/*": ["src/types/*"],
         "@Mock/*": ["src/mocks/*"],
         "@Pages/*": ["pages/*"],
+        "@Test/*": ["test/*"],
      },
     "typeRoots": [ "src/types/customTypes", "node_modules/@types"]
 

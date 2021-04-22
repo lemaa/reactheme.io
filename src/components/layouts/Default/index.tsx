@@ -201,7 +201,7 @@ const Default: React.FC<IProps> = ({ children, onClick, open, drawerwidth, quick
                         hrefLink: "/maintenance",
                     },
                     Pricing: {
-                        text: t("pricing"),
+                        text: t("drawer.itemNames.pricing"),
                         icon: <MonetizationOnOutlinedIcon fontSize="small" />,
                         subItem: [
                             {
