@@ -1,94 +1,91 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# React theme
+Responsive admin template based on [Next.js](https://nextjs.org/)
 
 ## Getting Started
 
-First, run the development server:
+First Clone the repo by using `git clone`.
 
-```bash
-npm run dev
-# or
-yarn dev
+Then Run `npm install` .
+
+Finally, run the development server using `npm run dev`.
+
+Open [http://localhost:3005](http://localhost:3005) with your browser to see the result.
+
+ 
+# Built With
+
+```
+Next.js 
+Typescript
+Material-ui
+i18next
+StoryBook
+Jest
+Cypress
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### project structure
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+```
+pages                              # App pages
+│   _app.tsx                       # App entry point
+│   _document.tsx                
+│   index.tsx                      # App home page
+│   calendar.tsx                   # App calendar page
+src 
+└───api                            # Api calls
+└───components                     # App components 
+        └───elements               # App basic blocks
+        └───layouts                # App different layout 
+        └───modules                # App modules
+        └───templates              # App page templates
+└───constants                      # App custom constants 
+└───context                        # App custom contexts 
+└───hooks                          # App custom hooks
+└───mocks                          # App mocks
+└───styles                         # App styles
+└───types                          # App custom types
+└───utils                          # App utils
 
-## Learn More
+```
 
-To learn more about Next.js, take a look at the following resources:
+### Running Dev Server
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Run on your terminal `npm run dev`, the server will restart everytime we make a change in our code.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Building APP for Production
 
-## Deploy on Vercel
+run `npm run build`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Running StoryBook
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+run `npm run storybook`
 
+### Running tests
 
+run `npm run test`
 
-/Sass
-
-/Components - A directory which has a .scss file for each React component
-/Pages - A directory which has a .scss file for each page that requires custom styles
-/Templates (optional) - A directory for templates if using them (for tools such as gatsby)
-/_elements.scss - Any generic styles for the site. Shouldn't have any classes or ids for selectors.
-/_keyframes.scss (optional) - Any keyframes or animations I will be using for the site.
-/_mixins.scss - Any mixins (style snippets) that will be used over and over
-/_variables.scss - Any variables that will be used throughout styles
-/app.scss - The file that imports all other scss files
-
-
-https://wityan.medium.com/next-js-project-structure-1531610bed71
-
-elements
-This directory contains all the basic building blocks for your app. For example a button or a headline component.
-
-
-modules
-Create all your components here which are more than a basic building block. This could be a header or a footer component. Most likely those modules are built out of multiple elements.
-
-
-templates
-In the templates directory, you should place all your page templates which are then called from your Next.js specific pages. You can find an example of this pattern in the Repository.
-
-Layouts are used to wrap your Templates and provide them with the components which will be displayed by default in a specific layout. For example, you would include the Footer and the Header in a default layout.
-
-
-branche name exp
-
-feature/add-users-controller
+### Other scripts
  
-hotfix/profile-page-error/621
+
+
+# Versioning
+For the versions available, see the tags on this repository.
+
+# Authors
+Amell Fezai - Initial work
  
-experiment/try-api-key
- 
-chore/remove-deprecated-method/924
+# License
+This project is licensed under the MIT License - see the LICENSE.md file for details
 
 
-https://www.codeheroes.fr/2020/06/29/git-comment-nommer-ses-branches-et-ses-commits/
+# Some helpful links used for this work
+Next.js project structure
+[https://wityan.medium.com/next-js-project-structure-1531610bed71]
 
+Git branches and commits best practises
+[https://www.codeheroes.fr/2020/06/29/git-comment-nommer-ses-branches-et-ses-commits/]
 
-stories ==> component/elements 
-        ==> component /modules
-
-const withPlugins = require('next-compose-plugins');
-const withSass = require('@zeit/next-sass');
-const withCSS = require('@zeit/next-css');
-
-module.exports = withPlugins(
-  [
-    [withSass, { /* plugin config here ... */ }],
-    [withCSS,  { /* plugin config here ... */ }],
-  ],
-  {
-    /* global config here ... */
-  },
-);
 
 
     
