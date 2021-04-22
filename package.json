@@ -5,7 +5,7 @@
   "homepage": ".",
   "scripts": {
     "dev": "next dev -p 3005",
-    "build": "set NODE_ENV=production && next build && next start",
+    "build": "set NODE_ENV=production && next build",
     "start": "next start",
     "lint": "eslint ./{src,pages}/**/*.{ts,tsx}",
     "pretty": "prettier --write --config .prettierrc.json {src,pages}/**/*.{ts,tsx}",
