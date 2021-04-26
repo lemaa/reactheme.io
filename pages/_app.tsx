@@ -4,9 +4,9 @@ import type { AppProps } from "next/app";
 import Head from "next/head";
 import { appWithTranslation } from "next-i18next";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import { ThemeProvider } from "@material-ui/core/styles";
+import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import { AppSettingsProvider, useAppSettings } from "@Context/index";
-import theme from "@Style/base/theme";
+// import theme from "@Style/base/theme";
 import "@Style/global.scss";
 import { ThemesConsts } from "@Constant/index";
 
@@ -23,7 +23,18 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
     const Main = () => {
         const { state } = useAppSettings();
         const mainTheme = state.theme.main;
-        theme.palette.background.default = ThemesConsts[mainTheme].palette.background.default;
+        const theme = createMuiTheme({
+            overrides: {
+                MuiCssBaseline: {
+                    "@global": {
+                        body: {
+                            backgroundColor: ThemesConsts[mainTheme].palette.background.default,
+                            color: ThemesConsts[mainTheme].palette.text.primary,
+                        },
+                    },
+                },
+            },
+        });
         return (
             <ThemeProvider theme={theme}>
                 {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}

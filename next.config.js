@@ -8,4 +8,3 @@ module.exports = withPlugins([
         i18n
     },
 ]);
-
