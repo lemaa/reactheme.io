@@ -59,6 +59,11 @@ const useStyles = makeStyles<Theme, { qbWidth: number; toolbarTheme: string }>((
         fontSize: "14px",
         color: props => ThemesConsts[props.toolbarTheme].palette.text.primary,
     },
+    floatingSetting: {
+        position: "fixed",
+        right: "15px",
+        bottom: "35px",
+    },
 }));
 
 export default useStyles;

@@ -31,8 +31,6 @@ import {
 } from "@material-ui/icons";
 import { useTranslation } from "next-i18next";
 import clsx from "clsx";
-import theme from "@Style/base/theme";
-import { ThemesConsts } from "@Constant/index";
 
 const Default: React.FC<IProps> = ({ children, onClick, open, drawerwidth, quickBarWidth }) => {
     const { state } = useAppSettings();
@@ -265,7 +263,7 @@ const Default: React.FC<IProps> = ({ children, onClick, open, drawerwidth, quick
             quickbar: {
                 todolist: {
                     title: t("quickBar.itemTitles.toDoList"),
-                    icon: <ListOutlinedIcon fontSize="small" style={{ color: "rgb(153 153 153)" }} />,
+                    icon: <ListOutlinedIcon fontSize="small" />,
                     component: (
                         <>
                             <div>To-do list</div>
@@ -274,7 +272,7 @@ const Default: React.FC<IProps> = ({ children, onClick, open, drawerwidth, quick
                 },
                 notes: {
                     title: t("quickBar.itemTitles.notes"),
-                    icon: <CreateOutlinedIcon fontSize="small" style={{ color: "rgb(153 153 153)" }} />,
+                    icon: <CreateOutlinedIcon fontSize="small" />,
                     component: (
                         <>
                             <div>Notes</div>
@@ -283,7 +281,7 @@ const Default: React.FC<IProps> = ({ children, onClick, open, drawerwidth, quick
                 },
                 theme: {
                     title: t("quickBar.itemTitles.themeColor"),
-                    icon: <ColorLensOutlinedIcon fontSize="small" style={{ color: "rgb(153 153 153)" }} />,
+                    icon: <ColorLensOutlinedIcon fontSize="small" />,
                     component: (
                         <>
                             <div>Theme color</div>
@@ -292,13 +290,19 @@ const Default: React.FC<IProps> = ({ children, onClick, open, drawerwidth, quick
                 },
                 setting: {
                     title: t("quickBar.itemTitles.settings"),
-                    icon: <SettingsOutlinedIcon fontSize="small" style={{ color: "rgb(153 153 153)" }} />,
+                    icon: <SettingsOutlinedIcon fontSize="small" />,
                     component: <Settings />,
                 },
             },
         },
     ];
-    theme.palette.background.default = ThemesConsts[mainTheme].palette.background.default;
+
+    const defaultQuickBarItem = {
+        title: ListQuickBarItems[0].quickbar.setting.title,
+        icon: ListQuickBarItems[0].quickbar.setting.icon,
+        component: ListQuickBarItems[0].quickbar.setting.component,
+    };
+
     return (
         <div>
             {state.layout.config.header.display && (
@@ -332,7 +336,7 @@ const Default: React.FC<IProps> = ({ children, onClick, open, drawerwidth, quick
                             headerTitle={t("title")}
                         />
                     )}
-                    {state.layout.config.toolbar.display && <QuickBar qbWidth={quickBarWidth} qbClassName={classes.quickbar} qbAnchor="right" ListQbItems={ListQuickBarItems} />}
+                    <QuickBar qbWidth={quickBarWidth} qbClassName={classes.quickbar} qbAnchor="right" defaultItem={defaultQuickBarItem} ListQbItems={ListQuickBarItems} />
                 </Hidden>
             </nav>
 

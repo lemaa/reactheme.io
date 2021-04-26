@@ -1,5 +1,5 @@
 import React from "react";
-import { Tooltip, Drawer as MuiDrawer, List, ListItem, ListItemIcon, Divider, Button, Typography } from "@material-ui/core";
+import { Tooltip, Drawer as MuiDrawer, List, ListItem, ListItemIcon, Divider, Button, Typography, Fab } from "@material-ui/core";
 import { IProps } from "@Element/QuickBar/QuickBar";
 import useStyles from "@Element/QuickBar/QuickBarStyle";
 import { CloseOutlined } from "@material-ui/icons";
@@ -8,7 +8,7 @@ import PerfectScrollbar from "react-perfect-scrollbar";
 import "react-perfect-scrollbar/dist/css/styles.css";
 import { useAppSettings } from "@Context/index";
 
-const QuickBar: React.FunctionComponent<IProps> = ({ qbWidth, qbClassName, qbAnchor, ListQbItems }: IProps) => {
+const QuickBar: React.FunctionComponent<IProps> = ({ qbWidth, qbClassName, qbAnchor, ListQbItems, defaultItem }: IProps) => {
     const { state } = useAppSettings();
     const classes = useStyles({
         qbWidth,
@@ -33,44 +33,51 @@ const QuickBar: React.FunctionComponent<IProps> = ({ qbWidth, qbClassName, qbAnc
 
     return (
         <>
-            <MuiDrawer
-                variant="permanent"
-                anchor={qbAnchor}
-                open
-                classes={{
-                    paper: `${classes.drawerPaper} ${qbClassName}`,
-                }}
-                ModalProps={{
-                    keepMounted: true,
-                }}
-            >
-                <div className={classes.drawerContainer}>
-                    {Object.keys(ListItems).map((item: string, index: number) => {
-                        return (
-                            <List className={classes.root} component="nav" key={index.toString()}>
-                                {Object.keys(ListItems[item]).map((subItem: string, subIndex: number) => {
-                                    if (ListItems[item][subItem].title !== undefined) {
-                                        return (
-                                            <ListItem
-                                                className={classes.ListItemContainer}
-                                                key={subIndex.toString()}
-                                                onClick={() => handleOpenEvent(ListItems[item][subItem].title, ListItems[item][subItem].component)}
-                                                button
-                                            >
-                                                <Tooltip classes={{ tooltip: classes.ToolTipDrawer }} title={ListItems[item][subItem].title} placement="left">
-                                                    <ListItemIcon className={classes.listMenuIcon}>{ListItems[item][subItem].icon}</ListItemIcon>
-                                                </Tooltip>
-                                            </ListItem>
-                                        );
-                                    }
-                                    return false;
-                                })}
-                            </List>
-                        );
-                    })}
-                </div>
-            </MuiDrawer>
+            {state.layout.config.toolbar.display && (
+                <MuiDrawer
+                    variant="permanent"
+                    anchor={qbAnchor}
+                    open
+                    classes={{
+                        paper: `${classes.drawerPaper} ${qbClassName}`,
+                    }}
+                    ModalProps={{
+                        keepMounted: true,
+                    }}
+                >
+                    <div className={classes.drawerContainer}>
+                        {Object.keys(ListItems).map((item: string, index: number) => {
+                            return (
+                                <List className={classes.root} component="nav" key={index.toString()}>
+                                    {Object.keys(ListItems[item]).map((subItem: string, subIndex: number) => {
+                                        if (ListItems[item][subItem].title !== undefined) {
+                                            return (
+                                                <ListItem
+                                                    className={classes.ListItemContainer}
+                                                    key={subIndex.toString()}
+                                                    onClick={() => handleOpenEvent(ListItems[item][subItem].title, ListItems[item][subItem].component)}
+                                                    button
+                                                >
+                                                    <Tooltip classes={{ tooltip: classes.ToolTipDrawer }} title={ListItems[item][subItem].title} placement="left">
+                                                        <ListItemIcon className={classes.listMenuIcon}>{ListItems[item][subItem].icon}</ListItemIcon>
+                                                    </Tooltip>
+                                                </ListItem>
+                                            );
+                                        }
+                                        return false;
+                                    })}
+                                </List>
+                            );
+                        })}
+                    </div>
+                </MuiDrawer>
+            )}
 
+            {!state.layout.config.toolbar.display && (
+                <Fab className={classes.floatingSetting} onClick={() => handleOpenEvent(defaultItem.title, defaultItem.component)} color="primary" aria-label={defaultItem.title}>
+                    {defaultItem.icon}
+                </Fab>
+            )}
             <div
                 className={clsx(classes.quickbarDetails, {
                     [classes.quickbarDetailsOpen]: dialogOpen,

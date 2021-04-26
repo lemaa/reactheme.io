@@ -10,14 +10,29 @@ const ListQuickBarItems = [
             todolist: {
                 title: "To-do list",
                 icon: <DashboardOutlined fontSize="small" style={{ color: "rgb(153 153 153)" }} />,
+                component: (
+                    <>
+                        <div>To-do list</div>
+                    </>
+                ),
             },
             notes: {
                 title: "Notes",
                 icon: <TodayOutlined fontSize="small" style={{ color: "rgb(153 153 153)" }} />,
+                component: (
+                    <>
+                        <div>To-do list</div>
+                    </>
+                ),
             },
             setting: {
                 title: "Setting",
                 icon: <StoreOutlined fontSize="small" style={{ color: "rgb(153 153 153)" }} />,
+                component: (
+                    <>
+                        <div>To-do list</div>
+                    </>
+                ),
             },
         },
     },
@@ -36,4 +51,13 @@ Default.args = {
     qbClassName: "drawer-component",
     qbAnchor: "right",
     ListQbItems: ListQuickBarItems,
+    defaultItem: {
+        title: "Setting",
+        icon: <StoreOutlined fontSize="small" style={{ color: "rgb(153 153 153)" }} />,
+        component: (
+            <>
+                <div>To-do list</div>
+            </>
+        ),
+    },
 };

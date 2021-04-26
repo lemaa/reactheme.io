@@ -15,17 +15,42 @@ test("<QuickBar />", () => {
                 todolist: {
                     title: "To-do list",
                     icon: <DashboardOutlined fontSize="small" style={{ color: "rgb(153 153 153)" }} />,
+                    component: (
+                        <>
+                            <div>To-do list</div>
+                        </>
+                    ),
                 },
                 notes: {
                     title: "Notes",
                     icon: <TodayOutlined fontSize="small" style={{ color: "rgb(153 153 153)" }} />,
+                    component: (
+                        <>
+                            <div>To-do list</div>
+                        </>
+                    ),
                 },
                 setting: {
                     title: "Setting",
                     icon: <StoreOutlined fontSize="small" style={{ color: "rgb(153 153 153)" }} />,
+                    component: (
+                        <>
+                            <div>To-do list</div>
+                        </>
+                    ),
                 },
             },
         },
     ];
-    render(<QuickBar qbWidth={250} qbClassName="drawer-component" qbAnchor="left" ListQbItems={ListQuickBarItems} />);
+
+    const defaultItem = {
+        title: "Setting",
+        icon: <StoreOutlined fontSize="small" style={{ color: "rgb(153 153 153)" }} />,
+        component: (
+            <>
+                <div>To-do list</div>
+            </>
+        ),
+    };
+    render(<QuickBar qbWidth={250} defaultItem={defaultItem} qbClassName="drawer-component" qbAnchor="left" ListQbItems={ListQuickBarItems} />);
 });
