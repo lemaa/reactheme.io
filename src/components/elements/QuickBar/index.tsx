@@ -8,7 +8,7 @@ import PerfectScrollbar from "react-perfect-scrollbar";
 import "react-perfect-scrollbar/dist/css/styles.css";
 import { useAppSettings } from "@Context/index";
 
-const QuickBar: React.FunctionComponent<IProps> = ({ qbWidth, qbClassName, qbAnchor, ListQbItems, defaultItem }: IProps) => {
+const QuickBar: React.FunctionComponent<IProps> = ({ qbWidth, qbClassName, ListQbItems, defaultItem }: IProps) => {
     const { state } = useAppSettings();
     const classes = useStyles({
         qbWidth,
@@ -36,7 +36,7 @@ const QuickBar: React.FunctionComponent<IProps> = ({ qbWidth, qbClassName, qbAnc
             {state.layout.config.toolbar.display && (
                 <MuiDrawer
                     variant="permanent"
-                    anchor={qbAnchor}
+                    anchor={state.layout.config.toolbar.position}
                     open
                     classes={{
                         paper: `${classes.drawerPaper} ${qbClassName}`,

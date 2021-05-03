@@ -1,13 +1,14 @@
 import { fade, makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 import { ThemesConsts } from "@Constant/index";
 
-const useStyles = makeStyles<Theme, { drawerWidth: number; quickBarWidth: number; headerTheme: string }>((theme: Theme) =>
+const useStyles = makeStyles<Theme, { drawerWidth: number; quickBarWidth: number; quickBarPosition: string; headerTheme: string }>((theme: Theme) =>
     createStyles({
         appBar: {
             backgroundColor: props => ThemesConsts[props.headerTheme].palette.primary.dark,
             [theme.breakpoints.up("sm")]: {
                 width: props => `calc(100% - ${props.quickBarWidth}px)`,
-                marginRight: props => props.quickBarWidth,
+                marginRight: props => (props.quickBarPosition === "right" ? `${props.quickBarWidth}px` : "0px"),
+                marginLeft: props => (props.quickBarPosition === "left" ? `${props.quickBarWidth}px` : "0px"),
                 transition: theme.transitions.create(["margin", "width"], {
                     easing: theme.transitions.easing.sharp,
                     duration: theme.transitions.duration.leavingScreen,
@@ -21,8 +22,8 @@ const useStyles = makeStyles<Theme, { drawerWidth: number; quickBarWidth: number
                     easing: theme.transitions.easing.easeOut,
                     duration: theme.transitions.duration.enteringScreen,
                 }),
-                marginLeft: props => props.drawerWidth,
-                marginRight: props => props.quickBarWidth,
+                marginLeft: props => (props.quickBarPosition === "left" ? `${props.quickBarWidth + props.drawerWidth}px` : `${props.drawerWidth}px`),
+                marginRight: props => (props.quickBarPosition === "right" ? `${props.quickBarWidth}px` : "0px"),
             },
         },
 

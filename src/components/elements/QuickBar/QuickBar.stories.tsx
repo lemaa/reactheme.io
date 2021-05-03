@@ -49,7 +49,6 @@ export const Default = Template.bind({});
 Default.args = {
     qbWidth: 60,
     qbClassName: "drawer-component",
-    qbAnchor: "right",
     ListQbItems: ListQuickBarItems,
     defaultItem: {
         title: "Setting",

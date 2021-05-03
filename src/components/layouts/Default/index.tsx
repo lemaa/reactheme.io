@@ -38,6 +38,7 @@ const Default: React.FC<IProps> = ({ children, onClick, open, drawerwidth, quick
     const drawerstate: IState = {
         drawerwidth,
         quickBarWidth: state.layout.config.toolbar.display ? quickBarWidth : 0,
+        quickBarPosition: state.layout.config.toolbar.position,
         mainTheme,
     };
     const classes = useStyles(drawerstate);
@@ -336,7 +337,7 @@ const Default: React.FC<IProps> = ({ children, onClick, open, drawerwidth, quick
                             headerTitle={t("title")}
                         />
                     )}
-                    <QuickBar qbWidth={quickBarWidth} qbClassName={classes.quickbar} qbAnchor="right" defaultItem={defaultQuickBarItem} ListQbItems={ListQuickBarItems} />
+                    <QuickBar qbWidth={quickBarWidth} qbClassName={classes.quickbar} defaultItem={defaultQuickBarItem} ListQbItems={ListQuickBarItems} />
                 </Hidden>
             </nav>
 

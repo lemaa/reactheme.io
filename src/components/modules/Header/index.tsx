@@ -23,6 +23,7 @@ const Header: React.FunctionComponent<IProps> = ({ open, onClick, title, drawerW
     const classes = useStyles({
         drawerWidth,
         quickBarWidth,
+        quickBarPosition: state.layout.config.toolbar.position,
         headerTheme: state.theme.header,
     });
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);

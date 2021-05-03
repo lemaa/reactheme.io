@@ -52,5 +52,5 @@ test("<QuickBar />", () => {
             </>
         ),
     };
-    render(<QuickBar qbWidth={250} defaultItem={defaultItem} qbClassName="drawer-component" qbAnchor="left" ListQbItems={ListQuickBarItems} />);
+    render(<QuickBar qbWidth={250} defaultItem={defaultItem} qbClassName="drawer-component" ListQbItems={ListQuickBarItems} />);
 });

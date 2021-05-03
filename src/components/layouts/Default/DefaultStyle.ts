@@ -5,6 +5,7 @@ import { ThemesConsts } from "@Constant/index";
 const useStyles = makeStyles<Theme, IState>(theme => ({
     drawer: {
         flexShrink: 0,
+        marginLeft: props => (props.quickBarPosition === "left" ? `${props.quickBarWidth}px` : "0px"),
     },
     paper: {
         padding: theme.spacing(2),
@@ -30,7 +31,8 @@ const useStyles = makeStyles<Theme, IState>(theme => ({
                 easing: theme.transitions.easing.sharp,
                 duration: theme.transitions.duration.leavingScreen,
             }),
-            marginRight: props => `${props.quickBarWidth}px`,
+            marginRight: props => (props.quickBarPosition === "right" ? `${props.quickBarWidth}px` : "0px"),
+            marginLeft: props => (props.quickBarPosition === "left" ? `${props.quickBarWidth}px` : "0px"),
         },
         backgroundColor: props => ThemesConsts[props.mainTheme].palette.background.default,
     },
@@ -40,8 +42,8 @@ const useStyles = makeStyles<Theme, IState>(theme => ({
                 easing: theme.transitions.easing.easeOut,
                 duration: theme.transitions.duration.enteringScreen,
             }),
-            marginLeft: props => `${props.drawerwidth}px`,
-            marginRight: props => `${props.quickBarWidth}px`,
+            marginLeft: props => (props.quickBarPosition === "left" ? `${props.quickBarWidth + props.drawerwidth}px` : `${props.drawerwidth}px`),
+            marginRight: props => (props.quickBarPosition === "right" ? `${props.quickBarWidth}px` : "0px"),
         },
         backgroundColor: props => ThemesConsts[props.mainTheme].palette.background.default,
     },
