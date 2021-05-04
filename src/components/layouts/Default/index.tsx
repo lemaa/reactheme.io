@@ -36,9 +36,10 @@ const Default: React.FC<IProps> = ({ children, onClick, open, drawerwidth, quick
     const { state } = useAppSettings();
     const mainTheme = state.theme.main;
     const drawerstate: IState = {
-        drawerwidth,
+        drawerWidth: drawerwidth,
         quickBarWidth: state.layout.config.toolbar.display ? quickBarWidth : 0,
         quickBarPosition: state.layout.config.toolbar.position,
+        drawerPosition: state.layout.config.navbar.position,
         mainTheme,
     };
     const classes = useStyles(drawerstate);
@@ -317,7 +318,6 @@ const Default: React.FC<IProps> = ({ children, onClick, open, drawerwidth, quick
                             open={open}
                             drawerWidth={drawerwidth}
                             drawerVariant="temporary"
-                            drawerAnchor="left"
                             handleDrawerToggle={onClick}
                             ListDrawerItems={ListDrawerItems}
                             headerTitle="Mobile"
@@ -330,7 +330,6 @@ const Default: React.FC<IProps> = ({ children, onClick, open, drawerwidth, quick
                             open={open}
                             drawerWidth={drawerwidth}
                             drawerVariant="persistent"
-                            drawerAnchor="left"
                             handleDrawerToggle={onClick}
                             drawerClassName={classes.drawer}
                             ListDrawerItems={ListDrawerItems}

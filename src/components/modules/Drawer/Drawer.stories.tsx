@@ -41,7 +41,6 @@ appBar.args = {
     drawerWidth: 250,
     drawerClassName: "drawer-component",
     drawerVariant: "permanent",
-    drawerAnchor: "left",
     handleDrawerToggle: () => {},
     ListDrawerItems: ListAppBarItems,
     headerTitle: "Jon Doe",

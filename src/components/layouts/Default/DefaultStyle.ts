@@ -6,6 +6,7 @@ const useStyles = makeStyles<Theme, IState>(theme => ({
     drawer: {
         flexShrink: 0,
         marginLeft: props => (props.quickBarPosition === "left" ? `${props.quickBarWidth}px` : "0px"),
+        marginRight: props => (props.quickBarPosition === "right" ? `${props.quickBarWidth}px` : "0px"),
     },
     paper: {
         padding: theme.spacing(2),
@@ -42,8 +43,30 @@ const useStyles = makeStyles<Theme, IState>(theme => ({
                 easing: theme.transitions.easing.easeOut,
                 duration: theme.transitions.duration.enteringScreen,
             }),
-            marginLeft: props => (props.quickBarPosition === "left" ? `${props.quickBarWidth + props.drawerwidth}px` : `${props.drawerwidth}px`),
-            marginRight: props => (props.quickBarPosition === "right" ? `${props.quickBarWidth}px` : "0px"),
+            marginLeft: props => {
+                if (props.drawerPosition === "left" && props.quickBarPosition === "left") {
+                    return `${props.quickBarWidth + props.drawerWidth}px`;
+                }
+                if (props.drawerPosition === "left" && props.quickBarPosition !== "left") {
+                    return `${props.drawerWidth}px`;
+                }
+                if (props.drawerPosition !== "left" && props.quickBarPosition === "left") {
+                    return `${props.quickBarWidth}px`;
+                }
+                return "0px";
+            },
+            marginRight: props => {
+                if (props.drawerPosition === "right" && props.quickBarPosition === "right") {
+                    return `${props.quickBarWidth + props.drawerWidth}px`;
+                }
+                if (props.drawerPosition === "right" && props.quickBarPosition !== "right") {
+                    return `${props.drawerWidth}px`;
+                }
+                if (props.drawerPosition !== "right" && props.quickBarPosition === "right") {
+                    return `${props.quickBarWidth}px`;
+                }
+                return "0px";
+            },
         },
         backgroundColor: props => ThemesConsts[props.mainTheme].palette.background.default,
     },

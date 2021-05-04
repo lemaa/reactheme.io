@@ -13,6 +13,7 @@ const QuickBar: React.FunctionComponent<IProps> = ({ qbWidth, qbClassName, ListQ
     const classes = useStyles({
         qbWidth,
         toolbarTheme: state.theme.toolbar,
+        drawerPosition: state.layout.config.navbar.position,
     });
     const ListItems = ListQbItems[0];
     const [dialogOpen, setDialogOpen] = React.useState<false | boolean>(false);

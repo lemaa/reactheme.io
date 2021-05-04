@@ -9,17 +9,7 @@ import "react-perfect-scrollbar/dist/css/styles.css";
 import Link from "next/link";
 import { useAppSettings } from "@Context/index";
 
-const Drawer: React.FunctionComponent<IProps> = ({
-    prefetch,
-    ListDrawerItems,
-    drawerVariant,
-    drawerAnchor,
-    open,
-    handleDrawerToggle,
-    drawerClassName,
-    headerTitle,
-    drawerWidth,
-}: IProps) => {
+const Drawer: React.FunctionComponent<IProps> = ({ prefetch, ListDrawerItems, drawerVariant, open, handleDrawerToggle, drawerClassName, headerTitle, drawerWidth }: IProps) => {
     const { state } = useAppSettings();
 
     const classes = useStyles({
@@ -47,7 +37,7 @@ const Drawer: React.FunctionComponent<IProps> = ({
     return (
         <MuiDrawer
             variant={drawerVariant}
-            anchor={drawerAnchor}
+            anchor={state.layout.config.navbar.position}
             open={open}
             onClose={handleDrawerToggle}
             classes={{

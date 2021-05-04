@@ -39,7 +39,6 @@ test("<Drawer />", () => {
             drawerWidth={250}
             drawerClassName="drawer-component"
             drawerVariant="permanent"
-            drawerAnchor="left"
             handleDrawerToggle={handleDrawerToggleMock}
             ListDrawerItems={ListDrawerItems}
             headerTitle="Jon Doe"

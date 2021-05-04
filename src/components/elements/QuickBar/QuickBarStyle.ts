@@ -1,7 +1,7 @@
 import { makeStyles, Theme } from "@material-ui/core/styles";
 import { ThemesConsts } from "@Constant/index";
 
-const useStyles = makeStyles<Theme, { qbWidth: number; toolbarTheme: string }>(() => ({
+const useStyles = makeStyles<Theme, { qbWidth: number; toolbarTheme: string; drawerPosition: string }>(() => ({
     drawerContainer: {
         height: "100%",
         backgroundColor: props => ThemesConsts[props.toolbarTheme].palette.background.default,
@@ -61,7 +61,8 @@ const useStyles = makeStyles<Theme, { qbWidth: number; toolbarTheme: string }>((
     },
     floatingSetting: {
         position: "fixed",
-        right: "15px",
+        right: props => (props.drawerPosition === "left" ? "15px" : "unset"),
+        left: props => (props.drawerPosition === "right" ? "15px" : "unset"),
         bottom: "35px",
     },
 }));

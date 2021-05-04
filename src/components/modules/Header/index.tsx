@@ -24,6 +24,7 @@ const Header: React.FunctionComponent<IProps> = ({ open, onClick, title, drawerW
         drawerWidth,
         quickBarWidth,
         quickBarPosition: state.layout.config.toolbar.position,
+        drawerPosition: state.layout.config.navbar.position,
         headerTheme: state.theme.header,
     });
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);

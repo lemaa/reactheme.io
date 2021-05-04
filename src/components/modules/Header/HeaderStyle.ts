@@ -1,7 +1,7 @@
 import { fade, makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 import { ThemesConsts } from "@Constant/index";
 
-const useStyles = makeStyles<Theme, { drawerWidth: number; quickBarWidth: number; quickBarPosition: string; headerTheme: string }>((theme: Theme) =>
+const useStyles = makeStyles<Theme, { drawerWidth: number; quickBarWidth: number; drawerPosition: string; quickBarPosition: string; headerTheme: string }>((theme: Theme) =>
     createStyles({
         appBar: {
             backgroundColor: props => ThemesConsts[props.headerTheme].palette.primary.dark,
@@ -22,8 +22,30 @@ const useStyles = makeStyles<Theme, { drawerWidth: number; quickBarWidth: number
                     easing: theme.transitions.easing.easeOut,
                     duration: theme.transitions.duration.enteringScreen,
                 }),
-                marginLeft: props => (props.quickBarPosition === "left" ? `${props.quickBarWidth + props.drawerWidth}px` : `${props.drawerWidth}px`),
-                marginRight: props => (props.quickBarPosition === "right" ? `${props.quickBarWidth}px` : "0px"),
+                marginLeft: props => {
+                    if (props.drawerPosition === "left" && props.quickBarPosition === "left") {
+                        return `${props.quickBarWidth + props.drawerWidth}px`;
+                    }
+                    if (props.drawerPosition === "left" && props.quickBarPosition !== "left") {
+                        return `${props.drawerWidth}px`;
+                    }
+                    if (props.drawerPosition !== "left" && props.quickBarPosition === "left") {
+                        return `${props.quickBarWidth}px`;
+                    }
+                    return "0px";
+                },
+                marginRight: props => {
+                    if (props.drawerPosition === "right" && props.quickBarPosition === "right") {
+                        return `${props.quickBarWidth + props.drawerWidth}px`;
+                    }
+                    if (props.drawerPosition === "right" && props.quickBarPosition !== "right") {
+                        return `${props.drawerWidth}px`;
+                    }
+                    if (props.drawerPosition !== "right" && props.quickBarPosition === "right") {
+                        return `${props.quickBarWidth}px`;
+                    }
+                    return "0px";
+                },
             },
         },
 
