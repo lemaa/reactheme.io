@@ -1,6 +1,6 @@
 import React from "react";
 import clsx from "clsx";
-import { Collapse, Divider, Drawer as MuiDrawer, List, ListItem, ListItemIcon, ListItemText, ListSubheader } from "@material-ui/core";
+import { Collapse, Drawer as MuiDrawer, List, ListItem, ListItemIcon, ListItemText, ListSubheader } from "@material-ui/core";
 import { ExpandLess as ExpandLessIcon, ExpandMore as ExpandMoreIcon } from "@material-ui/icons";
 import { IProps } from "@Module/Drawer/Drawer";
 import useStyles from "@Module/Drawer/DrawerStyle";
@@ -49,7 +49,6 @@ const Drawer: React.FunctionComponent<IProps> = ({ prefetch, ListDrawerItems, dr
         >
             <div className={classes.drawerContainer}>
                 {headerTitle && <div className={classes.toolbar}>{headerTitle}</div>}
-                <Divider />
                 <PerfectScrollbar>
                     {Object.keys(ListItems).map((groupTitle: string, index: number) => {
                         return (
@@ -86,7 +85,11 @@ const Drawer: React.FunctionComponent<IProps> = ({ prefetch, ListDrawerItems, dr
                                                     >
                                                         <ListItemIcon className={classes.listMenuIcon}>{DrawerItems[item].icon}</ListItemIcon>
                                                         <ListItemText className={classes.listMenuText} disableTypography primary={DrawerItems[item].text} />
-                                                        {DrawerItems[item].text === selectedIndex ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+                                                        {DrawerItems[item].text === selectedIndex ? (
+                                                            <ExpandLessIcon className={classes.listMenuIcon} />
+                                                        ) : (
+                                                            <ExpandMoreIcon className={classes.listMenuIcon} />
+                                                        )}
                                                     </ListItem>
                                                     <Collapse in={DrawerItems[item].text === selectedIndex} timeout="auto" unmountOnExit>
                                                         {subDrawerItems.map((subGroup: { text: string; hrefLink: string }, subGroupIndex: number) => {

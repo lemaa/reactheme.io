@@ -1,6 +1,6 @@
 import { makeStyles, Theme } from "@material-ui/core/styles";
 
-const useStyles = makeStyles<Theme>(() => ({
+const useStyles = makeStyles<Theme, { headerTheme: string }>(() => ({
     root: {
         minWidth: "30px",
     },
@@ -43,7 +43,6 @@ const useStyles = makeStyles<Theme>(() => ({
     languageAbbrName: {
         fontSize: "0.8rem",
         fontWeight: "bold",
-        color: "white",
     },
 }));
 

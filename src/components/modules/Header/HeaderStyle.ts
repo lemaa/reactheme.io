@@ -4,7 +4,8 @@ import { ThemesConsts } from "@Constant/index";
 const useStyles = makeStyles<Theme, { drawerWidth: number; quickBarWidth: number; drawerPosition: string; quickBarPosition: string; headerTheme: string }>((theme: Theme) =>
     createStyles({
         appBar: {
-            backgroundColor: props => ThemesConsts[props.headerTheme].palette.primary.dark,
+            backgroundColor: props => ThemesConsts[props.headerTheme].palette.background.paper,
+            color: props => ThemesConsts[props.headerTheme].palette.text.primary,
             [theme.breakpoints.up("sm")]: {
                 width: props => `calc(100% - ${props.quickBarWidth}px)`,
                 marginRight: props => (props.quickBarPosition === "right" ? `${props.quickBarWidth}px` : "0px"),
@@ -55,6 +56,7 @@ const useStyles = makeStyles<Theme, { drawerWidth: number; quickBarWidth: number
 
         menuButton: {
             marginRight: theme.spacing(2),
+            color: props => ThemesConsts[props.headerTheme].palette.primary.main,
         },
 
         title: {
@@ -66,9 +68,9 @@ const useStyles = makeStyles<Theme, { drawerWidth: number; quickBarWidth: number
         search: {
             position: "relative",
             borderRadius: "25px",
-            backgroundColor: fade(theme.palette.common.white, 0.15),
+            backgroundColor: props => fade(ThemesConsts[props.headerTheme].palette.primary.light, 0.15),
             "&:hover": {
-                backgroundColor: fade(theme.palette.common.white, 0.25),
+                backgroundColor: props => fade(ThemesConsts[props.headerTheme].palette.primary.light, 0.25),
             },
             marginRight: theme.spacing(2),
             marginLeft: 0,
@@ -104,19 +106,6 @@ const useStyles = makeStyles<Theme, { drawerWidth: number; quickBarWidth: number
             [theme.breakpoints.up("md")]: {
                 display: "flex",
             },
-        },
-        LanguageButton: {
-            display: "flex",
-            color: "#ffffff",
-            width: "3.4rem",
-            padding: "5px",
-        },
-        languageFlag: {
-            width: "20px",
-            margin: "0 5px",
-        },
-        languageName: {
-            margin: "0 5px",
         },
         sectionMobile: {
             display: "flex",

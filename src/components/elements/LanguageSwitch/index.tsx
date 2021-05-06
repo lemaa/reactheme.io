@@ -6,9 +6,13 @@ import { cdnImage } from "@Util/index";
 import Link from "next/link";
 import clsx from "clsx";
 import { useRouter } from "next/router";
+import { useAppSettings } from "@Context/index";
 
 const LanguageSwitch: React.FC<IProps> = ({ ListLanguageItems, srcFlags }) => {
-    const classes = useStyles();
+    const { state } = useAppSettings();
+    const classes = useStyles({
+        headerTheme: state.theme.header,
+    });
     const router = useRouter();
     const [dialogOpen, setDialogOpen] = React.useState<false | boolean>(false);
     let localeLanguage: string = "en";

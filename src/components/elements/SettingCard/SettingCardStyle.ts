@@ -1,9 +1,10 @@
-import { IProps } from "@Element/SettingCard/SettingCard";
 import { makeStyles, Theme } from "@material-ui/core/styles";
+import { ThemesConsts } from "@Constant/index";
 
-const useStyles = makeStyles<Theme, IProps>(() => ({
+const useStyles = makeStyles<Theme, { toolbarTheme: string }>(() => ({
     root: {
         margin: "15px 0",
+        border: props => `1px solid ${ThemesConsts[props.toolbarTheme].palette.primary.light}`,
     },
     CardSettingTitle: {
         fontSize: "14px",

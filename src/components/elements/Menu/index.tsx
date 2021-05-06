@@ -13,6 +13,7 @@ const Menu: React.FunctionComponent<IProps> = ({ anchorEl, menuId, isMenuOpen, o
     const welcomeText = `${t("welcome")}, ${name}`;
     return (
         <MuiMenu
+            elevation={0}
             anchorEl={anchorEl}
             anchorOrigin={{ vertical: "top", horizontal: "right" }}
             id={menuId}

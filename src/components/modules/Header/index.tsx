@@ -1,6 +1,6 @@
 import React from "react";
 import clsx from "clsx";
-import { AppBar, Badge, IconButton, InputBase, Toolbar, Typography } from "@material-ui/core";
+import { AppBar, Badge, IconButton, InputBase, Toolbar, Typography, useScrollTrigger } from "@material-ui/core";
 import {
     PowerSettingsNewOutlined as PowerSettingsNewOutlinedIcon,
     LockOutlined as LockOutlinedIcon,
@@ -103,58 +103,73 @@ const Header: React.FunctionComponent<IProps> = ({ open, onClick, title, drawerW
         <Menu name=" Amel Fz" anchorEl={mobileMoreAnchorEl} menuId={mobileMenuId} isMenuOpen={isMobileMenuOpen} onClose={handleMobileMenuClose} ListMenuItems={ListMenuItems} />
     );
 
+    const ElevationAppBarScroll = (children: React.ReactElement) => {
+        const trigger = useScrollTrigger({
+            disableHysteresis: true,
+            threshold: 0,
+        });
+
+        return React.cloneElement(children, {
+            elevation: trigger ? 4 : 0,
+        });
+    };
+
+    const appBarElement = (
+        <AppBar
+            position={state.layout.config.header.style}
+            className={clsx(classes.appBar, {
+                [classes.appBarShift]: open && state.layout.config.navbar.display,
+            })}
+        >
+            <Toolbar>
+                {state.layout.config.navbar.display && (
+                    <IconButton edge="start" className={classes.menuButton} aria-label="open drawer" onClick={onClick}>
+                        <MenuIcon />
+                    </IconButton>
+                )}
+                <Typography className={classes.title} variant="h6" noWrap>
+                    {title}
+                </Typography>
+                <div className={classes.search}>
+                    <div className={classes.searchIcon}>
+                        <SearchIcon />
+                    </div>
+                    <InputBase
+                        placeholder={`${t("headerMenu.search")}…`}
+                        classes={{
+                            root: classes.inputRoot,
+                            input: classes.inputInput,
+                        }}
+                        inputProps={{ "aria-label": "search" }}
+                    />
+                </div>
+                <div className={classes.grow} />
+                <div className={classes.sectionDesktop}>
+                    <LanguageSwitch ListLanguageItems={ListLanguageItems} srcFlags="static/images/flags" />
+                    <IconButton aria-label="show 4 new mails" color="inherit">
+                        <Badge badgeContent={4} color="error">
+                            <MailIcon />
+                        </Badge>
+                    </IconButton>
+                    <IconButton aria-label="show 17 new notifications" color="inherit">
+                        <Badge badgeContent={5} color="error">
+                            <NotificationsIcon />
+                        </Badge>
+                    </IconButton>
+                    <ProfilePicture name="Amel Fz" userRole={t("user.role.guest")} srcPicture="static/images/avatar" namePicture="1.jpg" onClick={handleProfileMenuOpen} />
+                </div>
+                <div className={classes.sectionMobile}>
+                    <IconButton className={classes.menuButton} aria-label="show more" aria-controls={mobileMenuId} aria-haspopup="true" onClick={handleMobileMenuOpen}>
+                        <MoreIcon />
+                    </IconButton>
+                </div>
+            </Toolbar>
+        </AppBar>
+    );
+
     return (
         <div className={classes.grow}>
-            <AppBar
-                position={state.layout.config.header.style}
-                className={clsx(classes.appBar, {
-                    [classes.appBarShift]: open && state.layout.config.navbar.display,
-                })}
-            >
-                <Toolbar>
-                    {state.layout.config.navbar.display && (
-                        <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="open drawer" onClick={onClick}>
-                            <MenuIcon />
-                        </IconButton>
-                    )}
-                    <Typography className={classes.title} variant="h6" noWrap>
-                        {title}
-                    </Typography>
-                    <div className={classes.search}>
-                        <div className={classes.searchIcon}>
-                            <SearchIcon />
-                        </div>
-                        <InputBase
-                            placeholder={`${t("headerMenu.search")}…`}
-                            classes={{
-                                root: classes.inputRoot,
-                                input: classes.inputInput,
-                            }}
-                            inputProps={{ "aria-label": "search" }}
-                        />
-                    </div>
-                    <div className={classes.grow} />
-                    <div className={classes.sectionDesktop}>
-                        <LanguageSwitch ListLanguageItems={ListLanguageItems} srcFlags="static/images/flags" />
-                        <IconButton aria-label="show 4 new mails" color="inherit">
-                            <Badge badgeContent={4} color="error">
-                                <MailIcon />
-                            </Badge>
-                        </IconButton>
-                        <IconButton aria-label="show 17 new notifications" color="inherit">
-                            <Badge badgeContent={5} color="error">
-                                <NotificationsIcon />
-                            </Badge>
-                        </IconButton>
-                        <ProfilePicture name="Amel Fz" userRole={t("user.role.guest")} srcPicture="static/images/avatar" namePicture="1.jpg" onClick={handleProfileMenuOpen} />
-                    </div>
-                    <div className={classes.sectionMobile}>
-                        <IconButton aria-label="show more" aria-controls={mobileMenuId} aria-haspopup="true" onClick={handleMobileMenuOpen} color="inherit">
-                            <MoreIcon />
-                        </IconButton>
-                    </div>
-                </Toolbar>
-            </AppBar>
+            {ElevationAppBarScroll(appBarElement)}
             {renderMobileMenu}
             {renderMenu}
         </div>

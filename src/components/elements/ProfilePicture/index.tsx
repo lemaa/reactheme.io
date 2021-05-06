@@ -3,9 +3,13 @@ import { Avatar, Button, Grid, Typography } from "@material-ui/core";
 import { IProps } from "@Element/ProfilePicture/ProfilePicture";
 import useStyles from "@Element/ProfilePicture/ProfilePictureStyle";
 import { cdnImage } from "@Util/index";
+import { useAppSettings } from "@Context/index";
 
 const ProfilePicture: React.FunctionComponent<IProps> = ({ namePicture, srcPicture, name, userRole, altPic, onClick }: IProps) => {
-    const classes = useStyles();
+    const { state } = useAppSettings();
+    const classes = useStyles({
+        headerTheme: state.theme.header,
+    });
     const srcPictureCdn = cdnImage(namePicture, srcPicture);
     return (
         <Button className={classes.grow} onClick={onClick}>

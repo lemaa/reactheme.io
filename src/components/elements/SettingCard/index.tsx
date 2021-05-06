@@ -4,21 +4,18 @@ import { IProps } from "@Element/SettingCard/SettingCard";
 import useStyles from "@Element/SettingCard/SettingCardStyle";
 import { useTranslation } from "next-i18next";
 import { ThemeRadio } from "@Element/index";
+import { useAppSettings } from "@Context/index";
 
 const SettingCard: React.FunctionComponent<IProps> = ({ type, title, settingItem, currentThemeValue, themeList, handleSettingsChange, handleThemeChange }: IProps) => {
+    const { state } = useAppSettings();
     const classes = useStyles({
-        type,
-        title,
-        settingItem,
-        currentThemeValue,
-        themeList,
-        handleSettingsChange,
-        handleThemeChange,
+        toolbarTheme: state.theme.toolbar,
     });
+
     const { t } = useTranslation();
 
     return (
-        <Card className={classes.root}>
+        <Card className={classes.root} variant="outlined">
             <CardContent>
                 <Typography className={classes.CardSettingTitle} variant="h6" component="h6">
                     {t(`setting.${title}`)}

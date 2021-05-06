@@ -35,7 +35,7 @@ export const ThemesConsts: { [key: string]: any } = {
             },
             background: {
                 paper: "#FFFFFF",
-                default: "#EDF0F6",
+                default: "#F4F6FD",
             },
             error: red,
         },

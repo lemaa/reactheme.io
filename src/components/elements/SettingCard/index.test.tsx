@@ -13,5 +13,5 @@ test("<SettingCard />", () => {
         position: "left",
         style: "fixed",
     };
-    render(<SettingCard title="header" settingItem={settingItem} type="laout" />);
+    render(<SettingCard title="header" settingItem={settingItem} type="layout" />);
 });

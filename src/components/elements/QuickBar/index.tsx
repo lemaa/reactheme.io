@@ -92,6 +92,7 @@ const QuickBar: React.FunctionComponent<IProps> = ({ qbWidth, qbClassName, ListQ
                         if (ListQbItems[0][item].title !== undefined) {
                             return (
                                 <SpeedDialAction
+                                    className={classes.speedDial}
                                     key={index.toString()}
                                     icon={ListQbItems[0][item].icon}
                                     tooltipTitle={ListQbItems[0][item].title}

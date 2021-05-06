@@ -25,7 +25,7 @@ const useStyles = makeStyles<Theme, { qbWidth: number; toolbarTheme: string; dra
         position: "fixed",
         right: 0,
         top: 0,
-        background: props => ThemesConsts[props.toolbarTheme].palette.background.default,
+        background: props => ThemesConsts[props.toolbarTheme].palette.background.paper,
         height: "100%",
         width: "400px",
         transform: "translateX(120%)",
@@ -65,6 +65,11 @@ const useStyles = makeStyles<Theme, { qbWidth: number; toolbarTheme: string; dra
         left: props => (props.drawerPosition === "right" ? "15px" : "unset"),
         bottom: "85px",
         color: props => ThemesConsts[props.toolbarTheme].palette.primary.contrastText,
+    },
+    speedDial: {
+        "& .MuiFab-label": {
+            color: props => ThemesConsts[props.toolbarTheme].palette.primary.main,
+        },
     },
 }));
 
