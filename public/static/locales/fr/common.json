@@ -115,7 +115,7 @@
         "right": "Right",
         "position": "Position",
         "main": "Main",
-        "background": "Background"
-
+        "background": "Background",
+        "paper": "Paper"
     }
 }

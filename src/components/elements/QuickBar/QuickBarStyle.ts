@@ -4,14 +4,14 @@ import { ThemesConsts } from "@Constant/index";
 const useStyles = makeStyles<Theme, { qbWidth: number; toolbarTheme: string; drawerPosition: string }>(() => ({
     drawerContainer: {
         height: "100%",
-        backgroundColor: props => ThemesConsts[props.toolbarTheme].palette.background.default,
+        backgroundColor: props => ThemesConsts[props.toolbarTheme].palette.primary.dark,
     },
     drawerPaper: {
         width: props => `${props.qbWidth}px`,
         overflow: "hidden",
     },
     listMenuIcon: {
-        color: props => ThemesConsts[props.toolbarTheme].palette.text.primary,
+        color: props => ThemesConsts[props.toolbarTheme].palette.primary.contrastText,
         minWidth: "35px",
     },
     ListItemContainer: {
@@ -64,6 +64,8 @@ const useStyles = makeStyles<Theme, { qbWidth: number; toolbarTheme: string; dra
         right: props => (props.drawerPosition === "left" ? "15px" : "unset"),
         left: props => (props.drawerPosition === "right" ? "15px" : "unset"),
         bottom: "35px",
+        backgroundColor: props => ThemesConsts[props.toolbarTheme].palette.primary.main,
+        color: props => ThemesConsts[props.toolbarTheme].palette.primary.contrastText,
     },
 }));
 

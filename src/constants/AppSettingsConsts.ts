@@ -9,7 +9,7 @@ export const AppSettingsConsts: { [key: string]: any } = {
             navbar: {
                 display: true,
                 style: "default",
-                position: "right",
+                position: "left",
             },
             toolbar: {
                 display: true,

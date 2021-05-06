@@ -7,7 +7,7 @@ const useStyles = makeStyles<Theme, { drawerWidth: number; navbarTheme: string }
         padding: "5px",
         minHeight: "56px",
         textAlign: "center",
-        backgroundColor: props => ThemesConsts[props.navbarTheme].palette.primary.main,
+        backgroundColor: props => ThemesConsts[props.navbarTheme].palette.primary.dark,
         fontSize: "2rem",
         fontStyle: "italic",
         fontWeight: 500,

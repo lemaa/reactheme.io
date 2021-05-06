@@ -75,7 +75,7 @@ const QuickBar: React.FunctionComponent<IProps> = ({ qbWidth, qbClassName, ListQ
             )}
 
             {!state.layout.config.toolbar.display && (
-                <Fab className={classes.floatingSetting} onClick={() => handleOpenEvent(defaultItem.title, defaultItem.component)} color="primary" aria-label={defaultItem.title}>
+                <Fab className={classes.floatingSetting} onClick={() => handleOpenEvent(defaultItem.title, defaultItem.component)} aria-label={defaultItem.title}>
                     {defaultItem.icon}
                 </Fab>
             )}

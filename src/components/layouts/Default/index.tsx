@@ -1,5 +1,5 @@
 import React from "react";
-import { Header, Drawer, Settings } from "@Module/index";
+import { Header, Drawer, Settings, Themes } from "@Module/index";
 import { QuickBar } from "@Element/index";
 import { Hidden } from "@material-ui/core";
 import useStyles from "@Layout/Default/DefaultStyle";
@@ -284,11 +284,7 @@ const Default: React.FC<IProps> = ({ children, onClick, open, drawerwidth, quick
                 theme: {
                     title: t("quickBar.itemTitles.themeColor"),
                     icon: <ColorLensOutlinedIcon fontSize="small" />,
-                    component: (
-                        <>
-                            <div>Theme color</div>
-                        </>
-                    ),
+                    component: <Themes />,
                 },
                 setting: {
                     title: t("quickBar.itemTitles.settings"),
