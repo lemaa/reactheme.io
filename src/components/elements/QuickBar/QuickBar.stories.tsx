@@ -6,34 +6,32 @@ import { IProps } from "./QuickBar";
 
 const ListQuickBarItems = [
     {
-        quickbar: {
-            todolist: {
-                title: "To-do list",
-                icon: <DashboardOutlined fontSize="small" style={{ color: "rgb(153 153 153)" }} />,
-                component: (
-                    <>
-                        <div>To-do list</div>
-                    </>
-                ),
-            },
-            notes: {
-                title: "Notes",
-                icon: <TodayOutlined fontSize="small" style={{ color: "rgb(153 153 153)" }} />,
-                component: (
-                    <>
-                        <div>To-do list</div>
-                    </>
-                ),
-            },
-            setting: {
-                title: "Setting",
-                icon: <StoreOutlined fontSize="small" style={{ color: "rgb(153 153 153)" }} />,
-                component: (
-                    <>
-                        <div>To-do list</div>
-                    </>
-                ),
-            },
+        todolist: {
+            title: "To-do list",
+            icon: <DashboardOutlined fontSize="small" style={{ color: "rgb(153 153 153)" }} />,
+            component: (
+                <>
+                    <div>To-do list</div>
+                </>
+            ),
+        },
+        notes: {
+            title: "Notes",
+            icon: <TodayOutlined fontSize="small" style={{ color: "rgb(153 153 153)" }} />,
+            component: (
+                <>
+                    <div>To-do list</div>
+                </>
+            ),
+        },
+        setting: {
+            title: "Setting",
+            icon: <StoreOutlined fontSize="small" style={{ color: "rgb(153 153 153)" }} />,
+            component: (
+                <>
+                    <div>To-do list</div>
+                </>
+            ),
         },
     },
 ];
@@ -50,13 +48,4 @@ Default.args = {
     qbWidth: 60,
     qbClassName: "drawer-component",
     ListQbItems: ListQuickBarItems,
-    defaultItem: {
-        title: "Setting",
-        icon: <StoreOutlined fontSize="small" style={{ color: "rgb(153 153 153)" }} />,
-        component: (
-            <>
-                <div>To-do list</div>
-            </>
-        ),
-    },
 };

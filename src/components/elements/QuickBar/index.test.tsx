@@ -11,46 +11,35 @@ jest.useFakeTimers();
 test("<QuickBar />", () => {
     const ListQuickBarItems = [
         {
-            quickbar: {
-                todolist: {
-                    title: "To-do list",
-                    icon: <DashboardOutlined fontSize="small" style={{ color: "rgb(153 153 153)" }} />,
-                    component: (
-                        <>
-                            <div>To-do list</div>
-                        </>
-                    ),
-                },
-                notes: {
-                    title: "Notes",
-                    icon: <TodayOutlined fontSize="small" style={{ color: "rgb(153 153 153)" }} />,
-                    component: (
-                        <>
-                            <div>To-do list</div>
-                        </>
-                    ),
-                },
-                setting: {
-                    title: "Setting",
-                    icon: <StoreOutlined fontSize="small" style={{ color: "rgb(153 153 153)" }} />,
-                    component: (
-                        <>
-                            <div>To-do list</div>
-                        </>
-                    ),
-                },
+            todolist: {
+                title: "To-do list",
+                icon: <DashboardOutlined fontSize="small" style={{ color: "rgb(153 153 153)" }} />,
+                component: (
+                    <>
+                        <div>To-do list</div>
+                    </>
+                ),
+            },
+            notes: {
+                title: "Notes",
+                icon: <TodayOutlined fontSize="small" style={{ color: "rgb(153 153 153)" }} />,
+                component: (
+                    <>
+                        <div>To-do list</div>
+                    </>
+                ),
+            },
+            setting: {
+                title: "Setting",
+                icon: <StoreOutlined fontSize="small" style={{ color: "rgb(153 153 153)" }} />,
+                component: (
+                    <>
+                        <div>To-do list</div>
+                    </>
+                ),
             },
         },
     ];
 
-    const defaultItem = {
-        title: "Setting",
-        icon: <StoreOutlined fontSize="small" style={{ color: "rgb(153 153 153)" }} />,
-        component: (
-            <>
-                <div>To-do list</div>
-            </>
-        ),
-    };
-    render(<QuickBar qbWidth={250} defaultItem={defaultItem} qbClassName="drawer-component" ListQbItems={ListQuickBarItems} />);
+    render(<QuickBar qbWidth={250} qbClassName="drawer-component" ListQbItems={ListQuickBarItems} />);
 });

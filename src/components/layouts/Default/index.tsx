@@ -262,44 +262,36 @@ const Default: React.FC<IProps> = ({ children, onClick, open, drawerwidth, quick
 
     const ListQuickBarItems = [
         {
-            quickbar: {
-                todolist: {
-                    title: t("quickBar.itemTitles.toDoList"),
-                    icon: <ListOutlinedIcon fontSize="small" />,
-                    component: (
-                        <>
-                            <div>To-do list</div>
-                        </>
-                    ),
-                },
-                notes: {
-                    title: t("quickBar.itemTitles.notes"),
-                    icon: <CreateOutlinedIcon fontSize="small" />,
-                    component: (
-                        <>
-                            <div>Notes</div>
-                        </>
-                    ),
-                },
-                theme: {
-                    title: t("quickBar.itemTitles.themeColor"),
-                    icon: <ColorLensOutlinedIcon fontSize="small" />,
-                    component: <Themes />,
-                },
-                setting: {
-                    title: t("quickBar.itemTitles.settings"),
-                    icon: <SettingsOutlinedIcon fontSize="small" />,
-                    component: <Settings />,
-                },
+            todolist: {
+                title: t("quickBar.itemTitles.toDoList"),
+                icon: <ListOutlinedIcon fontSize="small" />,
+                component: (
+                    <>
+                        <div>To-do list</div>
+                    </>
+                ),
+            },
+            notes: {
+                title: t("quickBar.itemTitles.notes"),
+                icon: <CreateOutlinedIcon fontSize="small" />,
+                component: (
+                    <>
+                        <div>Notes</div>
+                    </>
+                ),
+            },
+            theme: {
+                title: t("quickBar.itemTitles.themeColor"),
+                icon: <ColorLensOutlinedIcon fontSize="small" />,
+                component: <Themes />,
+            },
+            setting: {
+                title: t("quickBar.itemTitles.settings"),
+                icon: <SettingsOutlinedIcon fontSize="small" />,
+                component: <Settings />,
             },
         },
     ];
-
-    const defaultQuickBarItem = {
-        title: ListQuickBarItems[0].quickbar.setting.title,
-        icon: ListQuickBarItems[0].quickbar.setting.icon,
-        component: ListQuickBarItems[0].quickbar.setting.component,
-    };
 
     return (
         <div>
@@ -332,7 +324,7 @@ const Default: React.FC<IProps> = ({ children, onClick, open, drawerwidth, quick
                             headerTitle={t("title")}
                         />
                     )}
-                    <QuickBar qbWidth={quickBarWidth} qbClassName={classes.quickbar} defaultItem={defaultQuickBarItem} ListQbItems={ListQuickBarItems} />
+                    <QuickBar qbWidth={quickBarWidth} qbClassName={classes.quickbar} ListQbItems={ListQuickBarItems} />
                 </Hidden>
             </nav>
 
