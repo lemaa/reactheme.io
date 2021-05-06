@@ -1,7 +1,7 @@
 import React from "react";
-import { Header, Drawer, Settings } from "@Module/index";
+import { Header, Drawer, Settings, Themes, Footer } from "@Module/index";
 import { QuickBar } from "@Element/index";
-import { Hidden } from "@material-ui/core";
+import { Box, Hidden } from "@material-ui/core";
 import useStyles from "@Layout/Default/DefaultStyle";
 import { IProps, IState } from "@Layout/Default/Default";
 import { useAppSettings } from "@Context/index";
@@ -31,15 +31,15 @@ import {
 } from "@material-ui/icons";
 import { useTranslation } from "next-i18next";
 import clsx from "clsx";
-import theme from "@Style/base/theme";
-import { ThemesConsts } from "@Constant/index";
 
 const Default: React.FC<IProps> = ({ children, onClick, open, drawerwidth, quickBarWidth }) => {
     const { state } = useAppSettings();
     const mainTheme = state.theme.main;
     const drawerstate: IState = {
-        drawerwidth,
+        drawerWidth: drawerwidth,
         quickBarWidth: state.layout.config.toolbar.display ? quickBarWidth : 0,
+        quickBarPosition: state.layout.config.toolbar.position,
+        drawerPosition: state.layout.config.navbar.position,
         mainTheme,
     };
     const classes = useStyles(drawerstate);
@@ -262,43 +262,37 @@ const Default: React.FC<IProps> = ({ children, onClick, open, drawerwidth, quick
 
     const ListQuickBarItems = [
         {
-            quickbar: {
-                todolist: {
-                    title: t("quickBar.itemTitles.toDoList"),
-                    icon: <ListOutlinedIcon fontSize="small" style={{ color: "rgb(153 153 153)" }} />,
-                    component: (
-                        <>
-                            <div>To-do list</div>
-                        </>
-                    ),
-                },
-                notes: {
-                    title: t("quickBar.itemTitles.notes"),
-                    icon: <CreateOutlinedIcon fontSize="small" style={{ color: "rgb(153 153 153)" }} />,
-                    component: (
-                        <>
-                            <div>Notes</div>
-                        </>
-                    ),
-                },
-                theme: {
-                    title: t("quickBar.itemTitles.themeColor"),
-                    icon: <ColorLensOutlinedIcon fontSize="small" style={{ color: "rgb(153 153 153)" }} />,
-                    component: (
-                        <>
-                            <div>Theme color</div>
-                        </>
-                    ),
-                },
-                setting: {
-                    title: t("quickBar.itemTitles.settings"),
-                    icon: <SettingsOutlinedIcon fontSize="small" style={{ color: "rgb(153 153 153)" }} />,
-                    component: <Settings />,
-                },
+            todolist: {
+                title: t("quickBar.itemTitles.toDoList"),
+                icon: <ListOutlinedIcon fontSize="small" />,
+                component: (
+                    <>
+                        <div>To-do list</div>
+                    </>
+                ),
+            },
+            notes: {
+                title: t("quickBar.itemTitles.notes"),
+                icon: <CreateOutlinedIcon fontSize="small" />,
+                component: (
+                    <>
+                        <div>Notes</div>
+                    </>
+                ),
+            },
+            theme: {
+                title: t("quickBar.itemTitles.themeColor"),
+                icon: <ColorLensOutlinedIcon fontSize="small" />,
+                component: <Themes />,
+            },
+            setting: {
+                title: t("quickBar.itemTitles.settings"),
+                icon: <SettingsOutlinedIcon fontSize="small" />,
+                component: <Settings />,
             },
         },
     ];
-    theme.palette.background.default = ThemesConsts[mainTheme].palette.background.default;
+
     return (
         <div>
             {state.layout.config.header.display && (
@@ -312,7 +306,6 @@ const Default: React.FC<IProps> = ({ children, onClick, open, drawerwidth, quick
                             open={open}
                             drawerWidth={drawerwidth}
                             drawerVariant="temporary"
-                            drawerAnchor="left"
                             handleDrawerToggle={onClick}
                             ListDrawerItems={ListDrawerItems}
                             headerTitle="Mobile"
@@ -325,14 +318,13 @@ const Default: React.FC<IProps> = ({ children, onClick, open, drawerwidth, quick
                             open={open}
                             drawerWidth={drawerwidth}
                             drawerVariant="persistent"
-                            drawerAnchor="left"
                             handleDrawerToggle={onClick}
                             drawerClassName={classes.drawer}
                             ListDrawerItems={ListDrawerItems}
                             headerTitle={t("title")}
                         />
                     )}
-                    {state.layout.config.toolbar.display && <QuickBar qbWidth={quickBarWidth} qbClassName={classes.quickbar} qbAnchor="right" ListQbItems={ListQuickBarItems} />}
+                    <QuickBar qbWidth={quickBarWidth} qbClassName={classes.quickbar} ListQbItems={ListQuickBarItems} />
                 </Hidden>
             </nav>
 
@@ -346,6 +338,16 @@ const Default: React.FC<IProps> = ({ children, onClick, open, drawerwidth, quick
                     <div className={classes.container}>{children}</div>
                 </main>
             </div>
+            {state.layout.config.footer.display && (
+                <Footer drawerWidth={drawerwidth} open={open} quickBarWidth={state.layout.config.toolbar.display ? quickBarWidth : 0}>
+                    <Box display="flex" alignItems="flex-start" justifyContent="space-between" p={1} m={1}>
+                        <Box p={1}>Created with Love | 2021</Box>
+                        <Box p={1} alignSelf="flex-end">
+                            ©ThemeReact v1.0.0
+                        </Box>
+                    </Box>
+                </Footer>
+            )}
         </div>
     );
 };

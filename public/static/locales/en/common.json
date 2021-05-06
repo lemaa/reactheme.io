@@ -110,6 +110,7 @@
         "right": "Right",
         "main": "Main",
         "background": "Background",
-        "position": "Position"
+        "position": "Position",
+        "paper": "Paper"
     }
 }

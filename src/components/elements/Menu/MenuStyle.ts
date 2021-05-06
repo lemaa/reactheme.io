@@ -4,7 +4,8 @@ import { ThemesConsts } from "@Constant/index";
 const useStyles = makeStyles<Theme, { headerTheme: string }>(() =>
     createStyles({
         menuContainer: {
-            backgroundColor: props => ThemesConsts[props.headerTheme].palette.primary.dark,
+            backgroundColor: props => ThemesConsts[props.headerTheme].palette.background.paper,
+            border: props => `1px solid ${ThemesConsts[props.headerTheme].palette.text.disabled}`,
         },
         header: {
             color: props => ThemesConsts[props.headerTheme].palette.text.disabled,
@@ -15,7 +16,7 @@ const useStyles = makeStyles<Theme, { headerTheme: string }>(() =>
             paddingTop: 0,
             paddingBottom: 0,
             fontSize: "12px",
-            color: props => ThemesConsts[props.headerTheme].palette.common.white,
+            color: props => ThemesConsts[props.headerTheme].palette.text.primary,
         },
         menuIcon: {
             paddingLeft: "4px",

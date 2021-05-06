@@ -1,17 +1,17 @@
 import { makeStyles, Theme } from "@material-ui/core/styles";
 import { ThemesConsts } from "@Constant/index";
 
-const useStyles = makeStyles<Theme, { qbWidth: number; toolbarTheme: string }>(() => ({
+const useStyles = makeStyles<Theme, { qbWidth: number; toolbarTheme: string; drawerPosition: string }>(() => ({
     drawerContainer: {
         height: "100%",
-        backgroundColor: props => ThemesConsts[props.toolbarTheme].palette.background.default,
+        backgroundColor: props => ThemesConsts[props.toolbarTheme].palette.primary.dark,
     },
     drawerPaper: {
         width: props => `${props.qbWidth}px`,
         overflow: "hidden",
     },
     listMenuIcon: {
-        color: props => ThemesConsts[props.toolbarTheme].palette.text.primary,
+        color: props => ThemesConsts[props.toolbarTheme].palette.primary.contrastText,
         minWidth: "35px",
     },
     ListItemContainer: {
@@ -25,7 +25,7 @@ const useStyles = makeStyles<Theme, { qbWidth: number; toolbarTheme: string }>((
         position: "fixed",
         right: 0,
         top: 0,
-        background: props => ThemesConsts[props.toolbarTheme].palette.background.default,
+        background: props => ThemesConsts[props.toolbarTheme].palette.background.paper,
         height: "100%",
         width: "400px",
         transform: "translateX(120%)",
@@ -58,6 +58,18 @@ const useStyles = makeStyles<Theme, { qbWidth: number; toolbarTheme: string }>((
         opacity: 1,
         fontSize: "14px",
         color: props => ThemesConsts[props.toolbarTheme].palette.text.primary,
+    },
+    floatingSetting: {
+        position: "absolute",
+        right: props => (props.drawerPosition === "left" ? "15px" : "unset"),
+        left: props => (props.drawerPosition === "right" ? "15px" : "unset"),
+        bottom: "85px",
+        color: props => ThemesConsts[props.toolbarTheme].palette.primary.contrastText,
+    },
+    speedDial: {
+        "& .MuiFab-label": {
+            color: props => ThemesConsts[props.toolbarTheme].palette.primary.main,
+        },
     },
 }));
 

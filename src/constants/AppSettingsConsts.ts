@@ -12,7 +12,7 @@ export const AppSettingsConsts: { [key: string]: any } = {
                 position: "left",
             },
             toolbar: {
-                display: true,
+                display: false,
                 position: "right",
             },
             footer: {

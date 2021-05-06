@@ -7,15 +7,17 @@ import clsx from "clsx";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import "react-perfect-scrollbar/dist/css/styles.css";
 import { useAppSettings } from "@Context/index";
+import { SpeedDial, SpeedDialAction, SpeedDialIcon } from "@material-ui/lab";
 
-const QuickBar: React.FunctionComponent<IProps> = ({ qbWidth, qbClassName, qbAnchor, ListQbItems }: IProps) => {
+const QuickBar: React.FunctionComponent<IProps> = ({ qbWidth, qbClassName, ListQbItems }: IProps) => {
     const { state } = useAppSettings();
     const classes = useStyles({
         qbWidth,
         toolbarTheme: state.theme.toolbar,
+        drawerPosition: state.layout.config.navbar.position,
     });
-    const ListItems = ListQbItems[0];
     const [dialogOpen, setDialogOpen] = React.useState<false | boolean>(false);
+    const [speedDialOpen, setSpeedDialOpen] = React.useState<false | boolean>(false);
     const [dialogSettings, setDialogSettings] = React.useState({
         headerText: "",
         component: <></>,
@@ -31,46 +33,77 @@ const QuickBar: React.FunctionComponent<IProps> = ({ qbWidth, qbClassName, qbAnc
         setDialogSettings({ headerText: title, component });
     };
 
+    const handleSpeedDialOpen = () => {
+        setSpeedDialOpen(true);
+    };
+
+    const handleSpeedDialClose = () => {
+        setSpeedDialOpen(false);
+    };
+
     return (
         <>
-            <MuiDrawer
-                variant="permanent"
-                anchor={qbAnchor}
-                open
-                classes={{
-                    paper: `${classes.drawerPaper} ${qbClassName}`,
-                }}
-                ModalProps={{
-                    keepMounted: true,
-                }}
-            >
-                <div className={classes.drawerContainer}>
-                    {Object.keys(ListItems).map((item: string, index: number) => {
-                        return (
-                            <List className={classes.root} component="nav" key={index.toString()}>
-                                {Object.keys(ListItems[item]).map((subItem: string, subIndex: number) => {
-                                    if (ListItems[item][subItem].title !== undefined) {
-                                        return (
-                                            <ListItem
-                                                className={classes.ListItemContainer}
-                                                key={subIndex.toString()}
-                                                onClick={() => handleOpenEvent(ListItems[item][subItem].title, ListItems[item][subItem].component)}
-                                                button
-                                            >
-                                                <Tooltip classes={{ tooltip: classes.ToolTipDrawer }} title={ListItems[item][subItem].title} placement="left">
-                                                    <ListItemIcon className={classes.listMenuIcon}>{ListItems[item][subItem].icon}</ListItemIcon>
-                                                </Tooltip>
-                                            </ListItem>
-                                        );
-                                    }
-                                    return false;
-                                })}
-                            </List>
-                        );
-                    })}
-                </div>
-            </MuiDrawer>
+            {state.layout.config.toolbar.display && (
+                <MuiDrawer
+                    variant="permanent"
+                    anchor={state.layout.config.toolbar.position}
+                    open
+                    classes={{
+                        paper: `${classes.drawerPaper} ${qbClassName}`,
+                    }}
+                    ModalProps={{
+                        keepMounted: true,
+                    }}
+                >
+                    <div className={classes.drawerContainer}>
+                        <List className={classes.root} component="nav">
+                            {Object.keys(ListQbItems[0]).map((item: string, index: number) => {
+                                if (ListQbItems[0][item].title !== undefined) {
+                                    return (
+                                        <ListItem
+                                            className={classes.ListItemContainer}
+                                            key={index.toString()}
+                                            onClick={() => handleOpenEvent(ListQbItems[0][item].title, ListQbItems[0][item].component)}
+                                            button
+                                        >
+                                            <Tooltip classes={{ tooltip: classes.ToolTipDrawer }} title={ListQbItems[0][item].title} placement="left">
+                                                <ListItemIcon className={classes.listMenuIcon}>{ListQbItems[0][item].icon}</ListItemIcon>
+                                            </Tooltip>
+                                        </ListItem>
+                                    );
+                                }
+                                return false;
+                            })}
+                        </List>
+                    </div>
+                </MuiDrawer>
+            )}
 
+            {!state.layout.config.toolbar.display && (
+                <SpeedDial
+                    ariaLabel="SpeedDial openIcon example"
+                    className={classes.floatingSetting}
+                    icon={<SpeedDialIcon openIcon={<CloseOutlined />} />}
+                    onClose={handleSpeedDialClose}
+                    onOpen={handleSpeedDialOpen}
+                    open={speedDialOpen}
+                >
+                    {Object.keys(ListQbItems[0]).map((item: string, index: number) => {
+                        if (ListQbItems[0][item].title !== undefined) {
+                            return (
+                                <SpeedDialAction
+                                    className={classes.speedDial}
+                                    key={index.toString()}
+                                    icon={ListQbItems[0][item].icon}
+                                    tooltipTitle={ListQbItems[0][item].title}
+                                    onClick={() => handleOpenEvent(ListQbItems[0][item].title, ListQbItems[0][item].component)}
+                                />
+                            );
+                        }
+                        return false;
+                    })}
+                </SpeedDial>
+            )}
             <div
                 className={clsx(classes.quickbarDetails, {
                     [classes.quickbarDetailsOpen]: dialogOpen,

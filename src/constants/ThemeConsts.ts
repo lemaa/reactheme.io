@@ -25,6 +25,7 @@ export const ThemesConsts: { [key: string]: any } = {
                 light: "#BFC4E6",
                 main: "#2A3BAB",
                 dark: "#0F1980",
+                contrastText: "rgb(255,255,255)",
             },
             secondary: {
                 light: "#C2ECF0",
@@ -34,7 +35,7 @@ export const ThemesConsts: { [key: string]: any } = {
             },
             background: {
                 paper: "#FFFFFF",
-                default: "#EDF0F6",
+                default: "#F4F6FD",
             },
             error: red,
         },
@@ -51,11 +52,13 @@ export const ThemesConsts: { [key: string]: any } = {
                 light: blueGrey[500],
                 main: blueGrey[800],
                 dark: blueGrey[900],
+                contrastText: "rgb(255,255,255)",
             },
             secondary: {
                 light: cyan[100],
                 main: cyan[500],
                 dark: cyan[900],
+                contrastText: "rgb(255,255,255)",
             },
             background: {
                 paper: "#1E2125",
@@ -76,11 +79,13 @@ export const ThemesConsts: { [key: string]: any } = {
                 light: blueGrey[900],
                 main: blueGrey[900],
                 dark: blueGrey[900],
+                contrastText: "rgb(255,255,255)",
             },
             secondary: {
                 light: lightBlue[400],
                 main: lightBlue[600],
                 dark: lightBlue[700],
+                contrastText: "rgb(255,255,255)",
             },
             background: {
                 paper: "#FFFFFF",
@@ -101,6 +106,7 @@ export const ThemesConsts: { [key: string]: any } = {
                 light: "#D3C0CD",
                 main: "#6B2C57",
                 dark: "#3C102C",
+                contrastText: "rgb(255,255,255)",
             },
             secondary: {
                 light: "#FDEAC9",
@@ -127,6 +133,7 @@ export const ThemesConsts: { [key: string]: any } = {
                 light: "#C3C2D2",
                 main: "#36336A",
                 dark: "#16143C",
+                contrastText: "rgb(255,255,255)",
             },
             secondary: {
                 light: "#D6CEFC",
