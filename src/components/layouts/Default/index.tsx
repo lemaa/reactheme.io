@@ -1,7 +1,7 @@
 import React from "react";
-import { Header, Drawer, Settings, Themes } from "@Module/index";
+import { Header, Drawer, Settings, Themes, Footer } from "@Module/index";
 import { QuickBar } from "@Element/index";
-import { Hidden } from "@material-ui/core";
+import { Box, Hidden } from "@material-ui/core";
 import useStyles from "@Layout/Default/DefaultStyle";
 import { IProps, IState } from "@Layout/Default/Default";
 import { useAppSettings } from "@Context/index";
@@ -346,6 +346,16 @@ const Default: React.FC<IProps> = ({ children, onClick, open, drawerwidth, quick
                     <div className={classes.container}>{children}</div>
                 </main>
             </div>
+            {state.layout.config.footer.display && (
+                <Footer drawerWidth={drawerwidth} open={open} quickBarWidth={state.layout.config.toolbar.display ? quickBarWidth : 0}>
+                    <Box display="flex" alignItems="flex-start" justifyContent="space-between" p={1} m={1}>
+                        <Box p={1}>Created with Love | 2021</Box>
+                        <Box p={1} alignSelf="flex-end">
+                            ©ThemeReact v1.0.0
+                        </Box>
+                    </Box>
+                </Footer>
+            )}
         </div>
     );
 };
