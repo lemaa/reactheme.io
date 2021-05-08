@@ -1,6 +1,5 @@
 import React from "react";
-import { Header, Drawer, Settings, Themes, Footer } from "@Module/index";
-import { QuickBar } from "@Element/index";
+import { Header, Drawer, Settings, Themes, Footer, QuickBar } from "@Module/index";
 import { Box, Hidden } from "@material-ui/core";
 import useStyles from "@Layout/Default/DefaultStyle";
 import { IProps, IState } from "@Layout/Default/Default";

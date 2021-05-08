@@ -93,7 +93,10 @@ const Drawer: React.FunctionComponent<IProps> = ({ prefetch, ListDrawerItems, dr
                                                     </ListItem>
                                                     <Collapse in={DrawerItems[item].text === selectedIndex} timeout="auto" unmountOnExit>
                                                         {subDrawerItems.map((subGroup: { text: string; hrefLink: string }, subGroupIndex: number) => {
-                                                            const hrefLink: string = `${DrawerItems[item].hrefLink}${subGroup.hrefLink}`;
+                                                            let hrefLink: string = `${DrawerItems[item].hrefLink}${subGroup.hrefLink}`;
+                                                            if (DrawerItems[item].hrefLink === "/") {
+                                                                hrefLink = `${subGroup.hrefLink}`;
+                                                            }
                                                             return (
                                                                 <Link href={hrefLink} key={subGroupIndex.toString()} prefetch={prefetch}>
                                                                     <List component="div" className={classes.subItem} disablePadding>
