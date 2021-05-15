@@ -5,6 +5,7 @@ const useStyles = makeStyles<Theme, { drawerWidth: number; position: string; qui
     (theme: Theme) =>
         createStyles({
             appBar: {
+                width: "100%",
                 position: props => (props.position === "fixed" ? "fixed" : "static"),
                 minHeight: "60px",
                 top: "auto",

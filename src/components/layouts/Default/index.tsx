@@ -345,6 +345,18 @@ const Default: React.FC<IProps> = ({ children, onClick, open, drawerwidth, quick
                             ©ThemeReact v1.0.0
                         </Box>
                     </Box>
+                    <Box display="flex" justifyContent="center" alignItems="flex-center" p={1} m={1}>
+                        <div>
+                            Icons made by
+                            <a href="https://www.freepik.com" title="Freepik">
+                                Freepik
+                            </a>
+                            from
+                            <a href="https://www.flaticon.com/" title="Flaticon">
+                                www.flaticon.com
+                            </a>
+                        </div>
+                    </Box>
                 </Footer>
             )}
         </div>

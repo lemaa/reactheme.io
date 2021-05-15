@@ -31,6 +31,18 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
                             backgroundColor: ThemesConsts[mainTheme].palette.background.default,
                             color: ThemesConsts[mainTheme].palette.text.primary,
                         },
+                        primary: {
+                            light: ThemesConsts[mainTheme].palette.primary.light,
+                            main: ThemesConsts[mainTheme].palette.primary.main,
+                            dark: ThemesConsts[mainTheme].palette.primary.dark,
+                            contrastText: ThemesConsts[mainTheme].palette.primary.contrastText,
+                        },
+                        secondary: {
+                            light: ThemesConsts[mainTheme].palette.secondary.light,
+                            main: ThemesConsts[mainTheme].palette.secondary.main,
+                            dark: ThemesConsts[mainTheme].palette.secondary.dark,
+                            contrastText: ThemesConsts[mainTheme].palette.secondary.contrastText,
+                        },
                     },
                 },
             },

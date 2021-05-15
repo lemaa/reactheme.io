@@ -117,5 +117,9 @@
         "main": "Main",
         "background": "Background",
         "paper": "Paper"
+    },
+    "dashboard": {
+        "congrats": "Congratulations {{username}} ,",
+        "acomplished": "You have done {{tasks}} today."
     }
 }
