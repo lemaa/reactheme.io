@@ -6,11 +6,13 @@ import { AnalyticsPage } from "./index";
 
 afterEach(cleanup);
 jest.useFakeTimers();
+jest.mock("node-fetch");
 jest.mock("react-apexcharts", () =>
     jest.fn(() => {
         return null;
     })
 );
+
 test("<AnalyticsPage />", () => {
     render(<AnalyticsPage />);
 });

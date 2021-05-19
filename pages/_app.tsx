@@ -1,14 +1,13 @@
 import React from "react";
 // import PropTypes from "prop-types";
-import type { AppProps } from "next/app";
 import Head from "next/head";
 import { appWithTranslation } from "next-i18next";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import { AppSettingsProvider, useAppSettings } from "@Context/index";
-// import theme from "@Style/base/theme";
 import "@Style/global.scss";
 import { ThemesConsts } from "@Constant/index";
+import type { AppProps } from "next/app";
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
     React.useEffect(() => {

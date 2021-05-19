@@ -1,6 +1,6 @@
 import React from "react";
 import dynamic from "next/dynamic";
-import { Card, CardContent, Typography, Avatar } from "@material-ui/core";
+import { Card, CardContent, Typography, Avatar, Box } from "@material-ui/core";
 import { IProps } from "@Element/Dashboard/SimpleCard/SimpleCard";
 import useStyles from "@Element/Dashboard/SimpleCard/SimpleCardStyle";
 import { useAppSettings } from "@Context/index";
@@ -29,6 +29,7 @@ const SimpleCard: React.FunctionComponent<IProps> = ({ title, description, cardT
         series: data,
         options: {
             chart: {
+                height: "auto",
                 toolbar: {
                     show: false,
                 },
@@ -57,17 +58,18 @@ const SimpleCard: React.FunctionComponent<IProps> = ({ title, description, cardT
     return (
         <Card variant="outlined" className={classes.SimpleCard}>
             <CardContent className={classes.SCContent}>
-                <div className={classes.SCHeader}>
-                    <div className={classes.SCIconContainer}>
+                <Box className={classes.SCHeader}>
+                    <Box className={classes.SCIconContainer} display="flex" justifyContent="space-between" alignItems="center">
                         <Avatar alt="success" src={srcImgCdn} className={classes.SCIcon} />
-                    </div>
+                        {cardType === "chart" && <span className={classes.badge}>+ 200 new</span>}
+                    </Box>
                     <Typography className={classes.SCTitle} variant="h5" component="h2">
                         {title}
                     </Typography>
                     <Typography className={classes.SCDescription} variant="body2" component="p">
                         {description}
                     </Typography>
-                </div>
+                </Box>
                 {cardType === "chart" && (
                     <div className={classes.SCChart}>
                         <Chart options={chartOptions.options} series={chartOptions.series} type="area" />

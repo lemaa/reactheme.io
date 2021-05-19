@@ -5,8 +5,8 @@ import { ThemesConsts } from "@Constant/index";
 const useStyles = makeStyles<Theme, { mainTheme: string; cardType: string }>(() =>
     createStyles({
         SimpleCard: {
-            height: "15em",
             marginBottom: "15px",
+            height: "17em",
         },
         SCContent: {
             padding: props => (props.cardType === "chart" ? "0" : "16px"),
@@ -34,7 +34,14 @@ const useStyles = makeStyles<Theme, { mainTheme: string; cardType: string }>(() 
         },
         SCChart: {
             position: "relative",
-            bottom: "7em",
+            bottom: "5em",
+        },
+        badge: {
+            background: "#76e410",
+            color: "white",
+            padding: "2px 15px",
+            borderRadius: "5px",
+            fontWeight: "bold",
         },
     })
 );
