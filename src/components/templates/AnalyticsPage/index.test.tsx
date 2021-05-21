@@ -4,15 +4,30 @@ import { cleanup } from "@testing-library/react";
 import { render } from "@Test/utils";
 import { AnalyticsPage } from "./index";
 
-afterEach(cleanup);
 jest.useFakeTimers();
-jest.mock("node-fetch");
+let originalFetch: any;
+let global: { fetch: {} };
+
+beforeEach(() => {
+    global.fetch = jest.fn(() =>
+        Promise.resolve({
+            json: () =>
+                Promise.resolve({
+                    value: "Testing something!",
+                }),
+        })
+    );
+});
+
+afterEach(() => {
+    global.fetch = originalFetch;
+    cleanup();
+});
 jest.mock("react-apexcharts", () =>
     jest.fn(() => {
         return null;
     })
 );
-
 test("<AnalyticsPage />", () => {
     render(<AnalyticsPage />);
 });

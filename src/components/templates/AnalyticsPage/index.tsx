@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Button, Card, CardActions, CardContent, Typography } from "@material-ui/core";
 import FullscreenIcon from "@material-ui/icons/Fullscreen";
-import { ContentHeader, SimpleCard, AreaChartCard, WorldMapCard } from "@Element/index";
+import { ContentHeader, SimpleCard, AreaChartCard, WorldMapCard, DonutChartCard, BarChartCard } from "@Element/index";
 import { useTranslation } from "next-i18next";
 
 const AnalyticsPage: React.FC = () => {
@@ -81,6 +81,22 @@ const AnalyticsPage: React.FC = () => {
             },
         ],
     };
+    const donutDatas = {
+        series: [83],
+    };
+    const barDatas = {
+        series: [
+            {
+                name: "Net Profit",
+                data: [44, 55, 57, 56, 61, 58, 63, 60, 66],
+            },
+            {
+                name: "Revenue",
+                data: [76, 85, 101, 98, 87, 105, 91, 114, 94],
+            },
+        ],
+        categories: ["Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct"],
+    };
     return (
         <div style={{ width: "100%" }}>
             <ContentHeader pathName="Analytics" filterButton refreshButton customButton={customHeaderButton} />
@@ -94,45 +110,11 @@ const AnalyticsPage: React.FC = () => {
                 </Box>
             </Box>
             <Box component="div" display="flex" flexWrap="wrap" p={1}>
-                <Box p={1} flexGrow={1}>
-                    <Card variant="outlined">
-                        <CardContent>
-                            <Typography color="textSecondary" gutterBottom>
-                                Word of the Day
-                            </Typography>
-                            <Typography variant="h5" component="h2">
-                                ezdezedzedzed zedzedz
-                            </Typography>
-                            <Typography color="textSecondary">adjective</Typography>
-                            <Typography variant="body2" component="p">
-                                well meaning and kindly.
-                                <br />
-                            </Typography>
-                        </CardContent>
-                        <CardActions>
-                            <Button size="small">Learn More</Button>
-                        </CardActions>
-                    </Card>
+                <Box p={1} width="49%">
+                    <DonutChartCard title="Support Tracker" data={donutDatas} />
                 </Box>
-                <Box p={1} flexGrow={1}>
-                    <Card variant="outlined">
-                        <CardContent>
-                            <Typography color="textSecondary" gutterBottom>
-                                Word of the Day
-                            </Typography>
-                            <Typography variant="h5" component="h2">
-                                ezdezedzedzed zedzedz
-                            </Typography>
-                            <Typography color="textSecondary">adjective</Typography>
-                            <Typography variant="body2" component="p">
-                                well meaning and kindly.
-                                <br />
-                            </Typography>
-                        </CardContent>
-                        <CardActions>
-                            <Button size="small">Learn More</Button>
-                        </CardActions>
-                    </Card>
+                <Box p={1} width="49%">
+                    <BarChartCard title="Website Analytics" data={barDatas} />
                 </Box>
             </Box>
             <Box component="div" display="flex" flexWrap="wrap" p={1}>
@@ -158,153 +140,49 @@ const AnalyticsPage: React.FC = () => {
                 </Box>
                 <Box p={1}>
                     <Box p={1} display="flex" flexWrap="wrap">
-                        <Box p={1}>
-                            <Card variant="outlined">
-                                <CardContent>
-                                    <Typography color="textSecondary" gutterBottom>
-                                        Word of the Day
-                                    </Typography>
-                                    <Typography variant="h5" component="h2">
-                                        ezdezedzedzed zedzedz
-                                    </Typography>
-                                    <Typography color="textSecondary">adjective</Typography>
-                                    <Typography variant="body2" component="p">
-                                        well meaning and kindly.
-                                        <br />
-                                    </Typography>
-                                </CardContent>
-                                <CardActions>
-                                    <Button size="small">Learn More</Button>
-                                </CardActions>
-                            </Card>
-                        </Box>
-                        <Box p={1}>
-                            <Card variant="outlined">
-                                <CardContent>
-                                    <Typography color="textSecondary" gutterBottom>
-                                        Word of the Day
-                                    </Typography>
-                                    <Typography variant="h5" component="h2">
-                                        ezdezedzedzed zedzedz
-                                    </Typography>
-                                    <Typography color="textSecondary">adjective</Typography>
-                                    <Typography variant="body2" component="p">
-                                        well meaning and kindly.
-                                        <br />
-                                    </Typography>
-                                </CardContent>
-                                <CardActions>
-                                    <Button size="small">Learn More</Button>
-                                </CardActions>
-                            </Card>
-                        </Box>
+                        <Card variant="outlined">
+                            <CardContent>
+                                <Typography color="textSecondary" gutterBottom>
+                                    Word of the Day
+                                </Typography>
+                                <Typography variant="h5" component="h2">
+                                    ezdezedzedzed zedzedz
+                                </Typography>
+                                <Typography color="textSecondary">adjective</Typography>
+                                <Typography variant="body2" component="p">
+                                    well meaning and kindly.
+                                    <br />
+                                </Typography>
+                            </CardContent>
+                            <CardActions>
+                                <Button size="small">Learn More</Button>
+                            </CardActions>
+                        </Card>
                     </Box>
                     <Box p={1} display="flex" flexWrap="wrap">
-                        <Box p={1}>
-                            <Card variant="outlined">
-                                <CardContent>
-                                    <Typography color="textSecondary" gutterBottom>
-                                        Word of the Day
-                                    </Typography>
-                                    <Typography variant="h5" component="h2">
-                                        ezdezedzedzed zedzedz
-                                    </Typography>
-                                    <Typography color="textSecondary">adjective</Typography>
-                                    <Typography variant="body2" component="p">
-                                        well meaning and kindly.
-                                        <br />
-                                    </Typography>
-                                </CardContent>
-                                <CardActions>
-                                    <Button size="small">Learn More</Button>
-                                </CardActions>
-                            </Card>
-                        </Box>
-                        <Box p={1} display="flex" flexDirection="column" flexWrap="wrap">
-                            <Card variant="outlined">
-                                <CardContent>
-                                    <Typography color="textSecondary" gutterBottom>
-                                        Word of the Day
-                                    </Typography>
-                                    <Typography variant="h5" component="h2">
-                                        ezdezedzedzed zedzedz
-                                    </Typography>
-                                    <Typography color="textSecondary">adjective</Typography>
-                                    <Typography variant="body2" component="p">
-                                        well meaning and kindly.
-                                        <br />
-                                    </Typography>
-                                </CardContent>
-                                <CardActions>
-                                    <Button size="small">Learn More</Button>
-                                </CardActions>
-                            </Card>
-                            <Card variant="outlined">
-                                <CardContent>
-                                    <Typography color="textSecondary" gutterBottom>
-                                        Word of the Day
-                                    </Typography>
-                                    <Typography variant="h5" component="h2">
-                                        ezdezedzedzed zedzedz
-                                    </Typography>
-                                    <Typography color="textSecondary">adjective</Typography>
-                                    <Typography variant="body2" component="p">
-                                        well meaning and kindly.
-                                        <br />
-                                    </Typography>
-                                </CardContent>
-                                <CardActions>
-                                    <Button size="small">Learn More</Button>
-                                </CardActions>
-                            </Card>
-                        </Box>
+                        <Card variant="outlined">
+                            <CardContent>
+                                <Typography color="textSecondary" gutterBottom>
+                                    Word of the Day
+                                </Typography>
+                                <Typography variant="h5" component="h2">
+                                    ezdezedzedzed zedzedz
+                                </Typography>
+                                <Typography color="textSecondary">adjective</Typography>
+                                <Typography variant="body2" component="p">
+                                    well meaning and kindly.
+                                    <br />
+                                </Typography>
+                            </CardContent>
+                            <CardActions>
+                                <Button size="small">Learn More</Button>
+                            </CardActions>
+                        </Card>
                     </Box>
-                </Box>
-            </Box>
-            <Box component="div" display="flex" flexWrap="wrap" p={1}>
-                <Box p={1} flexGrow={1}>
-                    <Card variant="outlined">
-                        <CardContent>
-                            <Typography color="textSecondary" gutterBottom>
-                                Word of the Day
-                            </Typography>
-                            <Typography variant="h5" component="h2">
-                                ezdezedzedzed zedzedz
-                            </Typography>
-                            <Typography color="textSecondary">adjective</Typography>
-                            <Typography variant="body2" component="p">
-                                well meaning and kindly.
-                                <br />
-                            </Typography>
-                        </CardContent>
-                        <CardActions>
-                            <Button size="small">Learn More</Button>
-                        </CardActions>
-                    </Card>
-                </Box>
-                <Box p={1} flexGrow={1}>
-                    <Card variant="outlined">
-                        <CardContent>
-                            <Typography color="textSecondary" gutterBottom>
-                                Word of the Day
-                            </Typography>
-                            <Typography variant="h5" component="h2">
-                                ezdezedzedzed zedzedz
-                            </Typography>
-                            <Typography color="textSecondary">adjective</Typography>
-                            <Typography variant="body2" component="p">
-                                well meaning and kindly.
-                                <br />
-                            </Typography>
-                        </CardContent>
-                        <CardActions>
-                            <Button size="small">Learn More</Button>
-                        </CardActions>
-                    </Card>
                 </Box>
             </Box>
             <Box component="div" p={1}>
-                <WorldMapCard title="Visitors & Page views" description="Unique visitors by month" data={WMDatas} />
+                <WorldMapCard title="Sessions by country" description="Unique visitors by month" data={WMDatas} />
             </Box>
         </div>
     );

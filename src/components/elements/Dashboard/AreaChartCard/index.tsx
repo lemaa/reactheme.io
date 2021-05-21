@@ -1,9 +1,10 @@
 import React from "react";
 import dynamic from "next/dynamic";
-import { Card, CardContent, Typography } from "@material-ui/core";
+import { Card, CardContent, CardHeader, IconButton } from "@material-ui/core";
 import { IProps } from "@Element/Dashboard/AreaChartCard/AreaChartCard";
 import useStyles from "@Element/Dashboard/AreaChartCard/AreaChartCardStyle";
 import { useAppSettings } from "@Context/index";
+import MoreVertIcon from "@material-ui/icons/MoreVert";
 
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
@@ -35,13 +36,18 @@ const AreaChartCard: React.FunctionComponent<IProps> = ({ title, description, da
 
     return (
         <Card variant="outlined" className={classes.AreaChartCard}>
+            <CardHeader
+                // eslint-disable-next-line prettier/prettier
+                action={(
+                    <IconButton aria-label="settings">
+                        <MoreVertIcon />
+                    </IconButton>
+                    // eslint-disable-next-line prettier/prettier
+                  )}
+                title={title}
+                subheader={description}
+            />
             <CardContent className={classes.AreaChartCardContent}>
-                <Typography className={classes.AreaChartCardContentTitle} variant="h5" component="h2">
-                    {title}
-                </Typography>
-                <Typography className={classes.AreaChartCardContentDescription} variant="body2" component="p">
-                    {description}
-                </Typography>
                 <Chart options={datas.options} series={datas.series} type="area" width="100%" height={350} />
             </CardContent>
         </Card>

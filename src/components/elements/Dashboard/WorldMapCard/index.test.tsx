@@ -4,10 +4,25 @@ import { cleanup } from "@testing-library/react";
 import { render } from "@Test/utils";
 import { WorldMapCard } from "./index";
 
-afterEach(cleanup);
 jest.useFakeTimers();
-jest.mock("node-fetch");
+let originalFetch: any;
+let global: { fetch: {} };
 
+beforeEach(() => {
+    global.fetch = jest.fn(() =>
+        Promise.resolve({
+            json: () =>
+                Promise.resolve({
+                    value: "Testing something!",
+                }),
+        })
+    );
+});
+
+afterEach(() => {
+    global.fetch = originalFetch;
+    cleanup();
+});
 const WMDatas = {
     series: [
         {
@@ -51,11 +66,6 @@ const WMDatas = {
     ],
 };
 
-jest.mock("ComposableMap", () =>
-    jest.fn(() => {
-        return null;
-    })
-);
 jest.mock("react-apexcharts", () =>
     jest.fn(() => {
         return null;

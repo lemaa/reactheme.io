@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import dynamic from "next/dynamic";
-import { Box, Card, CardContent, Grid, Typography } from "@material-ui/core";
+import { Card, CardContent, CardHeader, Grid, IconButton } from "@material-ui/core";
 import { IProps, MarkerType } from "@Element/Dashboard/WorldMapCard/WorldMapCard";
 import useStyles from "@Element/Dashboard/WorldMapCard/WorldMapCardStyle";
 import { useAppSettings } from "@Context/index";
 import { ComposableMap, Geographies, Geography, Marker } from "react-simple-maps";
 import { ThemesConsts } from "@Constant/index";
+import MoreVertIcon from "@material-ui/icons/MoreVert";
 
 const ReactTooltip = dynamic(() => import("react-tooltip"), { ssr: false });
 
@@ -52,15 +53,18 @@ const WorldMapCard: React.FunctionComponent<IProps> = ({ title, description, dat
 
     return (
         <Card variant="outlined" className={classes.WorldMapCard}>
+            <CardHeader
+                // eslint-disable-next-line prettier/prettier
+                action={(
+                    <IconButton aria-label="settings">
+                        <MoreVertIcon />
+                    </IconButton>
+                    // eslint-disable-next-line prettier/prettier
+                  )}
+                title={title}
+                subheader={description}
+            />
             <CardContent className={classes.WMCContent}>
-                <Box className={classes.WMCHeader}>
-                    <Typography className={classes.WMCTitle} variant="h5" component="h2">
-                        {title}
-                    </Typography>
-                    <Typography className={classes.WMCDescription} variant="body2" component="p">
-                        {description}
-                    </Typography>
-                </Box>
                 <Grid container spacing={3}>
                     <Grid className={classes.WMCMap} item md={8} xs={12}>
                         <ComposableMap data-tip="" projectionConfig={config} width={800} height={400} style={{ width: "100%", height: "auto" }}>
