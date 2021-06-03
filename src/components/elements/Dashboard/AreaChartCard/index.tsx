@@ -5,6 +5,7 @@ import { IProps } from "@Element/Dashboard/AreaChartCard/AreaChartCard";
 import useStyles from "@Element/Dashboard/AreaChartCard/AreaChartCardStyle";
 import { useAppSettings } from "@Context/index";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
+import { ThemesConsts } from "@Constant/index";
 
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
@@ -19,11 +20,16 @@ const AreaChartCard: React.FunctionComponent<IProps> = ({ title, description, da
             chart: {
                 height: 350,
             },
+            colors: [
+                ThemesConsts[state.theme.main].palette.secondary.dark,
+                ThemesConsts[state.theme.main].palette.primary.main,
+                ThemesConsts[state.theme.main].palette.primary.main,
+            ],
             dataLabels: {
                 enabled: false,
             },
             xaxis: {
-                type: "datetime",
+                type: "datetime" as const,
                 categories: data.categories,
             },
             tooltip: {
@@ -32,7 +38,7 @@ const AreaChartCard: React.FunctionComponent<IProps> = ({ title, description, da
                 },
             },
         },
-    } as const;
+    };
 
     return (
         <Card variant="outlined" className={classes.AreaChartCard}>

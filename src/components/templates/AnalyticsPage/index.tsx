@@ -1,8 +1,9 @@
 import React from "react";
-import { Box, Button, Card, CardActions, CardContent, Typography } from "@material-ui/core";
+import { Box, Button } from "@material-ui/core";
 import FullscreenIcon from "@material-ui/icons/Fullscreen";
-import { ContentHeader, SimpleCard, AreaChartCard, WorldMapCard, DonutChartCard, BarChartCard } from "@Element/index";
+import { ContentHeader, SimpleCard, AreaChartCard, WorldMapCard, DonutChartCard, BarChartCard, ProgressChartCard } from "@Element/index";
 import { useTranslation } from "next-i18next";
+import { MonetizationOnOutlined, DoneOutlined, BarChartOutlined, ShowChartOutlined } from "@material-ui/icons";
 
 const AnalyticsPage: React.FC = () => {
     const { t } = useTranslation();
@@ -97,6 +98,30 @@ const AnalyticsPage: React.FC = () => {
         ],
         categories: ["Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct"],
     };
+    const progressDatas = {
+        series: [
+            {
+                name: "Total Sales",
+                data: [70],
+                icon: <BarChartOutlined />,
+            },
+            {
+                name: "Income Amount",
+                data: [85],
+                icon: <MonetizationOnOutlined />,
+            },
+            {
+                name: "Total Budget",
+                data: [49],
+                icon: <ShowChartOutlined />,
+            },
+            {
+                name: "Completed Tasks",
+                data: [20],
+                icon: <DoneOutlined />,
+            },
+        ],
+    };
     return (
         <div style={{ width: "100%" }}>
             <ContentHeader pathName="Analytics" filterButton refreshButton customButton={customHeaderButton} />
@@ -110,77 +135,23 @@ const AnalyticsPage: React.FC = () => {
                 </Box>
             </Box>
             <Box component="div" display="flex" flexWrap="wrap" p={1}>
+                <Box p={1} flexGrow={1}>
+                    <BarChartCard title="Website Analytics" data={barDatas} />
+                </Box>
+                <Box p={1} display="flex" flexDirection="column">
+                    <SimpleCard title="38.4k" description="Orders Received" cardType="chart" data={datas1} icon="received.svg" srcIcon="static/images/common" chartType="line" />
+                    <SimpleCard title="38.4k" description="Orders Received" cardType="chart" data={datas1} icon="received.svg" srcIcon="static/images/common" chartType="bar" />
+                </Box>
+            </Box>
+            <Box component="div" display="flex" flexWrap="wrap" p={1}>
                 <Box p={1} width="49%">
                     <DonutChartCard title="Support Tracker" data={donutDatas} />
                 </Box>
                 <Box p={1} width="49%">
-                    <BarChartCard title="Website Analytics" data={barDatas} />
+                    <ProgressChartCard title="Activity" data={progressDatas} />
                 </Box>
             </Box>
-            <Box component="div" display="flex" flexWrap="wrap" p={1}>
-                <Box p={1} flexGrow={1}>
-                    <Card variant="outlined" style={{ height: "100%" }}>
-                        <CardContent>
-                            <Typography color="textSecondary" gutterBottom>
-                                Word of the Day
-                            </Typography>
-                            <Typography variant="h5" component="h2">
-                                ezdezedzedzed zedzedz
-                            </Typography>
-                            <Typography color="textSecondary">adjective</Typography>
-                            <Typography variant="body2" component="p">
-                                well meaning and kindly.
-                                <br />
-                            </Typography>
-                        </CardContent>
-                        <CardActions>
-                            <Button size="small">Learn More</Button>
-                        </CardActions>
-                    </Card>
-                </Box>
-                <Box p={1}>
-                    <Box p={1} display="flex" flexWrap="wrap">
-                        <Card variant="outlined">
-                            <CardContent>
-                                <Typography color="textSecondary" gutterBottom>
-                                    Word of the Day
-                                </Typography>
-                                <Typography variant="h5" component="h2">
-                                    ezdezedzedzed zedzedz
-                                </Typography>
-                                <Typography color="textSecondary">adjective</Typography>
-                                <Typography variant="body2" component="p">
-                                    well meaning and kindly.
-                                    <br />
-                                </Typography>
-                            </CardContent>
-                            <CardActions>
-                                <Button size="small">Learn More</Button>
-                            </CardActions>
-                        </Card>
-                    </Box>
-                    <Box p={1} display="flex" flexWrap="wrap">
-                        <Card variant="outlined">
-                            <CardContent>
-                                <Typography color="textSecondary" gutterBottom>
-                                    Word of the Day
-                                </Typography>
-                                <Typography variant="h5" component="h2">
-                                    ezdezedzedzed zedzedz
-                                </Typography>
-                                <Typography color="textSecondary">adjective</Typography>
-                                <Typography variant="body2" component="p">
-                                    well meaning and kindly.
-                                    <br />
-                                </Typography>
-                            </CardContent>
-                            <CardActions>
-                                <Button size="small">Learn More</Button>
-                            </CardActions>
-                        </Card>
-                    </Box>
-                </Box>
-            </Box>
+
             <Box component="div" p={1}>
                 <WorldMapCard title="Sessions by country" description="Unique visitors by month" data={WMDatas} />
             </Box>

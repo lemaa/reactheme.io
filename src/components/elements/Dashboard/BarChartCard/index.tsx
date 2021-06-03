@@ -5,6 +5,7 @@ import { IProps } from "@Element/Dashboard/BarChartCard/BarChartCard";
 import useStyles from "@Element/Dashboard/BarChartCard/BarChartCardStyle";
 import { useAppSettings } from "@Context/index";
 import { MoreVert, PersonOutline, TrendingUpOutlined, AirplayOutlined } from "@material-ui/icons";
+import { ThemesConsts } from "@Constant/index";
 
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
@@ -19,6 +20,11 @@ const BarChartCard: React.FunctionComponent<IProps> = ({ title, data }: IProps) 
             chart: {
                 height: 350,
             },
+            colors: [
+                ThemesConsts[state.theme.main].palette.secondary.dark,
+                ThemesConsts[state.theme.main].palette.primary.main,
+                ThemesConsts[state.theme.main].palette.primary.main,
+            ],
             plotOptions: {
                 bar: {
                     horizontal: false,

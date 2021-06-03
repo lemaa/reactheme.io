@@ -19,7 +19,11 @@ const WorldMapCard: React.FunctionComponent<IProps> = ({ title, description, dat
     });
 
     const categories = data.categories.map((item: MarkerType) => item.name);
-
+    const colors: any[] = [
+        ThemesConsts[state.theme.main].palette.secondary.dark,
+        ThemesConsts[state.theme.main].palette.primary.dark,
+        ThemesConsts[state.theme.main].palette.primary.main,
+    ];
     const datas = {
         series: data.series,
         options: {
@@ -27,6 +31,7 @@ const WorldMapCard: React.FunctionComponent<IProps> = ({ title, description, dat
                 type: "bar",
                 height: 350,
             },
+            colors,
             plotOptions: {
                 bar: {
                     borderRadius: 4,

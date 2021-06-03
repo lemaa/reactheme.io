@@ -5,6 +5,7 @@ import { IProps } from "@Element/Dashboard/DonutChartCard/DonutChartCard";
 import useStyles from "@Element/Dashboard/DonutChartCard/DonutChartCardStyle";
 import { useAppSettings } from "@Context/index";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
+import { ThemesConsts } from "@Constant/index";
 
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
@@ -20,6 +21,11 @@ const DonutChartCard: React.FunctionComponent<IProps> = ({ title, data }: IProps
                 height: 350,
                 offsetY: -50,
             },
+            colors: [
+                ThemesConsts[state.theme.main].palette.secondary.dark,
+                ThemesConsts[state.theme.main].palette.primary.dark,
+                ThemesConsts[state.theme.main].palette.primary.main,
+            ],
             plotOptions: {
                 radialBar: {
                     startAngle: -135,

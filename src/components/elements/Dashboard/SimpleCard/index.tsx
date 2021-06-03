@@ -5,10 +5,11 @@ import { IProps } from "@Element/Dashboard/SimpleCard/SimpleCard";
 import useStyles from "@Element/Dashboard/SimpleCard/SimpleCardStyle";
 import { useAppSettings } from "@Context/index";
 import { cdnImage } from "@Util/index";
+import { ThemesConsts } from "@Constant/index";
 
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
-const SimpleCard: React.FunctionComponent<IProps> = ({ title, description, cardType, icon = "", srcIcon, data }: IProps) => {
+const SimpleCard: React.FunctionComponent<IProps> = ({ title, description, cardType, icon = "", srcIcon, data, chartType = "area" }: IProps) => {
     const { state } = useAppSettings();
     const classes = useStyles({
         mainTheme: state.theme.main,
@@ -40,6 +41,11 @@ const SimpleCard: React.FunctionComponent<IProps> = ({ title, description, cardT
             dataLabels: {
                 enabled: false,
             },
+            colors: [
+                ThemesConsts[state.theme.main].palette.secondary.dark,
+                ThemesConsts[state.theme.main].palette.primary.dark,
+                ThemesConsts[state.theme.main].palette.primary.main,
+            ],
             grid: {
                 show: false,
             },
@@ -72,7 +78,7 @@ const SimpleCard: React.FunctionComponent<IProps> = ({ title, description, cardT
                 </Box>
                 {cardType === "chart" && (
                     <div className={classes.SCChart}>
-                        <Chart options={chartOptions.options} series={chartOptions.series} type="area" />
+                        <Chart options={chartOptions.options} series={chartOptions.series} type={chartType} />
                     </div>
                 )}
             </CardContent>

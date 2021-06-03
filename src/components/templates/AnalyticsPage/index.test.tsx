@@ -2,25 +2,25 @@ import "@testing-library/jest-dom/extend-expect";
 import React from "react";
 import { cleanup } from "@testing-library/react";
 import { render } from "@Test/utils";
-import { AnalyticsPage } from "./index";
+import { CalendarPage } from "../CalendarPage/index";
 
 jest.useFakeTimers();
-let originalFetch: any;
-let global: { fetch: {} };
+// let originalFetch: any;
+// let global: { fetch: {} };
 
-beforeEach(() => {
-    global.fetch = jest.fn(() =>
-        Promise.resolve({
-            json: () =>
-                Promise.resolve({
-                    value: "Testing something!",
-                }),
-        })
-    );
-});
+// beforeEach(() => {
+//     global.fetch = jest.fn(() =>
+//         Promise.resolve({
+//             json: () =>
+//                 Promise.resolve({
+//                     value: "Testing something!",
+//                 }),
+//         })
+//     );
+// });
 
 afterEach(() => {
-    global.fetch = originalFetch;
+    // global.fetch = originalFetch;
     cleanup();
 });
 jest.mock("react-apexcharts", () =>
@@ -29,5 +29,5 @@ jest.mock("react-apexcharts", () =>
     })
 );
 test("<AnalyticsPage />", () => {
-    render(<AnalyticsPage />);
+    render(<CalendarPage />);
 });

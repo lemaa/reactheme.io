@@ -347,11 +347,11 @@ const Default: React.FC<IProps> = ({ children, onClick, open, drawerwidth, quick
                     </Box>
                     <Box display="flex" justifyContent="center" alignItems="flex-center" p={1} m={1}>
                         <div>
-                            Icons made by
+                            Icons made by&nbsp;
                             <a href="https://www.freepik.com" title="Freepik">
                                 Freepik
                             </a>
-                            from
+                            &nbsp; from&nbsp;
                             <a href="https://www.flaticon.com/" title="Flaticon">
                                 www.flaticon.com
                             </a>
