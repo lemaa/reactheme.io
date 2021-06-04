@@ -60,7 +60,7 @@ const useStyles = makeStyles<Theme, { qbWidth: number; toolbarTheme: string; dra
         color: props => ThemesConsts[props.toolbarTheme].palette.text.primary,
     },
     floatingSetting: {
-        position: "absolute",
+        position: "fixed",
         right: props => (props.drawerPosition === "left" ? "15px" : "unset"),
         left: props => (props.drawerPosition === "right" ? "15px" : "unset"),
         bottom: "85px",

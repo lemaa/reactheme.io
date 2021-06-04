@@ -1,6 +1,5 @@
 import React from "react";
-import { Header, Drawer, Settings, Themes, Footer } from "@Module/index";
-import { QuickBar } from "@Element/index";
+import { Header, Drawer, Settings, Themes, Footer, QuickBar } from "@Module/index";
 import { Box, Hidden } from "@material-ui/core";
 import useStyles from "@Layout/Default/DefaultStyle";
 import { IProps, IState } from "@Layout/Default/Default";
@@ -345,6 +344,18 @@ const Default: React.FC<IProps> = ({ children, onClick, open, drawerwidth, quick
                         <Box p={1} alignSelf="flex-end">
                             ©ThemeReact v1.0.0
                         </Box>
+                    </Box>
+                    <Box display="flex" justifyContent="center" alignItems="flex-center" p={1} m={1}>
+                        <div>
+                            Icons made by&nbsp;
+                            <a href="https://www.freepik.com" title="Freepik">
+                                Freepik
+                            </a>
+                            &nbsp; from&nbsp;
+                            <a href="https://www.flaticon.com/" title="Flaticon">
+                                www.flaticon.com
+                            </a>
+                        </div>
                     </Box>
                 </Footer>
             )}

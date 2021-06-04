@@ -1,7 +1,7 @@
 import React from "react";
 import { Tooltip, Drawer as MuiDrawer, List, ListItem, ListItemIcon, Divider, Button, Typography } from "@material-ui/core";
-import { IProps } from "@Element/QuickBar/QuickBar";
-import useStyles from "@Element/QuickBar/QuickBarStyle";
+import { IProps } from "@Module/QuickBar/QuickBar";
+import useStyles from "@Module/QuickBar/QuickBarStyle";
 import { CloseOutlined } from "@material-ui/icons";
 import clsx from "clsx";
 import PerfectScrollbar from "react-perfect-scrollbar";

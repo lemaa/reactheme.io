@@ -17,7 +17,7 @@ export const AppSettingsConsts: { [key: string]: any } = {
             },
             footer: {
                 display: true,
-                style: "fixed",
+                style: "static",
             },
         },
     },

@@ -36,6 +36,7 @@ const useStyles = makeStyles<Theme, IState>(theme => ({
             marginLeft: props => (props.quickBarPosition === "left" ? `${props.quickBarWidth}px` : "0px"),
         },
         backgroundColor: props => ThemesConsts[props.mainTheme].palette.background.default,
+        marginBottom: "3em",
     },
     contentShift: {
         [theme.breakpoints.up("sm")]: {

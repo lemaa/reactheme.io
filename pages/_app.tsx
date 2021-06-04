@@ -1,14 +1,13 @@
 import React from "react";
 // import PropTypes from "prop-types";
-import type { AppProps } from "next/app";
 import Head from "next/head";
 import { appWithTranslation } from "next-i18next";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import { AppSettingsProvider, useAppSettings } from "@Context/index";
-// import theme from "@Style/base/theme";
 import "@Style/global.scss";
 import { ThemesConsts } from "@Constant/index";
+import type { AppProps } from "next/app";
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
     React.useEffect(() => {
@@ -30,6 +29,18 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
                         body: {
                             backgroundColor: ThemesConsts[mainTheme].palette.background.default,
                             color: ThemesConsts[mainTheme].palette.text.primary,
+                        },
+                        primary: {
+                            light: ThemesConsts[mainTheme].palette.primary.light,
+                            main: ThemesConsts[mainTheme].palette.primary.main,
+                            dark: ThemesConsts[mainTheme].palette.primary.dark,
+                            contrastText: ThemesConsts[mainTheme].palette.primary.contrastText,
+                        },
+                        secondary: {
+                            light: ThemesConsts[mainTheme].palette.secondary.light,
+                            main: ThemesConsts[mainTheme].palette.secondary.main,
+                            dark: ThemesConsts[mainTheme].palette.secondary.dark,
+                            contrastText: ThemesConsts[mainTheme].palette.secondary.contrastText,
                         },
                     },
                 },
