@@ -1,4 +1,5 @@
 import React from "react";
+import dynamic from "next/dynamic";
 import { Box, Card, CardContent, CardHeader, IconButton, LinearProgress, Typography } from "@material-ui/core";
 import { IProps } from "@Element/Dashboard/ProgressChartCard/ProgressChartCard";
 import useStyles from "@Element/Dashboard/ProgressChartCard/ProgressChartCardStyle";
@@ -22,7 +23,26 @@ const ProgressChartCard: React.FunctionComponent<IProps> = ({ title, data }: IPr
         }
         return classes.success;
     };
-
+    const getAvataricon = (icon: string) => {
+        switch (icon) {
+            case "BarChartOutlined": {
+                const IconComponent = dynamic(() => import("@material-ui/icons/BarChartOutlined"), { ssr: true });
+                return <IconComponent />;
+            }
+            case "MonetizationOnOutlined": {
+                const IconComponent = dynamic(() => import("@material-ui/icons/MonetizationOnOutlined"), { ssr: true });
+                return <IconComponent />;
+            }
+            case "ShowChartOutlined": {
+                const IconComponent = dynamic(() => import("@material-ui/icons/ShowChartOutlined"), { ssr: true });
+                return <IconComponent />;
+            }
+            default: {
+                const IconComponent = dynamic(() => import("@material-ui/icons/DoneOutlined"), { ssr: true });
+                return <IconComponent />;
+            }
+        }
+    };
     return (
         <Card variant="outlined" className={classes.AreaChartCard}>
             <CardHeader
@@ -39,7 +59,7 @@ const ProgressChartCard: React.FunctionComponent<IProps> = ({ title, data }: IPr
                 {data.series.map((item: any) => (
                     <Box key={item.name} display="flex" className={`${classes.boxContainer} ${progressType(item.data[0])}`}>
                         <Box>
-                            <span className={classes.icon}>{item.icon}</span>
+                            <span className={classes.icon}>{getAvataricon(item.icon)}</span>
                         </Box>
                         <Box flexGrow={1}>
                             <Typography variant="body2" className={classes.dataContainer}>
