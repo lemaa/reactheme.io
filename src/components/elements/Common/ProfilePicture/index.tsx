@@ -1,7 +1,7 @@
 import React from "react";
 import { Avatar, Button, Grid, Typography } from "@material-ui/core";
-import { IProps } from "@Element/ProfilePicture/ProfilePicture";
-import useStyles from "@Element/ProfilePicture/ProfilePictureStyle";
+import { IProps } from "@Element/Common/ProfilePicture/ProfilePicture";
+import useStyles from "@Element/Common/ProfilePicture/ProfilePictureStyle";
 import { cdnImage } from "@Util/index";
 import { useAppSettings } from "@Context/index";
 

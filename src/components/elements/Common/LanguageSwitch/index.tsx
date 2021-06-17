@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Button, Grid, List, ListItem, ListItemText, Typography, Avatar, ListItemAvatar } from "@material-ui/core";
-import { IProps } from "@Element/LanguageSwitch/LanguageSwitch";
-import { useStyles } from "@Element/LanguageSwitch/LanguageSwitchStyle";
+import { IProps } from "@Element/Common/LanguageSwitch/LanguageSwitch";
+import { useStyles } from "@Element/Common/LanguageSwitch/LanguageSwitchStyle";
 import { cdnImage } from "@Util/index";
 import Link from "next/link";
 import clsx from "clsx";

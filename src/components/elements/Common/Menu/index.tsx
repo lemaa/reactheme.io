@@ -1,7 +1,7 @@
 import React from "react";
 import { Divider, IconButton, Menu as MuiMenu, MenuItem as MuiMenuItem } from "@material-ui/core";
-import { IProps } from "@Element/Menu/Menu";
-import useStyles from "@Element/Menu/MenuStyle";
+import { IProps } from "@Element/Common/Menu/Menu";
+import useStyles from "@Element/Common/Menu/MenuStyle";
 import { MenuItem } from "@CustomType/index";
 import { useTranslation } from "next-i18next";
 import { useAppSettings } from "@Context/index";

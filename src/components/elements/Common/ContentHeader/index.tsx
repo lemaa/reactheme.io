@@ -2,8 +2,8 @@ import React from "react";
 import { Box, IconButton } from "@material-ui/core";
 import RefreshIcon from "@material-ui/icons/Refresh";
 import FilterListIcon from "@material-ui/icons/FilterList";
-import { IProps } from "@Element/ContentHeader/ContentHeader";
-import useStyles from "@Element/ContentHeader/ContentHeaderStyle";
+import { IProps } from "@Element/Common/ContentHeader/ContentHeader";
+import useStyles from "@Element/Common/ContentHeader/ContentHeaderStyle";
 import { useAppSettings } from "@Context/index";
 
 const ContentHeader: React.FunctionComponent<IProps> = ({ pathName, filterButton, refreshButton, customButton, OnFilterClick, onrefreshClick }: IProps) => {
