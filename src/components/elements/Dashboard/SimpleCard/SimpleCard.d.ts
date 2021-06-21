@@ -5,6 +5,8 @@ export interface IProps {
     data?: any;
     icon?: string;
     srcIcon?: string;
+    badgeText?: string;
+    badgeType?: "success" | "warning" | "error";
     chartType?:
         | "area"
         | "line"

@@ -37,6 +37,8 @@ const AnalyticsPage: React.FunctionComponent<any> = ({ dashboardData }: any) => 
                             data={state.stock_analytics.series}
                             icon="received.svg"
                             srcIcon="static/images/common"
+                            badgeType="success"
+                            badgeText="+ 200 new data"
                         />
                     ) : (
                         <Skeleton animation="wave" variant="rect" height={280} />
@@ -69,6 +71,8 @@ const AnalyticsPage: React.FunctionComponent<any> = ({ dashboardData }: any) => 
                                 icon="received.svg"
                                 srcIcon="static/images/common"
                                 chartType="line"
+                                badgeType="error"
+                                badgeText="- 200 new data"
                             />
                             <SimpleCard
                                 title="38.4k"
@@ -78,6 +82,8 @@ const AnalyticsPage: React.FunctionComponent<any> = ({ dashboardData }: any) => 
                                 icon="received.svg"
                                 srcIcon="static/images/common"
                                 chartType="bar"
+                                badgeType="warning"
+                                badgeText="+ 200 new data"
                             />
                         </>
                     ) : (
