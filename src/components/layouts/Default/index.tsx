@@ -55,6 +55,7 @@ const Default: React.FC<IProps> = ({ children, onClick, open, drawerwidth, quick
                             {
                                 text: t("drawer.subItemNames.analytics"),
                                 hrefLink: "/analytics",
+                                newFeatures: true,
                             },
                             {
                                 text: t("drawer.subItemNames.project"),
@@ -67,6 +68,7 @@ const Default: React.FC<IProps> = ({ children, onClick, open, drawerwidth, quick
                         text: t("drawer.itemNames.calendar"),
                         icon: <TodayOutlinedIcon fontSize="small" />,
                         hrefLink: "/calendar",
+                        newFeatures: true,
                     },
                     "E-Commerce": {
                         text: t("drawer.itemNames.eCommerce"),

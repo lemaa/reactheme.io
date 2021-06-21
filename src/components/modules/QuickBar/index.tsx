@@ -2,12 +2,12 @@ import React from "react";
 import { Tooltip, Drawer as MuiDrawer, List, ListItem, ListItemIcon, Divider, Button, Typography } from "@material-ui/core";
 import { IProps } from "@Module/QuickBar/QuickBar";
 import useStyles from "@Module/QuickBar/QuickBarStyle";
-import { CloseOutlined } from "@material-ui/icons";
+import { CloseOutlined, TuneOutlined } from "@material-ui/icons";
 import clsx from "clsx";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import "react-perfect-scrollbar/dist/css/styles.css";
 import { useAppSettings } from "@Context/index";
-import { SpeedDial, SpeedDialAction, SpeedDialIcon } from "@material-ui/lab";
+import { SpeedDial, SpeedDialAction } from "@material-ui/lab";
 
 const QuickBar: React.FunctionComponent<IProps> = ({ qbWidth, qbClassName, ListQbItems }: IProps) => {
     const { state } = useAppSettings();
@@ -83,7 +83,7 @@ const QuickBar: React.FunctionComponent<IProps> = ({ qbWidth, qbClassName, ListQ
                 <SpeedDial
                     ariaLabel="SpeedDial openIcon example"
                     className={classes.floatingSetting}
-                    icon={<SpeedDialIcon openIcon={<CloseOutlined />} />}
+                    icon={<TuneOutlined />}
                     onClose={handleSpeedDialClose}
                     onOpen={handleSpeedDialOpen}
                     open={speedDialOpen}

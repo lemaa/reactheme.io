@@ -1,6 +1,6 @@
 import React from "react";
 import clsx from "clsx";
-import { Collapse, Drawer as MuiDrawer, List, ListItem, ListItemIcon, ListItemText, ListSubheader } from "@material-ui/core";
+import { Badge, Collapse, Drawer as MuiDrawer, List, ListItem, ListItemIcon, ListItemText, ListSubheader } from "@material-ui/core";
 import { ExpandLess as ExpandLessIcon, ExpandMore as ExpandMoreIcon } from "@material-ui/icons";
 import { IProps } from "@Module/Drawer/Drawer";
 import useStyles from "@Module/Drawer/DrawerStyle";
@@ -70,6 +70,11 @@ const Drawer: React.FunctionComponent<IProps> = ({ prefetch, ListDrawerItems, dr
                                                     <ListItem className={classes.ListItemContainer} button>
                                                         <ListItemIcon className={classes.listMenuIcon}>{DrawerItems[item].icon}</ListItemIcon>
                                                         <ListItemText className={classes.listMenuText} disableTypography primary={DrawerItems[item].text} />
+                                                        {DrawerItems[item].newFeatures && (
+                                                            <ListItemIcon className={classes.listMenuIcon}>
+                                                                <Badge badgeContent="new" color="error" />
+                                                            </ListItemIcon>
+                                                        )}
                                                     </ListItem>
                                                 </Link>
                                             );
@@ -92,7 +97,7 @@ const Drawer: React.FunctionComponent<IProps> = ({ prefetch, ListDrawerItems, dr
                                                         )}
                                                     </ListItem>
                                                     <Collapse in={DrawerItems[item].text === selectedIndex} timeout="auto" unmountOnExit>
-                                                        {subDrawerItems.map((subGroup: { text: string; hrefLink: string }, subGroupIndex: number) => {
+                                                        {subDrawerItems.map((subGroup: { text: string; hrefLink: string; newFeatures: boolean }, subGroupIndex: number) => {
                                                             let hrefLink: string = `${DrawerItems[item].hrefLink}${subGroup.hrefLink}`;
                                                             if (DrawerItems[item].hrefLink === "/") {
                                                                 hrefLink = `${subGroup.hrefLink}`;
@@ -102,6 +107,11 @@ const Drawer: React.FunctionComponent<IProps> = ({ prefetch, ListDrawerItems, dr
                                                                     <List component="div" className={classes.subItem} disablePadding>
                                                                         <ListItem button className={clsx(classes.nested, classes.ListItemContainer)}>
                                                                             <ListItemText className={classes.listMenuText} disableTypography primary={subGroup.text} />
+                                                                            {subGroup.newFeatures && (
+                                                                                <ListItemIcon className={classes.listMenuIcon}>
+                                                                                    <Badge badgeContent="new" color="error" />
+                                                                                </ListItemIcon>
+                                                                            )}
                                                                         </ListItem>
                                                                     </List>
                                                                 </Link>
