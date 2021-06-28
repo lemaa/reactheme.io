@@ -115,6 +115,12 @@
   },
   "dashboard": {
     "congrats": "Congratulations {{username}} ,",
-    "acomplished": "You have done {{tasks}} today."
+    "acomplished": "You have done {{tasks}} today.",
+    "project": {
+        "total": "Total",
+        "overdue": "Overdue",
+        "issues": "Issues",
+        "features": "Features"
+    }
   }
 }
