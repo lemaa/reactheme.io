@@ -11,4 +11,4 @@ export default {
 const Template: Story<IProps> = args => <SimpleCard {...args} />;
 
 export const Default = Template.bind({});
-Default.args = { title: "congra", description: "you won", cardType: "success" };
+Default.args = { title: "congra", subtitle: "Completed: 10", description: { contentTitle: "30", contentSubTitle: "Due tasks" }, cardType: "success" };
