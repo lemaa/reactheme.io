@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Box, Button } from "@material-ui/core";
 import FullscreenIcon from "@material-ui/icons/Fullscreen";
-import { ContentHeader, SimpleCard, AreaChartCard, WorldMapCard, DonutChartCard, BarChartCard, ProgressChartCard } from "@Element/index";
+import { ContentHeader, FelicitationsCard, AreaChartCard, ChartCard, WorldMapCard, DonutChartCard, BarChartCard, ProgressChartCard } from "@Element/index";
 import { useTranslation } from "next-i18next";
 import { useDashboard } from "@Context/index";
 import Skeleton from "@material-ui/lab/Skeleton";
@@ -28,12 +28,15 @@ const AnalyticsPage: React.FunctionComponent<any> = ({ dashboardData }: any) => 
             <ContentHeader pathName="Analytics" filterButton refreshButton customButton={customHeaderButton} />
             <Box component="div" display="flex" flexWrap="wrap" p={1}>
                 <Box p={1} display="flex" flexDirection="column">
-                    <SimpleCard title={t("dashboard.congrats", { username: "Amel" })} description={t("dashboard.acomplished", { tasks: "57.6% more tasks" })} cardType="success" />
+                    <FelicitationsCard
+                        title={t("dashboard.congrats", { username: "Amel" })}
+                        description={t("dashboard.acomplished", { tasks: "57.6% more tasks" })}
+                        cardType="success"
+                    />
                     {state && state.stock_analytics ? (
-                        <SimpleCard
+                        <ChartCard
                             title="38.4k"
                             description="Orders Received"
-                            cardType="chart"
                             data={state.stock_analytics.series}
                             icon="received.svg"
                             srcIcon="static/images/common"
@@ -63,10 +66,9 @@ const AnalyticsPage: React.FunctionComponent<any> = ({ dashboardData }: any) => 
                 <Box p={1} display="flex" flexDirection="column">
                     {state && state.stock_analytics ? (
                         <>
-                            <SimpleCard
+                            <ChartCard
                                 title="38.4k"
                                 description="Orders Received"
-                                cardType="chart"
                                 data={state.stock_analytics.series}
                                 icon="received.svg"
                                 srcIcon="static/images/common"
@@ -74,10 +76,9 @@ const AnalyticsPage: React.FunctionComponent<any> = ({ dashboardData }: any) => 
                                 badgeType="error"
                                 badgeText="- 200 new data"
                             />
-                            <SimpleCard
+                            <ChartCard
                                 title="38.4k"
                                 description="Orders Received"
-                                cardType="chart"
                                 data={state.stock_analytics.series}
                                 icon="received.svg"
                                 srcIcon="static/images/common"
@@ -105,6 +106,13 @@ const AnalyticsPage: React.FunctionComponent<any> = ({ dashboardData }: any) => 
                 <Box p={1} flexGrow={1}>
                     {state && state.activities_tracker ? (
                         <ProgressChartCard title="Activity" data={state.activities_tracker} />
+                    ) : (
+                        <Skeleton animation="wave" variant="rect" height={280} />
+                    )}
+                </Box>
+                <Box p={1}>
+                    {state && state.support_tracker ? (
+                        <DonutChartCard title="Support Tracker" data={state.support_tracker} />
                     ) : (
                         <Skeleton animation="wave" variant="rect" height={280} />
                     )}

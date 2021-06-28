@@ -13,7 +13,7 @@ const useStyles = makeStyles<Theme, { mainTheme: string }>(() =>
             height: theme.spacing(10),
         },
         boxContainer: {
-            marginBottom: "2rem",
+            marginBottom: "1.68rem",
         },
         success: {
             "& $icon": {

@@ -3,7 +3,7 @@ import React from "react";
 import { cleanup } from "@testing-library/react";
 import { render } from "@Test/utils";
 // import { WorldMapCard } from "./index";
-import { SimpleCard } from "../SimpleCard/index";
+import { FelicitationsCard } from "../FelicitationsCard/index";
 
 jest.useFakeTimers();
 // let originalFetch: any;
@@ -73,5 +73,5 @@ jest.mock("react-apexcharts", () =>
     })
 );
 test("<WorldMapCard />", () => {
-    render(<SimpleCard title="Congrats" description="you won" cardType="success" />);
+    render(<FelicitationsCard title="Congrats" description="you won" cardType="success" />);
 });

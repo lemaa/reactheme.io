@@ -1,4 +1,6 @@
 export { SimpleCard } from "@Element/Dashboard/SimpleCard";
+export { FelicitationsCard } from "@Element/Dashboard/FelicitationsCard";
+export { ChartCard } from "@Element/Dashboard/ChartCard";
 export { AreaChartCard } from "@Element/Dashboard/AreaChartCard";
 export { WorldMapCard } from "@Element/Dashboard/WorldMapCard";
 export { DonutChartCard } from "@Element/Dashboard/DonutChartCard";

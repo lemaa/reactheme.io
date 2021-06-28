@@ -33,6 +33,6 @@ jest.mock("react-apexcharts", () =>
         return null;
     })
 );
-test("<AreaChartCard />", () => {
+test("<DonutChartCard />", () => {
     render(<DonutChartCard title="Visitors & Page views" data={datas} />);
 });
