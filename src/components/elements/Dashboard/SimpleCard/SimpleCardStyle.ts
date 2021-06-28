@@ -6,42 +6,43 @@ const useStyles = makeStyles<Theme, { mainTheme: string; cardType: string }>(() 
     createStyles({
         SimpleCard: {
             marginBottom: "15px",
-            height: "17em",
+        },
+        header: {
+            paddingBottom: "5px",
         },
         SCContent: {
-            padding: props => (props.cardType === "chart" ? "0" : "16px"),
+            paddingTop: "5px",
         },
         SCHeader: {
             display: "flex",
             flexDirection: "column",
-            alignItems: props => (props.cardType === "chart" ? "right" : "center"),
-            padding: props => (props.cardType === "chart" ? "10px" : "0"),
-        },
-        SCIcon: {
-            width: props => (props.cardType === "chart" ? theme.spacing(7) : theme.spacing(10)),
-            height: props => (props.cardType === "chart" ? theme.spacing(7) : theme.spacing(10)),
-        },
-        SCIconContainer: {
-            padding: props => (props.cardType === "chart" ? theme.spacing(0) : theme.spacing(2)),
+            alignItems: "center",
+            padding: "0",
+            color: props => {
+                if (props.cardType === "success") {
+                    return theme.palette.success.light;
+                }
+                if (props.cardType === "error") {
+                    return theme.palette.error.light;
+                }
+                if (props.cardType === "warning") {
+                    return theme.palette.warning.light;
+                }
+
+                return ThemesConsts[props.mainTheme].palette.secondary.dark;
+            },
         },
         SCTitle: {
-            padding: props => (props.cardType === "chart" ? theme.spacing(0) : theme.spacing(1)),
-            color: props => (props.cardType === "chart" ? ThemesConsts[props.mainTheme].palette.text.primary : ThemesConsts[props.mainTheme].palette.secondary.dark),
+            padding: theme.spacing(1),
+            fontSize: "5.2rem",
+            fontWeight: 500,
         },
-        SCDescription: {
-            padding: theme.spacing(0),
-            color: props => (props.cardType === "chart" ? ThemesConsts[props.mainTheme].palette.text.disabled : ThemesConsts[props.mainTheme].palette.secondary.dark),
+        SCSubContent: {
+            paddingTop: "10px",
         },
-        SCChart: {
-            position: "relative",
-            bottom: "5em",
-        },
-        badge: {
-            background: "#76e410",
-            color: "white",
-            padding: "2px 15px",
-            borderRadius: "5px",
-            fontWeight: "bold",
+        SCcontentSubTitle: {
+            fontSize: "1.5rem",
+            marginTop: "-20px",
         },
     })
 );
