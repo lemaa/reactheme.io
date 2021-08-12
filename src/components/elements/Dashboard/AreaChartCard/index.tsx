@@ -18,7 +18,7 @@ const AreaChartCard: React.FunctionComponent<IProps> = ({ title, description, da
         series: data.series,
         options: {
             chart: {
-                height: 350,
+                height: 250,
             },
             colors: [
                 ThemesConsts[state.theme.main].palette.secondary.dark,
@@ -54,7 +54,7 @@ const AreaChartCard: React.FunctionComponent<IProps> = ({ title, description, da
                 subheader={description}
             />
             <CardContent className={classes.AreaChartCardContent}>
-                <Chart options={datas.options} series={datas.series} type="area" width="100%" height={350} />
+                <Chart options={datas.options} series={datas.series} type="area" width="100%" height={250} />
             </CardContent>
         </Card>
     );

@@ -38,7 +38,7 @@ const ChartCard: React.FunctionComponent<IProps> = ({ title, description, badgeT
         series: data,
         options: {
             chart: {
-                height: "auto",
+                height: "150",
                 toolbar: {
                     show: false,
                 },

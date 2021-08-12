@@ -6,8 +6,11 @@ const useStyles = makeStyles<Theme, { mainTheme: string }>(() =>
     createStyles({
         AreaChartCard: {
             color: props => ThemesConsts[props.mainTheme].palette.text.primary,
+            height: "25em",
         },
-        AreaChartCardContent: {},
+        AreaChartCardContent: {
+            padding: 0,
+        },
         AreaChartCardIcon: {
             width: theme.spacing(10),
             height: theme.spacing(10),

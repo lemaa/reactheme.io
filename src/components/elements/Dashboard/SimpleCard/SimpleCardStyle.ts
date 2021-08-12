@@ -34,7 +34,7 @@ const useStyles = makeStyles<Theme, { mainTheme: string; cardType: string }>(() 
         },
         SCTitle: {
             padding: theme.spacing(1),
-            fontSize: "5.2rem",
+            fontSize: "2.2rem",
             fontWeight: 500,
         },
         SCSubContent: {

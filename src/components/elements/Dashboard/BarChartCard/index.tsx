@@ -98,7 +98,7 @@ const BarChartCard: React.FunctionComponent<IProps> = ({ title, data }: IProps) 
                         </Typography>
                     </Grid>
                 </Grid>
-                <Chart options={datas.options} series={datas.series} type="bar" height={350} />
+                <Chart options={datas.options} series={datas.series} type="bar" height={250} />
             </CardContent>
         </Card>
     );
