@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Box, Button } from "@material-ui/core";
 import FullscreenIcon from "@material-ui/icons/Fullscreen";
-import { ContentHeader, FelicitationsCard, AreaChartCard, ChartCard, WorldMapCard, DonutChartCard, BarChartCard, ProgressChartCard } from "@Element/index";
+import { ContentHeader, FelicitationsCard, AreaChartCard, ChartCard, WorldMapCard, RadialBarChartCard, BarChartCard, ProgressChartCard } from "@Element/index";
 import { useTranslation } from "next-i18next";
 import { useDashboard } from "@Context/index";
 import Skeleton from "@material-ui/lab/Skeleton";
@@ -98,7 +98,7 @@ const AnalyticsPage: React.FunctionComponent<any> = ({ dashboardData }: any) => 
             <Box component="div" display="flex" flexWrap="wrap" p={1}>
                 <Box p={1}>
                     {state && state.support_tracker ? (
-                        <DonutChartCard title="Support Tracker" data={state.support_tracker} />
+                        <RadialBarChartCard title="Support Tracker" data={state.support_tracker} />
                     ) : (
                         <Skeleton animation="wave" variant="rect" height={280} />
                     )}
@@ -112,7 +112,7 @@ const AnalyticsPage: React.FunctionComponent<any> = ({ dashboardData }: any) => 
                 </Box>
                 <Box p={1}>
                     {state && state.support_tracker ? (
-                        <DonutChartCard title="Support Tracker" data={state.support_tracker} />
+                        <RadialBarChartCard title="Support Tracker" data={state.support_tracker} />
                     ) : (
                         <Skeleton animation="wave" variant="rect" height={280} />
                     )}

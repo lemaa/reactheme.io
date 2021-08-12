@@ -1,7 +1,7 @@
 import React from "react";
-import { Box, Button, Card, CardActions, CardContent, Grid, Typography } from "@material-ui/core";
+import { Box, Button, Grid } from "@material-ui/core";
 import FullscreenIcon from "@material-ui/icons/Fullscreen";
-import { ContentHeader, SimpleCard } from "@Element/index";
+import { ContentHeader, SimpleCard, EnhancedTable, DonutChartCard, RadarChartCard } from "@Element/index";
 import { useTranslation } from "next-i18next";
 // import { useDashboard } from "@Context/index";
 // import Skeleton from "@material-ui/lab/Skeleton";
@@ -15,6 +15,61 @@ const ProjectPage: React.FunctionComponent<any> = () => {
         </Button>
     );
 
+    const data = {
+        budget_details: [
+            {
+                Budget_Type: "Design",
+                Total_Budget: "$14,880.00",
+                Spent: 94.08,
+                Remaining: "%5.92",
+            },
+            {
+                Budget_Type: "Coding",
+                Total_Budget: "$21,080.00",
+                Spent: 81.78,
+                Remaining: "%18.22",
+            },
+            {
+                Budget_Type: "Marketing",
+                Total_Budget: "$34,720.00",
+                Spent: 10.13,
+                Remaining: "%89.87",
+            },
+            {
+                Budget_Type: "Testing",
+                Total_Budget: "$14,880.00",
+                Spent: 0.0,
+                Remaining: "%100.00",
+            },
+            {
+                Budget_Type: "others",
+                Total_Budget: "$14,880.00",
+                Spent: 0.0,
+                Remaining: "%100.00",
+            },
+        ],
+        project_status: [{ completed: 65, "in progress": 24, behind: 9 }],
+        budget_distribution: [{ wireframe: 12, design: 14, coding: 29, marketing: 45, extra: 5 }],
+        task_distribution: [
+            {
+                series: [
+                    {
+                        name: "Series 1",
+                        data: [80, 50, 30, 40, 100, 20],
+                    },
+                    {
+                        name: "Series 2",
+                        data: [20, 30, 40, 80, 20, 80],
+                    },
+                    {
+                        name: "Series 3",
+                        data: [44, 76, 78, 13, 43, 10],
+                    },
+                ],
+                categories: ["January", "February", "March", "April", "May", "June"],
+            },
+        ],
+    };
     return (
         <div style={{ width: "100%" }}>
             <ContentHeader pathName="Project" filterButton refreshButton customButton={customHeaderButton} />
@@ -44,130 +99,20 @@ const ProjectPage: React.FunctionComponent<any> = () => {
                     </Grid>
                 </Grid>
             </Box>
-            <Box component="div" display="flex" flexWrap="wrap" p={1}>
+            <Box component="div" display="flex" flexWrap="wrap" justifyContent="space-between" p={1}>
                 <Box p={1}>
-                    <Card variant="outlined">
-                        <CardContent>
-                            <Typography color="textSecondary" gutterBottom>
-                                Word of the Day
-                            </Typography>
-                            <Typography variant="h5" component="h2">
-                                ezdezedzedzed zedzedz
-                            </Typography>
-                            <Typography color="textSecondary">adjective</Typography>
-                            <Typography variant="body2" component="p">
-                                well meaning and kindly.
-                                <br />
-                            </Typography>
-                        </CardContent>
-                        <CardActions>
-                            <Button size="small">Learn More</Button>
-                        </CardActions>
-                    </Card>
-                </Box>
-                <Box p={1} flexGrow={1}>
-                    <Card variant="outlined">
-                        <CardContent>
-                            <Typography color="textSecondary" gutterBottom>
-                                Word of the Day
-                            </Typography>
-                            <Typography variant="h5" component="h2">
-                                ezdezedzedzed zedzedz
-                            </Typography>
-                            <Typography color="textSecondary">adjective</Typography>
-                            <Typography variant="body2" component="p">
-                                well meaning and kindly.
-                                <br />
-                            </Typography>
-                        </CardContent>
-                        <CardActions>
-                            <Button size="small">Learn More</Button>
-                        </CardActions>
-                    </Card>
-                </Box>
-            </Box>
-            <Box component="div" display="flex" flexWrap="wrap" p={1}>
-                <Box p={1}>
-                    <Card variant="outlined">
-                        <CardContent>
-                            <Typography color="textSecondary" gutterBottom>
-                                Word of the Day
-                            </Typography>
-                            <Typography variant="h5" component="h2">
-                                ezdezedzedzed zedzedz
-                            </Typography>
-                            <Typography color="textSecondary">adjective</Typography>
-                            <Typography variant="body2" component="p">
-                                well meaning and kindly.
-                                <br />
-                            </Typography>
-                        </CardContent>
-                        <CardActions>
-                            <Button size="small">Learn More</Button>
-                        </CardActions>
-                    </Card>
+                    <DonutChartCard title="Project status" donutType="donut" data={data.project_status[0]} />
                 </Box>
                 <Box p={1}>
-                    <Card variant="outlined">
-                        <CardContent>
-                            <Typography color="textSecondary" gutterBottom>
-                                Word of the Day
-                            </Typography>
-                            <Typography variant="h5" component="h2">
-                                ezdezedzedzed zedzedz
-                            </Typography>
-                            <Typography color="textSecondary">adjective</Typography>
-                            <Typography variant="body2" component="p">
-                                well meaning and kindly.
-                                <br />
-                            </Typography>
-                        </CardContent>
-                        <CardActions>
-                            <Button size="small">Learn More</Button>
-                        </CardActions>
-                    </Card>
+                    <RadarChartCard title="task distribuation" data={data.task_distribution[0]} />
                 </Box>
                 <Box p={1}>
-                    <Card variant="outlined">
-                        <CardContent>
-                            <Typography color="textSecondary" gutterBottom>
-                                Word of the Day
-                            </Typography>
-                            <Typography variant="h5" component="h2">
-                                ezdezedzedzed zedzedz
-                            </Typography>
-                            <Typography color="textSecondary">adjective</Typography>
-                            <Typography variant="body2" component="p">
-                                well meaning and kindly.
-                                <br />
-                            </Typography>
-                        </CardContent>
-                        <CardActions>
-                            <Button size="small">Learn More</Button>
-                        </CardActions>
-                    </Card>
+                    <DonutChartCard title="budget distribuation" donutType="pie" data={data.budget_distribution[0]} />
                 </Box>
             </Box>
 
             <Box component="div" p={1}>
-                <Card variant="outlined">
-                    <CardContent>
-                        <Typography color="textSecondary" gutterBottom>
-                            Word of the Day
-                        </Typography>
-                        <Typography variant="h5" component="h2">
-                            ezdezedzedzed zedzedz
-                        </Typography>
-                        <Typography color="textSecondary">adjective</Typography>
-                        <Typography variant="body2" component="p">
-                            well meaning and kindly.
-                            <br />
-                        </Typography>
-                    </CardContent>
-                    <CardActions>
-                        <Button size="small">Learn More</Button>
-                    </CardActions>
-                </Card>
+                <EnhancedTable data={data.budget_details} tableTitle="Budget details" checkboxRows={false} />
             </Box>
         </div>
     );

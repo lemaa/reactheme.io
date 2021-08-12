@@ -3,6 +3,8 @@ export { FelicitationsCard } from "@Element/Dashboard/FelicitationsCard";
 export { ChartCard } from "@Element/Dashboard/ChartCard";
 export { AreaChartCard } from "@Element/Dashboard/AreaChartCard";
 export { WorldMapCard } from "@Element/Dashboard/WorldMapCard";
+export { RadialBarChartCard } from "@Element/Dashboard/RadialBarChartCard";
+export { RadarChartCard } from "@Element/Dashboard/RadarChartCard";
 export { DonutChartCard } from "@Element/Dashboard/DonutChartCard";
 export { BarChartCard } from "@Element/Dashboard/BarChartCard";
 export { ProgressChartCard } from "@Element/Dashboard/ProgressChartCard";
