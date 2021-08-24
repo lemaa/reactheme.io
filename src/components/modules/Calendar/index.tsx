@@ -6,7 +6,7 @@ import useStyles from "@Module/Calendar/CalendarStyle";
 import { Calendar as BigCalendar, Views, momentLocalizer } from "react-big-calendar";
 import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
 import { CalendarItem } from "@CustomType/index";
-import { Button, Dialog, DialogContent, DialogTitle, FormControlLabel, Grid, Switch, TextField } from "@material-ui/core";
+import { Button, Card, CardContent, Dialog, DialogContent, DialogTitle, FormControlLabel, Grid, Switch, TextField } from "@material-ui/core";
 import { KeyboardDateTimePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns";
 import "react-big-calendar/lib/css/react-big-calendar.css";
@@ -150,85 +150,86 @@ const Calendar: React.FunctionComponent<IProps> = ({ events }: IProps) => {
         return false;
     };
     return (
-        <>
-            <DragAndDropCalendar
-                selectable
-                resizable
-                localizer={localizer}
-                events={calendarEvents}
-                popup
-                defaultDate={new Date()}
-                defaultView={Views.MONTH}
-                className={classes.calendarContainer}
-                onSelectEvent={handleSelectedEvent}
-                onSelectSlot={handleNewEvent}
-                onEventDrop={onEventDrop}
-                eventPropGetter={eventStyleColor}
-                components={{ toolbar: CustomToolbar }}
-                onView={handleSetViewState}
-            />
-            <Dialog maxWidth="xs" open={dialogOpen} onClose={handleDialogClose} aria-labelledby="max-width-dialog-title">
-                <DialogTitle id="max-width-dialog-title" className={classes.dialogTitle}>
-                    {dialogSettings.headerText}
-                </DialogTitle>
-                <DialogContent className={classes.dialogContent}>
-                    <form className={classes.form} noValidate autoComplete="off">
-                        <Grid container spacing={3}>
-                            <Grid item xs={12} className={classes.inputContainer}>
-                                <TextField required id="outlined-title" label="Title" variant="outlined" fullWidth value={title} onChange={handleTitleChange} />
-                            </Grid>
-                            <Grid item xs={12} className={classes.inputContainer}>
-                                <FormControlLabel control={<Switch checked={isAllDay.isAllDay} onChange={handleIsAllDay} name="isAllDay" color="primary" />} label="All Day" />
-                            </Grid>
-                            <Grid item xs={12} className={classes.inputContainer}>
-                                <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                                    <KeyboardDateTimePicker
-                                        margin="normal"
-                                        id="date-picker-start"
-                                        label="Date picker start"
-                                        value={selectedDateStart}
-                                        onChange={handleDateStartChange}
+        <Card variant="outlined">
+            <CardContent>
+                <DragAndDropCalendar
+                    selectable
+                    resizable
+                    localizer={localizer}
+                    events={calendarEvents}
+                    popup
+                    defaultDate={new Date()}
+                    defaultView={Views.MONTH}
+                    className={classes.calendarContainer}
+                    onSelectEvent={handleSelectedEvent}
+                    onSelectSlot={handleNewEvent}
+                    onEventDrop={onEventDrop}
+                    eventPropGetter={eventStyleColor}
+                    components={{ toolbar: CustomToolbar }}
+                    onView={handleSetViewState}
+                />
+                <Dialog maxWidth="xs" open={dialogOpen} onClose={handleDialogClose} aria-labelledby="max-width-dialog-title">
+                    <DialogTitle id="max-width-dialog-title" className={classes.dialogTitle}>
+                        {dialogSettings.headerText}
+                    </DialogTitle>
+                    <DialogContent className={classes.dialogContent}>
+                        <form className={classes.form} noValidate autoComplete="off">
+                            <Grid container spacing={3}>
+                                <Grid item xs={12} className={classes.inputContainer}>
+                                    <TextField required id="outlined-title" label="Title" variant="outlined" fullWidth value={title} onChange={handleTitleChange} />
+                                </Grid>
+                                <Grid item xs={12} className={classes.inputContainer}>
+                                    <FormControlLabel control={<Switch checked={isAllDay.isAllDay} onChange={handleIsAllDay} name="isAllDay" color="primary" />} label="All Day" />
+                                </Grid>
+                                <Grid item xs={12} className={classes.inputContainer}>
+                                    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                                        <KeyboardDateTimePicker
+                                            margin="normal"
+                                            id="date-picker-start"
+                                            label="Date picker start"
+                                            value={selectedDateStart}
+                                            onChange={handleDateStartChange}
+                                            fullWidth
+                                            KeyboardButtonProps={{
+                                                "aria-label": "change date start",
+                                            }}
+                                        />
+                                        <KeyboardDateTimePicker
+                                            margin="normal"
+                                            id="date-picker-end"
+                                            label="Date picker end"
+                                            value={selectedDateEnd}
+                                            onChange={handleDateEndChange}
+                                            fullWidth
+                                            KeyboardButtonProps={{
+                                                "aria-label": "change date",
+                                            }}
+                                        />
+                                    </MuiPickersUtilsProvider>
+                                </Grid>
+                                <Grid item xs={12} className={classes.inputContainer}>
+                                    <TextField
+                                        id="outlined-description"
+                                        label="description"
+                                        variant="outlined"
                                         fullWidth
-                                        KeyboardButtonProps={{
-                                            "aria-label": "change date start",
-                                        }}
+                                        multiline
+                                        rows={3}
+                                        value={description}
+                                        onChange={handleDescriptionChange}
                                     />
-                                    <KeyboardDateTimePicker
-                                        margin="normal"
-                                        id="date-picker-end"
-                                        label="Date picker end"
-                                        value={selectedDateEnd}
-                                        onChange={handleDateEndChange}
-                                        fullWidth
-                                        KeyboardButtonProps={{
-                                            "aria-label": "change date",
-                                        }}
-                                    />
-                                </MuiPickersUtilsProvider>
+                                </Grid>
+                                <Grid item xs={12} className={classes.inputContainer}>
+                                    <Button variant="contained" color="primary" onClick={handleEvent}>
+                                        {dialogSettings.buttonText}
+                                    </Button>
+                                </Grid>
                             </Grid>
-                            <Grid item xs={12} className={classes.inputContainer}>
-                                <TextField
-                                    id="outlined-description"
-                                    label="description"
-                                    variant="outlined"
-                                    fullWidth
-                                    multiline
-                                    rows={3}
-                                    value={description}
-                                    onChange={handleDescriptionChange}
-                                />
-                            </Grid>
-                            <Grid item xs={12} className={classes.inputContainer}>
-                                <Button variant="contained" color="primary" onClick={handleEvent}>
-                                    {" "}
-                                    {dialogSettings.buttonText}
-                                </Button>
-                            </Grid>
-                        </Grid>
-                    </form>
-                </DialogContent>
-            </Dialog>
-        </>
+                        </form>
+                    </DialogContent>
+                </Dialog>
+            </CardContent>
+        </Card>
     );
 };
 export { Calendar };

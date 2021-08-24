@@ -1,6 +1,7 @@
 import { makeStyles, Theme } from "@material-ui/core/styles";
+import { ThemesConsts } from "@Constant/index";
 
-const useStyles = makeStyles<Theme>(theme => ({
+const useStyles = makeStyles<Theme, { mainTheme: string }>(() => ({
     viewNameToolbar: {
         textAlign: "right",
         padding: "0px !important",
@@ -12,13 +13,15 @@ const useStyles = makeStyles<Theme>(theme => ({
 
     IconButton: {
         border: "none !important",
-        color: `${theme.palette.primary.main} !important`,
+        color: props => `${ThemesConsts[props.mainTheme].palette.primary.main} !important`,
         "&:hover": {
-            backgroundColor: `${theme.palette.primary.light} !important`,
+            borderBottom: props => `2px solid ${ThemesConsts[props.mainTheme].palette.primary.main}!important`,
+            background: "transparent !important",
         },
         "&.rbc-active": {
-            backgroundColor: `${theme.palette.primary.light} !important`,
+            borderBottom: props => `2px solid ${ThemesConsts[props.mainTheme].palette.primary.main}!important`,
             boxShadow: "none !important",
+            background: "transparent !important",
         },
     },
     viewNavigateToolbarLabel: {
@@ -26,7 +29,7 @@ const useStyles = makeStyles<Theme>(theme => ({
         fontWeight: 700,
         padding: "5px",
         textTransform: "uppercase",
-        color: theme.palette.primary.main,
+        color: props => ThemesConsts[props.mainTheme].palette.primary.main,
     },
 }));
 
