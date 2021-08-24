@@ -22,7 +22,5 @@ Default.args = {
     description: "Orders Received",
     badgeType: "success",
     data: { datas },
-    icon: "received.svg",
-    srcIcon: "static/images/common",
     badgeText: "+ 200 new data",
 };

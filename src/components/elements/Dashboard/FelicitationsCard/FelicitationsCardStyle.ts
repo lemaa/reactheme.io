@@ -6,10 +6,10 @@ const useStyles = makeStyles<Theme, { mainTheme: string }>(() =>
     createStyles({
         FelicitationsCard: {
             marginBottom: "15px",
-            height: "17em",
+            height: "14em",
         },
         SCContent: {
-            padding: "16px",
+            padding: theme.spacing(1),
         },
         SCHeader: {
             display: "flex",
@@ -22,7 +22,7 @@ const useStyles = makeStyles<Theme, { mainTheme: string }>(() =>
             height: theme.spacing(10),
         },
         SCIconContainer: {
-            padding: theme.spacing(2),
+            padding: theme.spacing(1),
         },
         SCTitle: {
             padding: theme.spacing(1),

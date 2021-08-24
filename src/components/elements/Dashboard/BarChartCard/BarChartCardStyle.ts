@@ -12,10 +12,6 @@ const useStyles = makeStyles<Theme, { mainTheme: string }>(() =>
             width: theme.spacing(10),
             height: theme.spacing(10),
         },
-        iconSpan: {
-            verticalAlign: "text-bottom",
-            margin: "0 5px",
-        },
         AreaChartCardContentIcon: {
             padding: "10px",
         },
@@ -23,6 +19,20 @@ const useStyles = makeStyles<Theme, { mainTheme: string }>(() =>
         AreaChartCardContentDescription: {
             padding: "5px",
             color: props => ThemesConsts[props.mainTheme].palette.text.disabled,
+        },
+        WMCBarDescription: {
+            paddingTop: "0 !important",
+            textAlign: "center",
+            fontWeight: "bold",
+        },
+        WMCTitle: {
+            color: props => ThemesConsts[props.mainTheme].palette.text.disabled,
+            fontSize: "1rem",
+        },
+        WMCDescription: {
+            color: props => ThemesConsts[props.mainTheme].palette.text.disabled,
+            marginLeft: "5px",
+            fontSize: "0.9rem",
         },
     })
 );

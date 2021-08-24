@@ -19,7 +19,5 @@ jest.mock("react-apexcharts", () =>
     })
 );
 test("<ChartCard />", () => {
-    render(
-        <ChartCard title="38.4k" description="Orders Received" data={datas} icon="received.svg" srcIcon="static/images/common" badgeType="success" badgeText="+ 200 new data" />
-    );
+    render(<ChartCard title="38.4k" description="Orders Received" data={datas} badgeType="success" badgeText="+ 200 new data" />);
 });

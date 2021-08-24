@@ -6,7 +6,7 @@ const useStyles = makeStyles<Theme, { mainTheme: string }>(() =>
     createStyles({
         ChartCard: {
             marginBottom: "15px",
-            height: "17em",
+            height: "13em",
         },
         SCContent: {
             padding: "0",
@@ -16,10 +16,6 @@ const useStyles = makeStyles<Theme, { mainTheme: string }>(() =>
             flexDirection: "column",
             alignItems: "right",
             padding: "10px",
-        },
-        SCIcon: {
-            width: theme.spacing(7),
-            height: theme.spacing(7),
         },
         SCIconContainer: {
             padding: theme.spacing(0),
@@ -34,7 +30,7 @@ const useStyles = makeStyles<Theme, { mainTheme: string }>(() =>
         },
         SCChart: {
             position: "relative",
-            bottom: "5em",
+            bottom: "0",
         },
         badge: {
             background: "#76e410",

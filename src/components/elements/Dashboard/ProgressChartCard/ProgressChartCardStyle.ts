@@ -6,6 +6,7 @@ const useStyles = makeStyles<Theme, { mainTheme: string }>(() =>
     createStyles({
         AreaChartCard: {
             color: props => ThemesConsts[props.mainTheme].palette.text.primary,
+            height: "100%",
         },
         AreaChartCardContent: {},
         AreaChartCardIcon: {
@@ -13,7 +14,8 @@ const useStyles = makeStyles<Theme, { mainTheme: string }>(() =>
             height: theme.spacing(10),
         },
         boxContainer: {
-            marginBottom: "1.68rem",
+            marginBottom: "0.5rem",
+            padding: "4px",
         },
         success: {
             "& $icon": {
@@ -61,15 +63,14 @@ const useStyles = makeStyles<Theme, { mainTheme: string }>(() =>
         },
         dataContainer: {
             marginBottom: "0.6rem",
+            color: "#828D99!important",
         },
         name: {},
         value: {
             float: "right",
         },
         progress: {
-            "& .MuiLinearProgress-barColorPrimary": {
-                backgroundColor: props => ThemesConsts[props.mainTheme].palette.primary.main,
-            },
+            backgroundColor: "#eef2f5",
         },
     })
 );

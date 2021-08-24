@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, Grid, IconButton, Typography } from "@ma
 import { IProps } from "@Element/Dashboard/BarChartCard/BarChartCard";
 import useStyles from "@Element/Dashboard/BarChartCard/BarChartCardStyle";
 import { useAppSettings } from "@Context/index";
-import { MoreVert, PersonOutline, TrendingUpOutlined, AirplayOutlined } from "@material-ui/icons";
+import { MoreVert } from "@material-ui/icons";
 import { ThemesConsts } from "@Constant/index";
 
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
@@ -60,43 +60,28 @@ const BarChartCard: React.FunctionComponent<IProps> = ({ title, data }: IProps) 
         <Card variant="outlined" className={classes.AreaChartCard}>
             <CardHeader
                 // eslint-disable-next-line prettier/prettier
-                action={(
+                action={
+                    // eslint-disable-next-line react/jsx-wrap-multilines
                     <IconButton aria-label="settings">
                         <MoreVert />
                     </IconButton>
                     // eslint-disable-next-line prettier/prettier
-                  )}
+                }
                 title={title}
             />
             <CardContent className={classes.AreaChartCardContent}>
                 <Grid container spacing={3}>
-                    <Grid className={classes.WMCMap} item md={4} xs={12}>
-                        <Typography className={classes.WMCTitle} component="div" align="center">
-                            <PersonOutline classes={{ root: classes.iconSpan }} />
-                            Users
-                        </Typography>
-                        <Typography className={classes.WMCDescription} variant="body2" component="p" align="center">
-                            61K
-                        </Typography>
-                    </Grid>
-                    <Grid className={classes.WMCMap} item md={4} xs={12}>
-                        <Typography className={classes.WMCTitle} component="div" align="center">
-                            <AirplayOutlined classes={{ root: classes.iconSpan }} />
-                            Sessions
-                        </Typography>
-                        <Typography className={classes.WMCDescription} variant="body2" component="p" align="center">
-                            92K
-                        </Typography>
-                    </Grid>
-                    <Grid className={classes.WMCMap} item md={4} xs={12}>
-                        <Typography className={classes.WMCTitle} component="div" align="center">
-                            <TrendingUpOutlined classes={{ root: classes.iconSpan }} />
-                            Bounce Rate
-                        </Typography>
-                        <Typography className={classes.WMCDescription} variant="body2" component="p" align="center">
-                            72.6%
-                        </Typography>
-                    </Grid>
+                    {data.description &&
+                        data.description.map((item: any) => (
+                            <Grid key={item.title} classes={{ root: classes.WMCBarDescription }} item sm={4} xs={4}>
+                                <Typography className={classes.WMCTitle} component="div" align="center">
+                                    {item.description}
+                                </Typography>
+                                <Typography className={classes.WMCDescription} component="div" align="center">
+                                    {`${item.title} `}
+                                </Typography>
+                            </Grid>
+                        ))}
                 </Grid>
                 <Chart options={datas.options} series={datas.series} type="bar" height={250} />
             </CardContent>

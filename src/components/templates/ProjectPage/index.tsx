@@ -104,10 +104,10 @@ const ProjectPage: React.FunctionComponent<any> = () => {
                     <DonutChartCard title="Project status" donutType="donut" data={data.project_status[0]} />
                 </Box>
                 <Box p={1}>
-                    <RadarChartCard title="task distribuation" data={data.task_distribution[0]} />
+                    <RadarChartCard title="Task distribuation" data={data.task_distribution[0]} />
                 </Box>
                 <Box p={1}>
-                    <DonutChartCard title="budget distribuation" donutType="pie" data={data.budget_distribution[0]} />
+                    <DonutChartCard title="Budget distribuation" donutType="pie" data={data.budget_distribution[0]} />
                 </Box>
             </Box>
 

@@ -1,6 +1,7 @@
 import React from "react";
 import dynamic from "next/dynamic";
-import { Card, CardContent, CardHeader, Grid, IconButton, Typography } from "@material-ui/core";
+import clsx from "clsx";
+import { Box, Card, CardContent, CardHeader, IconButton } from "@material-ui/core";
 import { IProps } from "@Element/Dashboard/RadialBarChartCard/RadialBarChartCard";
 import useStyles from "@Element/Dashboard/RadialBarChartCard/RadialBarChartCardStyle";
 import { useAppSettings } from "@Context/index";
@@ -14,12 +15,12 @@ const RadialBarChartCard: React.FunctionComponent<IProps> = ({ title, data }: IP
     const classes = useStyles({
         mainTheme: state.theme.main,
     });
+    const lineCap: "butt" | "round" | "square" | undefined = "round";
     const datas = {
-        series: data.series,
+        series: Object.values(data.series[0]),
         options: {
             chart: {
-                height: 250,
-                offsetY: -50,
+                height: 200,
             },
             colors: [
                 ThemesConsts[state.theme.main].palette.secondary.dark,
@@ -28,40 +29,27 @@ const RadialBarChartCard: React.FunctionComponent<IProps> = ({ title, data }: IP
             ],
             plotOptions: {
                 radialBar: {
-                    startAngle: -135,
-                    endAngle: 135,
                     dataLabels: {
                         name: {
-                            fontSize: "16px",
-                            color: undefined,
-                            offsetY: -10,
+                            fontSize: "22px",
                         },
                         value: {
-                            offsetY: 10,
-                            fontSize: "22px",
-                            color: undefined,
-                            formatter(val: number) {
-                                return `${val}%`;
+                            fontSize: "16px",
+                        },
+                        total: {
+                            show: true,
+                            label: "Total",
+                            formatter(w: any) {
+                                return w.config.series.reduce((a: any, b: any) => a + b);
                             },
                         },
                     },
                 },
             },
-            fill: {
-                type: "gradient",
-                gradient: {
-                    shade: "dark",
-                    shadeIntensity: 0.15,
-                    inverseColors: false,
-                    opacityFrom: 1,
-                    opacityTo: 1,
-                    stops: [0, 50, 65, 91],
-                },
-            },
             stroke: {
-                dashArray: 4,
+                lineCap,
             },
-            labels: ["Completed Tasks"],
+            labels: Object.keys(data.series[0]),
         },
     };
 
@@ -74,37 +62,30 @@ const RadialBarChartCard: React.FunctionComponent<IProps> = ({ title, data }: IP
                         <MoreVertIcon />
                     </IconButton>
                     // eslint-disable-next-line prettier/prettier
-                  )}
+                )}
                 title={title}
             />
             <CardContent className={classes.AreaChartCardContent}>
-                <Chart options={datas.options} series={datas.series} type="radialBar" height={250} />
-                <Grid container spacing={3}>
-                    <Grid className={classes.WMCMap} item md={4} xs={12}>
-                        <Typography className={classes.WMCTitle} component="div" align="center">
-                            New Tickets
-                        </Typography>
-                        <Typography className={classes.WMCDescription} variant="body2" component="p" align="center">
-                            29
-                        </Typography>
-                    </Grid>
-                    <Grid className={classes.WMCMap} item md={4} xs={12}>
-                        <Typography className={classes.WMCTitle} component="div" align="center">
-                            Open Tickets
-                        </Typography>
-                        <Typography className={classes.WMCDescription} variant="body2" component="p" align="center">
-                            63
-                        </Typography>
-                    </Grid>
-                    <Grid className={classes.WMCMap} item md={4} xs={12}>
-                        <Typography className={classes.WMCTitle} component="div" align="center">
-                            Response Time
-                        </Typography>
-                        <Typography className={classes.WMCDescription} variant="body2" component="p" align="center">
-                            1d
-                        </Typography>
-                    </Grid>
-                </Grid>
+                <Chart options={datas.options} series={datas.series} type="radialBar" />
+                <Box component="div" display="flex" flexDirection="column" justifyContent="flex-end">
+                    {Object.keys(data.series[0]).map((label: string, index: number) => {
+                        return (
+                            <Box key={index.toString()} component="div" display="flex" flexDirection="row" justifyContent="space-between" alignItems="center">
+                                <Box component="span" display="flex" alignItems="center">
+                                    <div
+                                        className={clsx(classes.StatBullet, {
+                                            [classes.StatBulletFinished]: label === "finished",
+                                            [classes.StatBulletPending]: label === "pending",
+                                            [classes.StatBulletRejected]: label === "rejected",
+                                        })}
+                                    />
+                                    {label}
+                                </Box>
+                                <span>{data.series[0][label]}</span>
+                            </Box>
+                        );
+                    })}
+                </Box>
             </CardContent>
         </Card>
     );

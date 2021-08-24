@@ -20,6 +20,23 @@ const useStyles = makeStyles<Theme, { mainTheme: string }>(() =>
             padding: "5px",
             color: props => ThemesConsts[props.mainTheme].palette.text.disabled,
         },
+        StatBullet: {
+            marginRight: "5px",
+            height: "10px",
+            width: "10px",
+            borderRadius: "50%",
+            background: "transparent",
+        },
+        StatBulletFinished: {
+            border: "3px solid #7c63f9",
+        },
+        StatBulletPending: {
+            border: "3px solid #ffa048",
+        },
+
+        StatBulletRejected: {
+            border: "3px solid #ec5759",
+        },
     })
 );
 
