@@ -10,5 +10,14 @@ module.exports = withPlugins([
     {
         i18n
     },
-    [withBundleAnalyzer]
+    [ withBundleAnalyzer ],
+    {async redirects() {
+        return [
+            {
+                source: '/',
+                destination: '/analytics',
+                permanent: true,
+            },
+        ]
+    },}
 ]);
