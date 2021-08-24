@@ -22,7 +22,10 @@
     "test:e2e:ci": "start-server-and-test start 3005 cypress:headless",
     "test": "npm run test:unit  && npm run cypress:e2e",
     "storybook": "start-storybook -p 6006  -c .storybook  -s ./public",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "analyze": "cross-env ANALYZE=true next build",
+    "analyze:server": "cross-env BUNDLE_ANALYZE=server next build",
+    "analyze:browser": "cross-env BUNDLE_ANALYZE=browser next build"
   },
   "lint-staged": {
     "{src,pages}/**/*.{ts,tsx}": "npm run format"
@@ -44,6 +47,7 @@
     "@material-ui/icons": "^4.11.2",
     "@material-ui/lab": "*",
     "@material-ui/pickers": "^3.2.10",
+    "@next/bundle-analyzer": "^11.1.0",
     "@storybook/react": "^6.2.9",
     "@types/node": "^14.14.20",
     "@types/react": "^17.0.0",
@@ -51,6 +55,7 @@
     "apexcharts": "^3.26.1",
     "autoprefixer": "^10.2.6",
     "clsx": "^1.1.1",
+    "cross-env": "^7.0.3",
     "date-fns": "^2.16.1",
     "gh-pages": "^3.1.0",
     "identity-obj-proxy": "^3.0.0",
