@@ -6,6 +6,7 @@ const useStyles = makeStyles<Theme, { mainTheme: string; cardType: string }>(() 
     createStyles({
         SimpleCard: {
             marginBottom: "15px",
+            boxShadow: "-8px 12px 18px 0 rgb(25 42 70 / 13%)",
         },
         header: {
             paddingBottom: "5px",

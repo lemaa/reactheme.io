@@ -7,6 +7,7 @@ const useStyles = makeStyles<Theme, { mainTheme: string }>(() =>
         AreaChartCard: {
             color: props => ThemesConsts[props.mainTheme].palette.text.primary,
             height: "25em",
+            boxShadow: "-8px 12px 18px 0 rgb(25 42 70 / 13%)",
         },
         AreaChartCardContent: {
             padding: 0,

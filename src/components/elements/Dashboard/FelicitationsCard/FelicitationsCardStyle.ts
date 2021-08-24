@@ -7,6 +7,7 @@ const useStyles = makeStyles<Theme, { mainTheme: string }>(() =>
         FelicitationsCard: {
             marginBottom: "15px",
             height: "14em",
+            boxShadow: "-8px 12px 18px 0 rgb(25 42 70 / 13%)",
         },
         SCContent: {
             padding: theme.spacing(1),
