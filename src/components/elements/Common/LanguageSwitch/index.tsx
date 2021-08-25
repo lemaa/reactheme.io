@@ -23,7 +23,6 @@ const LanguageSwitch: React.FC<IProps> = ({ ListLanguageItems, srcFlags }) => {
     const handleClickOpen = () => {
         setDialogOpen(!dialogOpen);
     };
-
     return (
         <div className={classes.Languagecontainer}>
             <Button className={classes.grow} onClick={handleClickOpen}>
@@ -44,7 +43,7 @@ const LanguageSwitch: React.FC<IProps> = ({ ListLanguageItems, srcFlags }) => {
                 <div className={classes.quickbarDetailsContent}>
                     <List>
                         {ListLanguageItems.map((languageItem: { language: string; languageAbbr: string; nameFlag: string }) => (
-                            <Link href="/" locale={languageItem.languageAbbr} key={languageItem.language} passHref>
+                            <Link href={router.pathname} locale={languageItem.languageAbbr} key={languageItem.language} passHref>
                                 <ListItem button component="a">
                                     <ListItemAvatar className={classes.root}>
                                         <Avatar className={classes.flagPicture} variant="square" alt={languageItem.nameFlag} src={cdnImage(languageItem.nameFlag, srcFlags)} />
