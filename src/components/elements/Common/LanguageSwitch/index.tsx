@@ -16,7 +16,9 @@ const LanguageSwitch: React.FC<IProps> = ({ ListLanguageItems, srcFlags }) => {
     const router = useRouter();
     const [dialogOpen, setDialogOpen] = React.useState<false | boolean>(false);
     let localeLanguage: string = "en";
+    let pathname: string = "//analytics";
     if (router !== null && router.locale !== undefined) localeLanguage = router.locale;
+    if (router !== null && router.pathname !== undefined) pathname = router.pathname;
     const defaultLanguage = ListLanguageItems.find((languageItem: { language: string; languageAbbr: string; nameFlag: string }) => languageItem.languageAbbr === localeLanguage);
     const [selectedValue] = React.useState<{ language: string; languageAbbr: string; nameFlag: string }>(defaultLanguage);
 
@@ -43,7 +45,7 @@ const LanguageSwitch: React.FC<IProps> = ({ ListLanguageItems, srcFlags }) => {
                 <div className={classes.quickbarDetailsContent}>
                     <List>
                         {ListLanguageItems.map((languageItem: { language: string; languageAbbr: string; nameFlag: string }) => (
-                            <Link href={router.pathname} locale={languageItem.languageAbbr} key={languageItem.language} passHref>
+                            <Link href={pathname} locale={languageItem.languageAbbr} key={languageItem.language} passHref>
                                 <ListItem button component="a">
                                     <ListItemAvatar className={classes.root}>
                                         <Avatar className={classes.flagPicture} variant="square" alt={languageItem.nameFlag} src={cdnImage(languageItem.nameFlag, srcFlags)} />
