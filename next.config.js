@@ -8,6 +8,9 @@ const isProd = process.env.NODE_ENV === 'production';
 
 module.exports = withPlugins([
     {
+        env: { PUBLIC_URL: '/', }
+    },
+    {
         i18n
     },
     [ withBundleAnalyzer ],
