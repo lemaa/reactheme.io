@@ -1,10 +1,4 @@
 export const cdnImage = (name: string, folder = "/static/images") => {
-    let srcPicture: string;
-    if (process.env.NODE_ENV === "production") {
-        srcPicture = `${folder}/${name}`;
-    } else {
-        srcPicture = `${folder}/${name}`;
-    }
-
+    const srcPicture: string = `${process.env.PUBLIC_URL}${folder}/${name}`;
     return srcPicture;
 };

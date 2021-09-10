@@ -15,14 +15,12 @@ const Footer: React.FunctionComponent<IProps> = ({ open, drawerWidth, quickBarWi
         position: state.layout.config.footer.style,
     });
     return (
-        <div className={classes.grow}>
-            <div
-                className={clsx(classes.appBar, {
-                    [classes.appBarShift]: open && state.layout.config.navbar.display,
-                })}
-            >
-                {children}
-            </div>
+        <div
+            className={clsx(classes.appBar, {
+                [classes.appBarShift]: open && state.layout.config.navbar.display,
+            })}
+        >
+            {children}
         </div>
     );
 };

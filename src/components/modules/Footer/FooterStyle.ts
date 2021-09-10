@@ -5,11 +5,12 @@ const useStyles = makeStyles<Theme, { drawerWidth: number; position: string; qui
     (theme: Theme) =>
         createStyles({
             appBar: {
+                textAlign: "center",
+                left: "0",
                 width: "100%",
                 position: props => (props.position === "fixed" ? "fixed" : "static"),
-                minHeight: "60px",
                 top: "auto",
-                bottom: 0,
+                bottom: "0",
                 color: props => ThemesConsts[props.footerTheme].palette.text.primary,
                 backgroundColor: props => ThemesConsts[props.footerTheme].palette.background.paper,
                 [theme.breakpoints.up("sm")]: {
@@ -55,7 +56,6 @@ const useStyles = makeStyles<Theme, { drawerWidth: number; position: string; qui
                     },
                 },
             },
-
             grow: {
                 flexGrow: 1,
             },

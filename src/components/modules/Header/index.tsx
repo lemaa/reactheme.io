@@ -168,11 +168,11 @@ const Header: React.FunctionComponent<IProps> = ({ open, onClick, title, drawerW
     );
 
     return (
-        <div className={classes.grow}>
+        <>
             {ElevationAppBarScroll(appBarElement)}
             {renderMobileMenu}
             {renderMenu}
-        </div>
+        </>
     );
 };
 export { Header };

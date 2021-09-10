@@ -295,11 +295,10 @@ const Default: React.FC<IProps> = ({ children, onClick, open, drawerwidth, quick
     ];
 
     return (
-        <div>
+        <Box display="flex" flexDirection="column" style={{ height: "100vh" }}>
             {state.layout.config.header.display && (
                 <Header onClick={onClick} drawerWidth={drawerwidth} open={open} quickBarWidth={state.layout.config.toolbar.display ? quickBarWidth : 0} />
             )}
-
             <nav className={classes.drawer} aria-label="mailbox folders">
                 <Hidden smUp>
                     {state.layout.config.navbar.display && (
@@ -328,40 +327,39 @@ const Default: React.FC<IProps> = ({ children, onClick, open, drawerwidth, quick
                     <QuickBar qbWidth={quickBarWidth} qbClassName={classes.quickbar} ListQbItems={ListQuickBarItems} />
                 </Hidden>
             </nav>
-
-            <div>
-                <main
-                    className={clsx(classes.content, {
-                        [classes.contentShift]: open && state.layout.config.navbar.display,
-                    })}
-                >
-                    {state.layout.config.header.display && <div className={classes.drawerHeader} />}
-                    <div className={classes.container}>{children}</div>
-                </main>
-            </div>
+            <main
+                className={clsx(classes.content, {
+                    [classes.contentShift]: open && state.layout.config.navbar.display,
+                })}
+            >
+                {state.layout.config.header.display && <div className={classes.drawerHeader} />}
+                <div className={classes.container}>{children}</div>
+            </main>
             {state.layout.config.footer.display && (
                 <Footer drawerWidth={drawerwidth} open={open} quickBarWidth={state.layout.config.toolbar.display ? quickBarWidth : 0}>
-                    <Box display="flex" alignItems="flex-start" justifyContent="space-between" p={1} m={1}>
-                        <Box p={1}>Created with Love | 2021</Box>
-                        <Box p={1} alignSelf="flex-end">
-                            ©ThemeReact v1.0.0
+                    <div>
+                        <Box display="flex" alignItems="flex-start" justifyContent="space-between" p={1}>
+                            <Box p={1}>Created with Love | 2021</Box>
+                            <Box p={1} alignSelf="flex-end">
+                                ©ThemeReact v1.0.0
+                            </Box>
                         </Box>
-                    </Box>
-                    <Box display="flex" justifyContent="center" alignItems="flex-center" p={1} m={1}>
-                        <div>
-                            Icons made by&nbsp;
-                            <a href="https://www.freepik.com" title="Freepik">
-                                Freepik
-                            </a>
-                            &nbsp; from&nbsp;
-                            <a href="https://www.flaticon.com/" title="Flaticon">
-                                www.flaticon.com
-                            </a>
-                        </div>
-                    </Box>
+                        <Box display="flex" justifyContent="center" alignItems="flex-center" p={1}>
+                            <div>
+                                Icons made by&nbsp;
+                                <a href="https://www.freepik.com" title="Freepik">
+                                    Freepik
+                                </a>
+                                &nbsp; from&nbsp;
+                                <a href="https://www.flaticon.com/" title="Flaticon">
+                                    www.flaticon.com
+                                </a>
+                            </div>
+                        </Box>
+                    </div>
                 </Footer>
             )}
-        </div>
+        </Box>
     );
 };
 
