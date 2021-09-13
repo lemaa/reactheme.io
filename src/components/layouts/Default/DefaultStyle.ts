@@ -78,6 +78,9 @@ const useStyles = makeStyles<Theme, IState>(theme => ({
         ...theme.mixins.toolbar,
         justifyContent: "flex-end",
     },
+    freepikLink: {
+        color: props => ThemesConsts[props.mainTheme].palette.primary.contrastText,
+    },
 }));
 
 export default useStyles;

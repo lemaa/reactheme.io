@@ -338,7 +338,7 @@ const Default: React.FC<IProps> = ({ children, onClick, open, drawerwidth, quick
             {state.layout.config.footer.display && (
                 <Footer drawerWidth={drawerwidth} open={open} quickBarWidth={state.layout.config.toolbar.display ? quickBarWidth : 0}>
                     <div>
-                        <Box display="flex" alignItems="flex-start" justifyContent="space-between" p={1}>
+                        <Box display="flex" alignItems="flex-start" justifyContent="space-between">
                             <Box p={1}>Created with Love | 2021</Box>
                             <Box p={1} alignSelf="flex-end">
                                 ©ThemeReact v1.0.0
@@ -347,11 +347,11 @@ const Default: React.FC<IProps> = ({ children, onClick, open, drawerwidth, quick
                         <Box display="flex" justifyContent="center" alignItems="flex-center" p={1}>
                             <div>
                                 Icons made by&nbsp;
-                                <a href="https://www.freepik.com" title="Freepik">
+                                <a className={classes.freepikLink} href="https://www.freepik.com" title="Freepik">
                                     Freepik
                                 </a>
                                 &nbsp; from&nbsp;
-                                <a href="https://www.flaticon.com/" title="Flaticon">
+                                <a className={classes.freepikLink} href="https://www.flaticon.com/" title="Flaticon">
                                     www.flaticon.com
                                 </a>
                             </div>

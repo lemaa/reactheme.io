@@ -11,8 +11,8 @@ const useStyles = makeStyles<Theme, { drawerWidth: number; position: string; qui
                 position: props => (props.position === "fixed" ? "fixed" : "static"),
                 top: "auto",
                 bottom: "0",
-                color: props => ThemesConsts[props.footerTheme].palette.text.primary,
-                backgroundColor: props => ThemesConsts[props.footerTheme].palette.background.paper,
+                color: props => ThemesConsts[props.footerTheme].palette.text.disabled,
+                backgroundColor: props => ThemesConsts[props.footerTheme].palette.primary.dark,
                 [theme.breakpoints.up("sm")]: {
                     width: props => `calc(100% - ${props.quickBarWidth}px)`,
                     marginRight: props => (props.quickBarPosition === "right" ? `${props.quickBarWidth}px` : "0px"),
