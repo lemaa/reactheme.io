@@ -97,10 +97,10 @@ const Default: React.FC<IProps> = ({ children, onClick, open, drawerwidth, quick
                         ],
                         hrefLink: "/e-Commerce",
                     },
-                    "To-do": {
-                        text: t("drawer.itemNames.toDo"),
+                    Tasks: {
+                        text: t("drawer.itemNames.tasks"),
                         icon: <ListAltOutlinedIcon fontSize="small" />,
-                        hrefLink: "/to-do",
+                        hrefLink: "/tasks",
                     },
                     "File Manager": {
                         text: t("drawer.itemNames.fileManager"),
