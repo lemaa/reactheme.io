@@ -3,7 +3,7 @@ import React from "react";
 import { DashboardProvider } from "@Context/index";
 import { cleanup } from "@testing-library/react";
 import { render } from "@Test/utils";
-import { CalendarPage } from "../CalendarPage/index";
+import { CalendarPage } from "../../CalendarPage/index";
 
 jest.useFakeTimers();
 // let originalFetch: any;

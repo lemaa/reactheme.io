@@ -86,14 +86,6 @@ const Default: React.FC<IProps> = ({ children, onClick, open, drawerwidth, quick
                                 text: t("drawer.subItemNames.newProduct"),
                                 hrefLink: "/new-product",
                             },
-                            {
-                                text: t("drawer.subItemNames.orders"),
-                                hrefLink: "/orders",
-                            },
-                            {
-                                text: t("drawer.subItemNames.orderDetail"),
-                                hrefLink: "/order-detail",
-                            },
                         ],
                         hrefLink: "/e-Commerce",
                     },

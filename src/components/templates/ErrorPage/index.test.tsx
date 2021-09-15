@@ -1,27 +1,12 @@
 import "@testing-library/jest-dom/extend-expect";
 import React from "react";
 import { cleanup } from "@testing-library/react";
-import { DashboardProvider } from "@Context/index";
 import { render } from "@Test/utils";
-import { CalendarPage } from "../CalendarPage/index";
+import { ErrorPage } from "./index";
 
 jest.useFakeTimers();
-// let originalFetch: any;
-// let global: { fetch: {} };
-
-// beforeEach(() => {
-//     global.fetch = jest.fn(() =>
-//         Promise.resolve({
-//             json: () =>
-//                 Promise.resolve({
-//                     value: "Testing something!",
-//                 }),
-//         })
-//     );
-// });
 
 afterEach(() => {
-    // global.fetch = originalFetch;
     cleanup();
 });
 jest.mock("react-apexcharts", () =>
@@ -29,10 +14,6 @@ jest.mock("react-apexcharts", () =>
         return null;
     })
 );
-test("<AnalyticsPage />", () => {
-    render(
-        <DashboardProvider>
-            <CalendarPage />
-        </DashboardProvider>
-    );
+test("<ErrorPage />", () => {
+    render(<ErrorPage code="344" message="TEST ERROR" />);
 });
