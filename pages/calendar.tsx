@@ -23,7 +23,7 @@ const Calendar: NextPage = ({ calendarData }: any) => {
 };
 
 export const getStaticProps = async ({ locale }: any) => {
-    const response = await fetch(`https://d187mzioodxioi.cloudfront.net/worldMap/calendar.json`);
+    const response = await fetch(`https://d187mzioodxioi.cloudfront.net/calendar/calendar.json`);
     const calendarData = await response.json();
 
     return {

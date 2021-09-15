@@ -22,7 +22,7 @@ const Project: NextPage = ({ dashboardData }: any) => {
 };
 
 export const getStaticProps = async ({ locale }: any) => {
-    const response = await fetch(`https://d187mzioodxioi.cloudfront.net/worldMap/project.json`);
+    const response = await fetch(`https://d187mzioodxioi.cloudfront.net/dashboard/project.json`);
     const dashboardData = await response.json();
 
     return {
