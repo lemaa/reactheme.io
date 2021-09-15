@@ -6,7 +6,7 @@ import { ContentHeader } from "@Element/index";
 import Box from "@material-ui/core/Box";
 import { useDashboard } from "@Context/index";
 
-const CalendarPage: React.FC = ({ calendarData }: any) => {
+const CalendarPage: React.FunctionComponent<any> = ({ calendarData }: any) => {
     const { state, dispatch } = useDashboard();
     const customHeaderButton = (
         <Button color="primary">
