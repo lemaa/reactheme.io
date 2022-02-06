@@ -5,6 +5,7 @@ export interface IProps {
     drawerVariant: "permanent" | "persistent" | "temporary";
     handleDrawerToggle: () => void;
     ListDrawerItems: Array<any>;
-    headerTitle?: string;
+    headerTitle?: React.ReactNode | string;
     prefetch?: any;
+    theme?: "original" | "default";
 }
