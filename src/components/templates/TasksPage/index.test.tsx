@@ -9,11 +9,6 @@ jest.useFakeTimers();
 afterEach(() => {
     cleanup();
 });
-jest.mock("react-apexcharts", () =>
-    jest.fn(() => {
-        return null;
-    })
-);
 test("<TasksPage />", () => {
     render(<TasksPage />);
 });
