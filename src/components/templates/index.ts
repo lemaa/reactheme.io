@@ -2,4 +2,8 @@ export { HomePage } from "@Template/HomePage";
 export { CalendarPage } from "@Template/CalendarPage";
 export { AnalyticsPage } from "@Template/dashboard/AnalyticsPage";
 export { ProjectPage } from "@Template/dashboard/ProjectPage";
+export { TasksPage } from "@Template/TasksPage";
+export { NotesPage } from "@Template/NotesPage";
+export { FileManagerPage } from "@Template/FileManagerPage";
+export { ContactsPage } from "@Template/ContactsPage";
 export { ErrorPage } from "@Template/ErrorPage";
