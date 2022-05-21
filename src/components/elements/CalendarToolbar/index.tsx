@@ -57,6 +57,7 @@ const CustomToolbar: React.FC<ICustomTooolbarProps> = ({ views, view, label, onN
             </Grid>
             <Grid className={clsx(classes.viewNavigateToolbar, "rbc-btn-group")} item xs={12}>
                 <IconButton
+                    data-testid="navigation-prev-button"
                     className={classes.IconButton}
                     aria-label={CalendarConsts.navigateConstants.PREVIOUS}
                     onClick={() => navigate(CalendarConsts.navigateConstants.PREVIOUS)}
@@ -64,7 +65,12 @@ const CustomToolbar: React.FC<ICustomTooolbarProps> = ({ views, view, label, onN
                     <NavigateBeforeOutlined fontSize="large" />
                 </IconButton>
                 <span className={clsx("rbc-toolbar-label", classes.viewNavigateToolbarLabel)}>{label}</span>
-                <IconButton className={classes.IconButton} aria-label={CalendarConsts.navigateConstants.NEXT} onClick={() => navigate(CalendarConsts.navigateConstants.NEXT)}>
+                <IconButton
+                    data-testid="navigation-next-button"
+                    className={classes.IconButton}
+                    aria-label={CalendarConsts.navigateConstants.NEXT}
+                    onClick={() => navigate(CalendarConsts.navigateConstants.NEXT)}
+                >
                     <NavigateNextOutlined fontSize="large" />
                 </IconButton>
             </Grid>
