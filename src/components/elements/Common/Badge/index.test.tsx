@@ -8,5 +8,9 @@ afterEach(cleanup);
 jest.useFakeTimers();
 
 test("<Badge />", () => {
-    render(<Badge text="testing badge" bgColor="#cccccc" textColor="#ffffff" />);
+    const wrapper = render(<Badge text="testing badge" bgColor="#cccccc" textColor="#ffffff" />);
+    const expectedBgColor = { "background-color": "rgb(204, 204, 204)" };
+
+    expect(wrapper.getByText("testing badge")).toBeInTheDocument();
+    expect(wrapper.baseElement.querySelector("span")).toHaveStyle(expectedBgColor);
 });
